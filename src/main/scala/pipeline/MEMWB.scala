@@ -12,7 +12,7 @@ class MEMWB extends Module {
     val ReadDataWB = Output(UInt(32.W))
     val ALUresWB = Output(UInt(32.W))
     val RDD = Output(UInt(32.W))
-    val MemtoRegS = Output(Bool())
+    val MemtoRegS = Output(UInt(1.W))
     val RegWriteS = Output(Bool())
   })
 

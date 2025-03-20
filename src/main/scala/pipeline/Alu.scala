@@ -1,16 +1,19 @@
-package SingleCycle
+package pipeline
 import chisel3._
 import chisel3.util._
 
 class Alu extends Module {
     val io = IO(new Bundle {
         val op1 = Input(UInt(32.W))  
-        val op2 = Input(UInt(32.W))  
+        val op2 = Input(UInt(32.W))
+        val fnct3 = Input ( UInt (3. W ) )
+        val branch = Input ( Bool () )  
         val aluctrl = Input(UInt(6.W)) 
         val aluout = Output(UInt(32.W)) 
         val zero = Output(Bool()) 
     })
     io.aluout := 0.U  
+    io.zero := false.B 
    
     switch(io.aluctrl) {
         is("b000000".U) { io.aluout := io.op1 + io.op2 } // ADD
@@ -28,24 +31,20 @@ class Alu extends Module {
             when(io.branch){
                 switch ( io.fnct3) {
                     is ("b0000".U){
-                        if (io.br_taken := (io.op1 === io.op2)){
-                           io.zero := (io.aluout === 1.U) 
-                        }.elsewhen{io.zero := (io.aluout === 0.U)}
+                        when(io.op1 === io.op2){io.zero := true.B
+                        }.otherwise{io.zero := false.B}
                     }
                     is ("b0001".U){
-                        if (io.br_taken := (io.op1 =/= io.op2)){
-                           io.zero := (io.aluout === 1.U) 
-                        }.elsewhen{io.zero := (io.aluout === 0.U)}
+                        when(io.op1 =/= io.op2){io.zero := true.B
+                        }.otherwise{io.zero := false.B}
                     }
                     is ("b0010".U){
-                        if (io.br_taken := (io.op1 < io.op2)){
-                           io.zero := (io.aluout === 1.U) 
-                        }.elsewhen{io.zero := (io.aluout === 0.U)}
+                        when(io.op1 < io.op2){io.zero := true.B
+                        }.otherwise{io.zero := false.B}
                     }
                     is ("b0100".U){
-                        if (io.br_taken := (io.op1 >= io.op2)){
-                           io.zero := (io.aluout === 1.U) 
-                        }.elsewhen{io.zero := (io.aluout === 0.U)}
+                        when(io.op1 >= io.op2){io.zero := true.B
+                        }.otherwise{io.zero := false.B}
                     } 
                 }
             }

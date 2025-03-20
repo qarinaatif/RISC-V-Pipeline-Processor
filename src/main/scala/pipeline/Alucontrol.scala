@@ -1,4 +1,4 @@
-package SingleCycle
+package pipeline
 import chisel3._
 import chisel3.util._
 
@@ -10,6 +10,7 @@ class Alucontrol extends Module {
         val func3 = Input(UInt(3.W))
         val aluctrl = Output(UInt(6.W))
     })
+    io.aluctrl := 0.U 
 
     when(io.aluop === 0.U){ io.aluctrl := "b000000".U} // load store 0
     .elsewhen(io.aluop === 1.U){ io.aluctrl := "b111111".U} //branch

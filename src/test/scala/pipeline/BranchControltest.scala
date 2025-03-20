@@ -1,4 +1,4 @@
-package SingleCycle
+package pipeline
 import chiseltest._
 import chisel3._
 import org.scalatest._
