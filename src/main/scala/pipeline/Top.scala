@@ -19,20 +19,17 @@ class Top extends Module{
     val typeDecoder_module =Module(new TypeDecoder)
     val regfile_module = Module(new RegisterFile)
     val idex_module = Module(new IDEX)
+    val forwarding_module = Module(new ForwwardingUnit)
     val alucontrol_module = Module(new Alucontrol)
     val alu_module = Module(new Alu)
     val exmem_module = Module(new EXMEM)
     val datamemory_module = Module(new Datamemory)
     val memwb_module = Module(new MEMWB)
 
-
+        
     //Fetch
     val muxsig = exmem_module.io.sig|(exmem_module.io.BranchS & exmem_module.io.ZeroMEM)
-    //pc_module.io.in := MuxLookup (muxsig, 0.U, Array(
-        //(0.U) -> pc_module.io.pc4,
-        //(1.U) -> exmem_module.io.JumpMEM))
-    // Using Mux for simpler conditional selection
-    // Cast UInt to SInt if needed
+
     val pcout = Mux(muxsig === 0.U, pc_module.io.pc4.asSInt, exmem_module.io.JumpMEM.asSInt)
     pc_module.io.in := pcout
     insmemory_module.io.readadress := pc_module.io.pcout(25,2)
@@ -81,6 +78,14 @@ class Top extends Module{
     idex_module.io.muxsign := typeDecoder_module.io.load_out|typeDecoder_module.io.store_out
     idex_module.io.jalr_sign := typeDecoder_module.io.jalr_out
 
+    //Forwarding
+    forwarding_module.io.RegWriteMEM = exmem_module.io.RegWriteS
+    forwarding_module.io.RegWriteWB = memwb_module.io.RegWriteS
+    forwarding_module.io.RD_EX = idex_module.io.RDD
+    forwarding_module.io.RD_MEM = exmem_module.io.RDD
+    forwarding_module.io.Rs1_EX = idex_module.io.RS1EX
+    forwarding_module.io.Rs2_EX = idex_module.io.RS2EX
+
     //Execute
 
     alucontrol_module.io.aluop := idex_module.io.ALUOpS
@@ -91,9 +96,20 @@ class Top extends Module{
     alu_module.io.fnct3 := isntdecoder_module.io.func3
     alu_module.io.branch := typeDecoder_module.io.sb_out
     alu_module.io.op1 := idex_module.io.Read1EX
-    alu_module.io.op2 := MuxLookup (idex_module.io.AluSrcS, 0.S, Array(
+    when (memwb_module.io.MemtoRegS === 0.U) {
+        val finput:= memwb_module.io.mux1
+    }.elsewhen (memwb_module.io.MemtoRegS === 1.U) {
+        val finput := memwb_module.io.ReadDataWB
+    }.otherwise {
+        val finput := 0.U
+    }
+    val op2 := MuxLookup (idex_module.io.AluSrcS, 0.S, Array(
         (0.U) -> idex_module.io.Read2EX,
         (1.U) -> idex_module.io.ImmdDEX))
+    alu_module.io.op2 := MuxLookup (idex_module.io.AluSrcS, 0.S, Array(
+        (0.U) -> op2,
+        (1.U) -> finput
+        (2.U) -> idex_module.io.ImmdDEX))    
     alu_module.io.aluctrl := alucontrol_module.io.aluctrl
     val j = MuxLookup (idex_module.io.jalr_signout, 0.U, Array(
             (0.U) -> idex_module.io.ImmdDEX,

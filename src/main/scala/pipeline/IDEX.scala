@@ -23,7 +23,7 @@ class IDEX extends Module {
     val jalr_sign = Input(UInt(1.W))
     val jalr_signout = Output(UInt(1.W))
     val sign = Output(UInt(32.W))
-    //val RS2 = Input(UInt(32.W))
+    val RS2 = Input(UInt(32.W))
     val PCEX = Output(UInt(32.W))
     val Read1EX = Output(UInt(32.W))
     val Read2EX = Output(UInt(32.W))
@@ -39,7 +39,7 @@ class IDEX extends Module {
     val RegWriteS = Output(Bool())
     val RS1EX = Output(UInt(5.W))
     val muxsign_out = Output(UInt(1.W))
-    //val RS2EX = Output(UInt(32.W))
+    val RS2EX = Output(UInt(32.W))
 
 
   })
@@ -61,7 +61,7 @@ class IDEX extends Module {
   val AluSrc_reg = RegNext(io.AluSrc,0.U(32.W))
   val RegWrite_reg = RegNext(io.RegWrite,0.U(32.W))
   val RS1_reg = RegNext(io.RS1,0.U(32.W))
-  //val RS2_reg = RegNext(io.RegWrite,0.U(32.W))
+  val RS2_reg = RegNext(io.RegWrite,0.U(32.W))
 
   io.jalr_signout := jalr_reg
   io.sign := sign_reg
@@ -80,7 +80,7 @@ class IDEX extends Module {
   io.AluSrcS := AluSrc_reg  
   io.RegWriteS := RegWrite_reg  
   io.RS1EX := RS1_reg
-  //io.RS2EX := RS2_reg
+  io.RS2EX := RS2_reg
 }
 
 
