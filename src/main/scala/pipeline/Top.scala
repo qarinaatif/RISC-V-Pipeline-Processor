@@ -47,9 +47,6 @@ class Top extends Module{
     regfile_module.io.rs1 := isntdecoder_module.io.rs1
     regfile_module.io.rs2 := isntdecoder_module.io.rs2
     regfile_module.io.rd := memwb_module.io.RDD
-    //regfile_module.io.writeData := MuxLookup(memwb_module.io.MemtoRegS,0.U,Array(
-        //(0.U) -> memwb_module.io.ALUresWB
-        //(1.U) -> memwb_module.io.ReadDataWB
     when (memwb_module.io.MemtoRegS === 0.U) {
         regfile_module.io.writeData := memwb_module.io.ALUresWB
     } .elsewhen (memwb_module.io.MemtoRegS === 1.U) {
