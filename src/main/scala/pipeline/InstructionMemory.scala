@@ -11,5 +11,5 @@ class InstructionMemory (initFile : String)extends Module {
     })
     val mem = Mem(1024,UInt(32.W))
     loadMemoryFromFile ( mem , initFile )
-    io.readdata := mem( io.readadress )
+    io.readdata := mem(io.readadress)
 }

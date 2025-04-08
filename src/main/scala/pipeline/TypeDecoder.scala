@@ -4,6 +4,7 @@ import chisel3.util._
 
 class TypeDecoder extends Module{
     val io = IO(new Bundle{
+        val func3 = Input(UInt(5.W))
         val opcode = Input(UInt(6.W))
         val r_out = Output(UInt(1.W))
         val load_out = Output(UInt(1.W))
@@ -31,7 +32,7 @@ class TypeDecoder extends Module{
         io.i_out := 1.U
     }.elsewhen(io.opcode === "b1100111".U ){ 
         io.jalr_out := 1.U
-    }.elsewhen(io.opcode === "b0100011".U ){ 
+    }.elsewhen(io.opcode === "b0100011".U & io.func3 =/= "b011".U){ 
         io.store_out := 1.U
     }.elsewhen(io.opcode === "b0110011".U ){ 
         io.r_out := 1.U

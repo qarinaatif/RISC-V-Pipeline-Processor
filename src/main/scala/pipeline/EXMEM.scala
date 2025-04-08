@@ -18,6 +18,8 @@ class EXMEM extends Module {
     val RS1 = Input(UInt(5.W))
     val muxsign = Input(UInt(1.W))
     val sig = Input(UInt(32.W))
+    val PC = Input(UInt(32.W))
+    val PCEX = Output(UInt(32.W))
     val sign = Output(UInt(32.W))
     val JumpMEM = Output(UInt(32.W))
     val ZeroMEM = Output(Bool())
@@ -48,8 +50,9 @@ class EXMEM extends Module {
   val Immd_reg = RegNext(io.Immd,0.U(32.W))
   val RS1_reg = RegNext(io.RS1,0.U(32.W))
   val muxsign_reg = RegNext(io.muxsign,0.U(32.W))
+  val PC_reg = RegNext(io.PC,0.U(32.W))
 
-   io.muxsign_out := muxsign_reg
+  io.muxsign_out := muxsign_reg
   io.JumpMEM := Jump_reg
   io.ZeroMEM := Zero_reg
   io.ALUresMEM := ALUres_reg
@@ -63,6 +66,7 @@ class EXMEM extends Module {
   io.ImmdMEM := Immd_reg
   io.RS1MEM := RS1_reg
   io.sign := sign_reg
+  io.PCEX := PC_reg
 
 }
 

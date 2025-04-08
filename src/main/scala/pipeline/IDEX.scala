@@ -18,12 +18,15 @@ class IDEX extends Module {
     val AluSrc = Input(Bool())
     val RegWrite = Input(Bool())
     val RS1 = Input(UInt(5.W))
+    val RS2 = Input(UInt(32.W))
     val muxsign = Input(UInt(1.W))
     val sig = Input(UInt(32.W))
     val jalr_sign = Input(UInt(1.W))
+    val jal = Input(UInt(1.W))
+    val Nextpc = Input(Bool())
+    val Nextpc_out = Output(Bool())
     val jalr_signout = Output(UInt(1.W))
     val sign = Output(UInt(32.W))
-    val RS2 = Input(UInt(32.W))
     val PCEX = Output(UInt(32.W))
     val Read1EX = Output(UInt(32.W))
     val Read2EX = Output(UInt(32.W))
@@ -38,8 +41,10 @@ class IDEX extends Module {
     val AluSrcS = Output(Bool())
     val RegWriteS = Output(Bool())
     val RS1EX = Output(UInt(5.W))
-    val muxsign_out = Output(UInt(1.W))
     val RS2EX = Output(UInt(32.W))
+    val muxsign_out = Output(UInt(1.W))
+    val jal_out = Output(UInt(1.W))
+
 
 
   })
@@ -61,8 +66,12 @@ class IDEX extends Module {
   val AluSrc_reg = RegNext(io.AluSrc,0.U(32.W))
   val RegWrite_reg = RegNext(io.RegWrite,0.U(32.W))
   val RS1_reg = RegNext(io.RS1,0.U(32.W))
-  val RS2_reg = RegNext(io.RegWrite,0.U(32.W))
+  val RS2_reg = RegNext(io.RS2,0.U(32.W))
+  val Nextpc_reg = RegNext(io.Nextpc,0.U(32.W))
+  val jal_reg = RegNext(io.jal,0.U(32.W))
 
+  io.jal_out := jal_reg
+  io.Nextpc_out := Nextpc_reg
   io.jalr_signout := jalr_reg
   io.sign := sign_reg
   io.muxsign_out := muxsign_reg 
