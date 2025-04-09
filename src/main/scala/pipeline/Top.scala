@@ -167,9 +167,10 @@ class Top extends Module{
     idex_module.io.RS2 := isntdecoder_module.io.rs2
     idex_module.io.INSTR := ifid_module.io.Instr 
     idex_module.io.jal := ifid_module.io.InstrD(6,0) ==="b1101111".U
-    idex_module.io.sig := typeDecoder_module.io.i_out
+    idex_module.io.sig := typeDecoder_module.io.i_out | typeDecoder_module.io.load_out|typeDecoder_module.io.store_out
     idex_module.io.muxsign := typeDecoder_module.io.load_out|typeDecoder_module.io.store_out
     idex_module.io.jalr_sign := typeDecoder_module.io.jalr_out
+
 
     val t = idex_module.io.RS2
 
@@ -208,8 +209,10 @@ class Top extends Module{
     }
     when (idex_module.io.sign === 1.U) {
       alu_module.io.op2 := idex_module.io.ImmdDEX
+      exmem_module.io.ReadData2 := reg2.asUInt
     }.otherwise {
       alu_module.io.op2 := reg2.asUInt
+      exmem_module.io.ReadData2 := idex_module.io.Read2EX
     }
 
     alucontrol_module.io.aluop := idex_module.io.ALUOpS
@@ -231,7 +234,8 @@ class Top extends Module{
     when(exmem_module.io.Jump === 1.U){ exmem_module.io.ALUres := exmem_module.io.PCEX + 8.U
     }.otherwise{
     exmem_module.io.ALUres := alu_module.io.aluout}
-    exmem_module.io.ReadData2 := alu_module.io.op2
+    exmem_module.io.ReadData1 := idex_module.io.Read1EX
+
     exmem_module.io.RD := idex_module.io.RDD
     exmem_module.io.Branch := idex_module.io.BranchS
     exmem_module.io.MemRead := idex_module.io.MemReadS
@@ -243,9 +247,9 @@ class Top extends Module{
     //Memory
     datamemory_module.io.memwrite := exmem_module.io.MemWriteS
     datamemory_module.io.memread := exmem_module.io.MemReadS
-    val added = exmem_module.io.ImmdMEM + exmem_module.io.RS1MEM
+    //val added = exmem_module.io.ImmdMEM + exmem_module.io.ReadData1MEM
     val muxsign1 = exmem_module.io.muxsign_out
-    val mux1 = Mux(muxsign1 === 0.U, exmem_module.io.ALUresMEM, added)
+    val mux1 = Mux(muxsign1 === 0.U, exmem_module.io.ALUresMEM, exmem_module.io.ALUresMEM)//added)
     datamemory_module.io.memaddress := mux1
     datamemory_module.io.memdata := exmem_module.io.ReadData2MEM.asSInt   
 

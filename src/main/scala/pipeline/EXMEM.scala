@@ -8,6 +8,7 @@ class EXMEM extends Module {
     val Zero = Input(Bool())
     val ALUres = Input(UInt(32.W))
     val ReadData2 = Input(UInt(32.W))
+    val ReadData1 = Input(UInt(32.W))
     val RD = Input(UInt(5.W))
     val Branch = Input(Bool())
     val MemRead = Input(Bool())
@@ -25,6 +26,7 @@ class EXMEM extends Module {
     val ZeroMEM = Output(Bool())
     val ALUresMEM = Output(UInt(32.W))
     val ReadData2MEM = Output(UInt(32.W))
+    val ReadData1MEM = Output(UInt(32.W))
     val RDD = Output(UInt(5.W))
     val BranchS = Output(Bool())
     val MemReadS = Output(Bool())
@@ -41,6 +43,7 @@ class EXMEM extends Module {
   val Zero_reg = RegNext(io.Zero,0.U(32.W))
   val ALUres_reg = RegNext(io.ALUres,0.U(32.W))
   val ReadData2_reg = RegNext(io.ReadData2,0.U(32.W))
+  val ReadData1_reg = RegNext(io.ReadData1,0.U(32.W))
   val RD_reg = RegNext(io.RD,0.U(32.W))
   val Branch_reg = RegNext(io.Branch,0.U(32.W))
   val MemRead_reg = RegNext(io.MemRead,0.U(32.W))
@@ -57,6 +60,7 @@ class EXMEM extends Module {
   io.ZeroMEM := Zero_reg
   io.ALUresMEM := ALUres_reg
   io.ReadData2MEM := ReadData2_reg
+  io.ReadData1MEM := ReadData1_reg
   io.RDD := RD_reg
   io.BranchS := Branch_reg 
   io.MemReadS := MemRead_reg 
