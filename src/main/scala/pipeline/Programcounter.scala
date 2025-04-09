@@ -7,7 +7,6 @@ class Programcounter extends Module{
         val in = Input(SInt(32.W))
         val pcout = Output(SInt(32.W))
         val pc4 = Output(SInt(32.W))
-        
     })
     val reg = RegInit(0.S(32.W))
     reg := io.in
