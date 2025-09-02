@@ -332,10 +332,13 @@ when(idex_module.io.Instr_IDEX(6,0 ) === "b0010111".U){
     }
 
     alu_module.io.op2 := 0.U
+    
     when(idex_module.io.OpB_s_IDEX === 1.B){
         alu_module.io.op2 := idex_module.io.Immd_IDEX
       when (ForwardingUnit_module.io.ForwardB === "b00".U){
         exmem_module.io.ReadData2 := idex_module.io.Read2_IDEX
+      }.elsewhen ( ForwardingUnit_module.io.ForwardB === "b01".U  && exmem_module.io.MemtoRegS){
+        exmem_module.io.ReadData2 := MEM.io.readData
       }.elsewhen ( ForwardingUnit_module.io.ForwardB === "b01".U ){
         exmem_module.io.ReadData2 := exmem_module.io.ALUresMEM
       }.elsewhen (ForwardingUnit_module.io.ForwardB === "b10".U){

@@ -1,0 +1,57 @@
+[
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|SRamTop_1>io_req_bits_isWrite"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|SRamTop_1>io_req_valid"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxInlineAnno",
+    "target":"Top.sram_top_1",
+    "name":"sram_top.v",
+    "text":"module sram_top #(\n    parameter NUM_WMASKS = 4,\n    parameter DATA_WIDTH = 32,\n    parameter ADDR_WIDTH = 28,\n    parameter RAM_DEPTH = 1 << ADDR_WIDTH,\n    parameter IZERO = 0,  // binary / Initial RAM with zeros (has priority over INITFILE)\n    parameter DELAY = 3,\n    parameter IFILE = \"\"\n) (\n    input clk,\n        reset,\n        we,\n        [ADDR_WIDTH - 1: 0] addr,\n        [DATA_WIDTH - 1: 0] data_i,\n        [NUM_WMASKS - 1: 0] wmask,\n    output reg [DATA_WIDTH - 1: 0] data_o\n);\ninteger i;\nreg [DATA_WIDTH-1:0]    mem [0:RAM_DEPTH-1];\ninitial\n    if (IZERO)\n        for (i = 0; i < RAM_DEPTH; i = i + 1)\n            mem[i] = {DATA_WIDTH{1'b0}};\n    else\n        if (IFILE != \"\") $readmemh(IFILE, mem);\n\n    // Memory Write Block Port\n    // Write Operation: When we = 1\n    always@(negedge clk)\n    begin: MEM_WRITE\n        if (we && !reset) begin\n            if (wmask[0])\n                mem[addr][7:0] = data_i[7:0];\n            if (wmask[1])\n                mem[addr][15:8] = data_i[15:8];\n            if (wmask[2])\n                mem[addr][23:16] = data_i[23:16];\n            if (wmask[3])\n                mem[addr][31:24] = data_i[31:24];\n    end\nend\n\n// Memory Read Block Port\n// Read Operation: When we = 0\nalways@(negedge clk)\nbegin: MEM_READ\n    if (!we && !reset)\n       data_o <= #(DELAY) mem[addr];\nend\nendmodule"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|SRamTop_1>state_reg"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|SRamTop>io_req_bits_isWrite"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|SRamTop>io_req_valid"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxInlineAnno",
+    "target":"Top.sram_top",
+    "name":"sram_top.v",
+    "text":"module sram_top #(\n    parameter NUM_WMASKS = 4,\n    parameter DATA_WIDTH = 32,\n    parameter ADDR_WIDTH = 28,\n    parameter RAM_DEPTH = 1 << ADDR_WIDTH,\n    parameter IZERO = 0,  // binary / Initial RAM with zeros (has priority over INITFILE)\n    parameter DELAY = 3,\n    parameter IFILE = \"\"\n) (\n    input clk,\n        reset,\n        we,\n        [ADDR_WIDTH - 1: 0] addr,\n        [DATA_WIDTH - 1: 0] data_i,\n        [NUM_WMASKS - 1: 0] wmask,\n    output reg [DATA_WIDTH - 1: 0] data_o\n);\ninteger i;\nreg [DATA_WIDTH-1:0]    mem [0:RAM_DEPTH-1];\ninitial\n    if (IZERO)\n        for (i = 0; i < RAM_DEPTH; i = i + 1)\n            mem[i] = {DATA_WIDTH{1'b0}};\n    else\n        if (IFILE != \"\") $readmemh(IFILE, mem);\n\n    // Memory Write Block Port\n    // Write Operation: When we = 1\n    always@(negedge clk)\n    begin: MEM_WRITE\n        if (we && !reset) begin\n            if (wmask[0])\n                mem[addr][7:0] = data_i[7:0];\n            if (wmask[1])\n                mem[addr][15:8] = data_i[15:8];\n            if (wmask[2])\n                mem[addr][23:16] = data_i[23:16];\n            if (wmask[3])\n                mem[addr][31:24] = data_i[31:24];\n    end\nend\n\n// Memory Read Block Port\n// Read Operation: When we = 0\nalways@(negedge clk)\nbegin: MEM_READ\n    if (!we && !reset)\n       data_o <= #(DELAY) mem[addr];\nend\nendmodule"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|SRamTop>state_reg"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|InstructionFetch>io_coreInstrReq_bits_isWrite"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"."
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~Top|Top>io_rvfi_valid_0",
+    "sources":[
+      "~Top|Top>clock"
+    ]
+  }
+]
