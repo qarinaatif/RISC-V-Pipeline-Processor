@@ -1,49 +1,77 @@
 package pipeline
+
 import chisel3._
 import chisel3.util._
+
+object ALUOP {
+	val ALU_ADD = "b00000".U
+    val ALU_ADDI = "b00000".U
+    val ALU_SUB = "b01000".U
+    val ALU_AND = "b00111".U
+    val ALU_ANDI = "b00111".U
+    val ALU_OR  = "b00110".U
+    val ALU_ORI  = "b00110".U
+    val ALU_XOR = "b00100".U
+    val ALU_XORI = "b00100".U
+    val ALU_SLT = "b00010".U
+    val ALU_SLTI = "b00010".U
+    val ALU_SLL = "b00001".U
+    val ALU_SLLI = "b00001".U
+    val ALU_SLTU= "b00011".U
+    val ALU_SLTIU = "b00011".U
+    val ALU_SRL = "b00101".U
+     val ALU_SRLI = "b00101".U
+    val ALU_SRA = "b01101".U
+    val ALU_SRAI = "b00101".U
+    val ALU_COPY_A = "b11111".U  
+    val ALU_XXX = "b11110".U
+}
+
+import ALUOP._
 
 class Alu extends Module {
     val io = IO(new Bundle {
         val op1 = Input(UInt(32.W))  
         val op2 = Input(UInt(32.W))
-        val fnct3 = Input (UInt(3.W))
-        val branch = Input (Bool())  
-        val aluctrl = Input(UInt(6.W)) 
+        val aluctrl = Input(UInt(5.W)) 
         val aluout = Output(UInt(32.W)) 
-        val zero = Output(Bool()) 
+        //val zero = Output(Bool())
     })
+    
     io.aluout := 0.U  
-    io.zero := false.B 
-   
-    switch(io.aluctrl) {
-        is("b000000".U) { io.aluout := io.op1 + io.op2 } // ADD
-        is("b000001".U) { io.aluout := io.op1 - io.op2 } // SUB
-        is("b000010".U) { io.aluout := io.op1 << io.op2(4,0) } // SLL 
-        is("b000011".U) { io.aluout := io.op1 & io.op2 } // AND
-        is("b000100".U) { io.aluout := io.op1 | io.op2 } // OR
-        is("b000101".U) { io.aluout := io.op1 ^ io.op2 } // XOR
-        is("b000110".U) { io.aluout := io.op1 >> io.op2(4,0) } // SRL (
-        is("b000111".U) { io.aluout := (io.op1.asSInt >> io.op2(4,0)).asUInt } // SRA 
-        is("b001000".U) { io.aluout := Mux(io.op1.asSInt < io.op2.asSInt, 1.U, 0.U) } // SLT 
-        is("b001001".U) { io.aluout := Mux(io.op1 < io.op2, 1.U, 0.U) } // SLTU 
-        //is("b000011".U) { io.aluout := io.op1 & io.op2 } // AND    
-        is("b111111".U) {
-            when(io.branch){
-                switch ( io.fnct3) {
-                    is ("b0000".U){when(io.op1 === io.op2){io.zero := true.B
-                        }.otherwise{io.zero := false.B}
-                    }
-                    is ("b0001".U){when(io.op1 =/= io.op2){io.zero := true.B
-                        }.otherwise{io.zero := false.B}
-                    }
-                    is ("b0010".U){when(io.op1 < io.op2){io.zero := true.B
-                        }.otherwise{io.zero := false.B}
-                    }
-                    is ("b0100".U){when(io.op1 >= io.op2){io.zero := true.B
-                        }.otherwise{io.zero := false.B}
-                    } 
-                }
-            }
-        }      
-    }
+
+	when(io.aluctrl === ALU_ADD || io.aluctrl === ALU_ADDI ){ 								
+		io.aluout := io.op1 + io.op2
+    }.elsewhen(io.aluctrl === ALU_SUB){							
+		io.aluout := io.op1 - io.op2
+    }.elsewhen(io.aluctrl === ALU_AND || io.aluctrl === ALU_ANDI ){							
+		io.aluout := io.op1 & io.op2
+    }.elsewhen(io.aluctrl === ALU_OR || io.aluctrl === ALU_ORI ){							
+		io.aluout := io.op1 | io.op2
+    }.elsewhen(io.aluctrl === ALU_XOR ||io.aluctrl === ALU_XORI ){							
+		io.aluout := io.op1 ^ io.op2
+    }.elsewhen(io.aluctrl === ALU_SLT || io.aluctrl === ALU_SLTI ){							
+		when(io.op1 < io.op2){
+			io.aluout := 1.U
+		}.otherwise{
+			io.aluout := 0.U
+		}
+	}.elsewhen(io.aluctrl === ALU_SLL ||io.aluctrl === ALU_SLLI ){ 							
+		io.aluout:= (io.op1 << io.op2(4,0))
+	}.elsewhen(io.aluctrl === ALU_SLTU | io.aluctrl === ALU_SLTIU){			
+		val op1 = io.op1.asUInt
+		val op2 = io.op2.asUInt
+		when(op1 < op2){
+			io.aluout := 1.U
+		}.otherwise{
+			io.aluout := 0.U
+		}
+	}.elsewhen(io.aluctrl === ALU_SRL || io.aluctrl === ALU_SRLI ){							
+		val shift = io.op1.asUInt >> (io.op2(4,0)).asUInt
+		io.aluout := shift.asUInt
+	}.elsewhen(io.aluctrl === ALU_SRA || io.aluctrl === ALU_SRAI){							
+		io.aluout := (io.op1 >> io.op2(4,0)).asUInt
+	}.elsewhen(io.aluctrl === ALU_COPY_A){							
+		io.aluout := io.op1
+	}
 }

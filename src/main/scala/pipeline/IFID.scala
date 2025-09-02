@@ -4,26 +4,31 @@ import chisel3.util._
 
 class IFID extends Module {
   val io = IO(new Bundle {
-    val Instr = Input(UInt(32.W))
-    val PCout = Input(UInt(32.W))
-    val Stall = Input(UInt(1.W))
-
-    val InstrD = Output(UInt(32.W))
-    val PCoutD = Output(UInt(32.W))
+    val Instr       = Input(UInt(32.W))
+    val PCout       = Input(UInt(32.W))
+    val PC4out      = Input(UInt(32.W))
+    val flush       = Input(Bool())
+    val Instr_IFID  = Output(UInt(32.W))
+    val PCout_IFID  = Output(UInt(32.W))
+    val PC4out_IFID = Output(UInt(32.W))
   })
+  val Instr_reg  = RegInit(0.U(32.W))
+  val PCout_reg  = RegInit(0.U(32.W))
+  val PC4out_reg = RegInit(0.U(32.W))
 
-  val Instr_reg = RegNext(io.Instr,0.U(32.W))
-  val PCout_reg = RegNext(io.PCout,0.U(32.W))
-  when (io.Stall === "b0".U){
-    io.InstrD := Instr_reg
-    io.PCoutD := PCout_reg
-  }.elsewhen(io.Stall === "b1".U){
-    io.InstrD := 0.U
-    io.PCoutD := 0.U
-  }.otherwise{
-    io.InstrD := 0.U
-    io.PCoutD := 0.U
+  when (io.flush) {
+    Instr_reg  := 0.U
+    PCout_reg  := 0.U
+    PC4out_reg := 0.U
+  }.otherwise {
+    Instr_reg  := io.Instr
+    PCout_reg  := io.PCout
+    PC4out_reg := io.PC4out
   }
+
+  io.Instr_IFID  := Instr_reg
+  io.PCout_IFID  := PCout_reg
+  io.PC4out_IFID := PC4out_reg
 }
 
 

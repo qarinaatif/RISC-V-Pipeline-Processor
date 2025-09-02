@@ -6,31 +6,125 @@ class MEMWB extends Module {
   val io = IO(new Bundle {
     val ReadData = Input(UInt(32.W))
     val ALUres = Input(UInt(32.W))
-    val RD = Input(UInt(32.W))
+    val RD = Input(UInt(5.W))
     val MemtoReg = Input(Bool())
     val RegWrite = Input(Bool())
     val MemRead = Input(Bool())
-    val MemReadS = Output(Bool())
-    val ReadDataWB = Output(UInt(32.W))
-    val ALUresWB = Output(UInt(32.W))
-    val RDD = Output(UInt(32.W))
-    val MemtoRegS = Output(UInt(1.W))
-    val RegWriteS = Output(Bool())
+    val MemWrite = Input(Bool())
+    val Instr = Input(UInt(32.W))
+    val memaddress = Input(UInt(32.W))
+    val memdata = Input(UInt(32.W))
+    val mask = Input(UInt(4.W))
+    val MemWritedata = Input(UInt(32.W))
+    val PC = Input(UInt(32.W))
+
+    val MemRead_MEMWB = Output(Bool())
+    val ReadData_MEMWB = Output(UInt(32.W))
+    val ALUres_MEMWB = Output(UInt(32.W))
+    val RDD_MEMWB = Output(UInt(5.W))
+    val MemtoReg_MEMWB = Output(Bool())
+    val RegWrite_MEMWB = Output(Bool())
+    val MemWrite_MEMWB = Output(Bool())
+    val Instr_MEMWB = Output(UInt(32.W))
+    val memaddressD = Output(UInt(32.W))
+    val memdataD = Output(UInt(32.W))
+    val mask_out = Output(UInt(4.W))
+    val MemWritedata_out = Output(UInt(32.W))
+    val PC_MEMWB = Output(UInt(32.W))
+
+    
   })
 
-  val MemRead_reg = RegNext(io.MemRead,0.U(32.W))
-  val ReadData_reg = RegNext(io.ReadData,0.U(32.W))
-  val ALUres_reg = RegNext(io.ALUres,0.U(32.W))
-  val RD_reg = RegNext(io.RD,0.U(32.W))
-  val MemtoReg_reg = RegNext(io.MemtoReg,0.U(32.W))
-  val RegWrite_reg = RegNext(io.RegWrite,0.U(32.W))
+  val MemRead_reg = RegNext(io.MemRead, false.B)
+  val ReadData_reg = RegNext(io.ReadData, 0.U)
+  val ALUres_reg = RegNext(io.ALUres, 0.U)
+  val RD_reg = RegNext(io.RD, 0.U)
+  val MemtoReg_reg = RegNext(io.MemtoReg, false.B)
+  val RegWrite_reg = RegNext(io.RegWrite, false.B)
+  val MemWrite_reg = RegNext(io.MemWrite, false.B)
+  val Instr_reg = RegNext(io.Instr,0.U(32.W))
+  val memaddress_reg = RegNext(io.memaddress,0.U(32.W))
+  val memdata_reg = RegNext(io.memdata,0.U(32.W))
+  val mask_reg  = RegNext(io.mask,0.U(4.W))
+  val MemWritedata_reg = RegNext(io.MemWritedata,0.U(32.W))
+  val PC_REG  = RegNext(io.PC, 0.U)
+  
 
-  io.ReadDataWB := ReadData_reg
-  io.ALUresWB := ALUres_reg
-  io.RDD := RD_reg
-  io.MemtoRegS := MemtoReg_reg  
-  io.RegWriteS := RegWrite_reg  
-  io.MemReadS := MemRead_reg
+  io.MemRead_MEMWB := MemRead_reg
+  io.ReadData_MEMWB := ReadData_reg
+  io.ALUres_MEMWB := ALUres_reg
+  io.RDD_MEMWB := RD_reg
+  io.MemtoReg_MEMWB := MemtoReg_reg
+  io.RegWrite_MEMWB := RegWrite_reg
+  io.MemWrite_MEMWB := MemWrite_reg
+  io.Instr_MEMWB := Instr_reg
+  io.memaddressD := memaddress_reg
+  io.memdataD := memdata_reg
+  io.mask_out := mask_reg
+  io.MemWritedata_out := MemWritedata_reg
+  io.PC_MEMWB := PC_REG
+
 }
+
+
+// package pipeline
+// import chisel3._
+// import chisel3.util._
+
+// class MEMWB extends Module {
+//   val io = IO(new Bundle {
+//     // val PC = Input(UInt(32.W))
+//     // val Jump = Input(UInt(32.W))
+//     // 
+//     // 
+//     // val Inst = Input(UInt(32.W))
+//     val ReadData = Input(UInt(32.W))//
+//     val ALUres = Input(UInt(32.W))//
+//     val RD = Input(UInt(32.W))//
+//     val MemtoReg = Input(Bool())//
+//     val RegWrite = Input(Bool())//
+//     val MemRead = Input(Bool())//
+//     val MemWrite = Input(Bool())//
+
+//     val MemRead_MEMWB = Output(Bool())
+//     val ReadData_MEMWB = Output(UInt(32.W))
+//     val ALUres_MEMWB = Output(UInt(32.W))
+//     val RDD_MEMWB = Output(UInt(32.W))
+//     val MemtoReg_MEMWB = Output(UInt(1.W))
+//     val RegWrite_MEMWB = Output(Bool())
+//     val MemWrite_MEMWB = Output(Bool())
+//     //val JumpMEM = Output(UInt(32.W))
+//     //val PCEX = Output(UInt(32.W))
+//     //val InstrD = Output(UInt(32.W))
+//     //
+//     //val memdataD = Output(UInt(32.W))
+//   })
+
+//   val MemRead_reg = RegNext(io.MemRead,0.U(32.W))
+//   val ReadData_reg = RegNext(io.ReadData,0.U(32.W))
+//   val ALUres_reg = RegNext(io.ALUres,0.U(32.W))
+//   val RD_reg = RegNext(io.RD,0.U(32.W))
+//   val MemtoReg_reg = RegNext(io.MemtoReg,0.U(32.W))
+//   val RegWrite_reg = RegNext(io.RegWrite,0.U(32.W))
+//   val MemWrite_reg = RegNext(io.MemWrite,0.U(32.W))
+//   //val Jump_reg = RegNext(io.Jump,0.U(32.W))
+//   //val PC_reg = RegNext(io.PC,0.U(32.W))
+//   //val Inst_reg = RegNext(io.Inst,0.U(32.W))
+//   //v
+//   //
+
+//   io.ReadDataWB := ReadData_reg
+//   io.ALUresWB := ALUres_reg
+//   io.MemWriteS := MemWrite_reg
+//   io.RDD := RD_reg
+//   io.MemtoRegS := MemtoReg_reg  
+//   io.RegWriteS := RegWrite_reg  
+//   io.MemReadS := MemRead_reg
+//   //io.PCEX := PC_reg
+//   //io.InstrD := Inst_reg
+//   //io.JumpMEM := Jump_reg
+//   //
+//   //io.memdataD := memdata_reg
+// }
 
 

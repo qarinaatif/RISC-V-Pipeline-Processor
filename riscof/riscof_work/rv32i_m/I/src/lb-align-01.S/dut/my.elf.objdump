@@ -1,0 +1,738 @@
+
+my.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text.init:
+
+00000000 <rvtest_entry_point>:
+   0:	7d5c0837          	lui	a6,0x7d5c0
+   4:	ddb80813          	addi	a6,a6,-549 # 7d5bfddb <absimm+0x382cd8ac>
+   8:	00785893          	srli	a7,a6,0x7
+   c:	01985793          	srli	a5,a6,0x19
+  10:	00f8e8b3          	or	a7,a7,a5
+  14:	0078d913          	srli	s2,a7,0x7
+  18:	0198d793          	srli	a5,a7,0x19
+  1c:	00f96933          	or	s2,s2,a5
+  20:	00795993          	srli	s3,s2,0x7
+  24:	01995793          	srli	a5,s2,0x19
+  28:	00f9e9b3          	or	s3,s3,a5
+  2c:	0079da13          	srli	s4,s3,0x7
+  30:	0199d793          	srli	a5,s3,0x19
+  34:	00fa6a33          	or	s4,s4,a5
+  38:	007a5a93          	srli	s5,s4,0x7
+  3c:	019a5793          	srli	a5,s4,0x19
+  40:	00faeab3          	or	s5,s5,a5
+  44:	007adb13          	srli	s6,s5,0x7
+  48:	019ad793          	srli	a5,s5,0x19
+  4c:	00fb6b33          	or	s6,s6,a5
+  50:	007b5b93          	srli	s7,s6,0x7
+  54:	019b5793          	srli	a5,s6,0x19
+  58:	00fbebb3          	or	s7,s7,a5
+  5c:	007bdc13          	srli	s8,s7,0x7
+  60:	019bd793          	srli	a5,s7,0x19
+  64:	00fc6c33          	or	s8,s8,a5
+  68:	007c5c93          	srli	s9,s8,0x7
+  6c:	019c5793          	srli	a5,s8,0x19
+  70:	00fcecb3          	or	s9,s9,a5
+  74:	007cdd13          	srli	s10,s9,0x7
+  78:	019cd793          	srli	a5,s9,0x19
+  7c:	00fd6d33          	or	s10,s10,a5
+  80:	007d5d93          	srli	s11,s10,0x7
+  84:	019d5793          	srli	a5,s10,0x19
+  88:	00fdedb3          	or	s11,s11,a5
+  8c:	007dde13          	srli	t3,s11,0x7
+  90:	019dd793          	srli	a5,s11,0x19
+  94:	00fe6e33          	or	t3,t3,a5
+  98:	007e5e93          	srli	t4,t3,0x7
+  9c:	019e5793          	srli	a5,t3,0x19
+  a0:	00feeeb3          	or	t4,t4,a5
+  a4:	007edf13          	srli	t5,t4,0x7
+  a8:	019ed793          	srli	a5,t4,0x19
+  ac:	00ff6f33          	or	t5,t5,a5
+  b0:	feedc0b7          	lui	ra,0xfeedc
+  b4:	ead08093          	addi	ra,ra,-339 # feedbead <immx+0x441ce3dd>
+  b8:	0070d113          	srli	sp,ra,0x7
+  bc:	0190d793          	srli	a5,ra,0x19
+  c0:	00f16133          	or	sp,sp,a5
+  c4:	00715193          	srli	gp,sp,0x7
+  c8:	01915793          	srli	a5,sp,0x19
+  cc:	00f1e1b3          	or	gp,gp,a5
+  d0:	0071d213          	srli	tp,gp,0x7
+  d4:	0191d793          	srli	a5,gp,0x19
+  d8:	00f26233          	or	tp,tp,a5
+  dc:	00725293          	srli	t0,tp,0x7
+  e0:	01925793          	srli	a5,tp,0x19
+  e4:	00f2e2b3          	or	t0,t0,a5
+  e8:	0072d313          	srli	t1,t0,0x7
+  ec:	0192d793          	srli	a5,t0,0x19
+  f0:	00f36333          	or	t1,t1,a5
+  f4:	00735393          	srli	t2,t1,0x7
+  f8:	01935793          	srli	a5,t1,0x19
+  fc:	00f3e3b3          	or	t2,t2,a5
+ 100:	0073d413          	srli	s0,t2,0x7
+ 104:	0193d793          	srli	a5,t2,0x19
+ 108:	00f46433          	or	s0,s0,a5
+ 10c:	00745493          	srli	s1,s0,0x7
+ 110:	01945793          	srli	a5,s0,0x19
+ 114:	00f4e4b3          	or	s1,s1,a5
+ 118:	0074d513          	srli	a0,s1,0x7
+ 11c:	0194d793          	srli	a5,s1,0x19
+ 120:	00f56533          	or	a0,a0,a5
+ 124:	00755593          	srli	a1,a0,0x7
+ 128:	01955793          	srli	a5,a0,0x19
+ 12c:	00f5e5b3          	or	a1,a1,a5
+ 130:	0075d613          	srli	a2,a1,0x7
+ 134:	0195d793          	srli	a5,a1,0x19
+ 138:	00f66633          	or	a2,a2,a5
+ 13c:	00765693          	srli	a3,a2,0x7
+ 140:	01965793          	srli	a5,a2,0x19
+ 144:	00f6e6b3          	or	a3,a3,a5
+
+00000148 <rvtest_code_begin>:
+ 148:	00000013          	addi	zero,zero,0
+ 14c:	00000013          	addi	zero,zero,0
+ 150:	00000013          	addi	zero,zero,0
+ 154:	00000013          	addi	zero,zero,0
+ 158:	00000013          	addi	zero,zero,0
+ 15c:	00000013          	addi	zero,zero,0
+ 160:	00009517          	auipc	a0,0x9
+ 164:	fb450513          	addi	a0,a0,-76 # 9114 <signature_x10_0>
+ 168:	00000013          	addi	zero,zero,0
+ 16c:	00000013          	addi	zero,zero,0
+ 170:	00000013          	addi	zero,zero,0
+ 174:	00000013          	addi	zero,zero,0
+ 178:	00000013          	addi	zero,zero,0
+ 17c:	00000013          	addi	zero,zero,0
+
+00000180 <inst_0>:
+ 180:	00008617          	auipc	a2,0x8
+ 184:	e8860613          	addi	a2,a2,-376 # 8008 <rvtest_data_begin+0x8>
+ 188:	00000013          	addi	zero,zero,0
+ 18c:	00000013          	addi	zero,zero,0
+ 190:	00000013          	addi	zero,zero,0
+ 194:	00000013          	addi	zero,zero,0
+ 198:	00000013          	addi	zero,zero,0
+ 19c:	00000013          	addi	zero,zero,0
+ 1a0:	ff860a03          	lb	s4,-8(a2)
+ 1a4:	00000013          	addi	zero,zero,0
+ 1a8:	00000013          	addi	zero,zero,0
+ 1ac:	01452023          	sw	s4,0(a0)
+
+000001b0 <inst_1>:
+ 1b0:	00000013          	addi	zero,zero,0
+ 1b4:	00000013          	addi	zero,zero,0
+ 1b8:	00000013          	addi	zero,zero,0
+ 1bc:	00000013          	addi	zero,zero,0
+ 1c0:	00008117          	auipc	sp,0x8
+ 1c4:	8eb10113          	addi	sp,sp,-1813 # 7aab <end_sim+0x708f>
+ 1c8:	00000013          	addi	zero,zero,0
+ 1cc:	00000013          	addi	zero,zero,0
+ 1d0:	00000013          	addi	zero,zero,0
+ 1d4:	00000013          	addi	zero,zero,0
+ 1d8:	00000013          	addi	zero,zero,0
+ 1dc:	00000013          	addi	zero,zero,0
+ 1e0:	55510103          	lb	sp,1365(sp)
+ 1e4:	00000013          	addi	zero,zero,0
+ 1e8:	00000013          	addi	zero,zero,0
+ 1ec:	00252223          	sw	sp,4(a0)
+
+000001f0 <inst_2>:
+ 1f0:	00000013          	addi	zero,zero,0
+ 1f4:	00000013          	addi	zero,zero,0
+ 1f8:	00000013          	addi	zero,zero,0
+ 1fc:	00000013          	addi	zero,zero,0
+ 200:	00008917          	auipc	s2,0x8
+ 204:	dfa90913          	addi	s2,s2,-518 # 7ffa <end_sim+0x75de>
+ 208:	00000013          	addi	zero,zero,0
+ 20c:	00000013          	addi	zero,zero,0
+ 210:	00000013          	addi	zero,zero,0
+ 214:	00000013          	addi	zero,zero,0
+ 218:	00000013          	addi	zero,zero,0
+ 21c:	00000013          	addi	zero,zero,0
+ 220:	00690803          	lb	a6,6(s2)
+ 224:	00000013          	addi	zero,zero,0
+ 228:	00000013          	addi	zero,zero,0
+ 22c:	01052423          	sw	a6,8(a0)
+
+00000230 <inst_3>:
+ 230:	00000013          	addi	zero,zero,0
+ 234:	00000013          	addi	zero,zero,0
+ 238:	00000013          	addi	zero,zero,0
+ 23c:	00000013          	addi	zero,zero,0
+ 240:	00008b97          	auipc	s7,0x8
+ 244:	de1b8b93          	addi	s7,s7,-543 # 8021 <rvtest_data_begin+0x21>
+ 248:	00000013          	addi	zero,zero,0
+ 24c:	00000013          	addi	zero,zero,0
+ 250:	00000013          	addi	zero,zero,0
+ 254:	00000013          	addi	zero,zero,0
+ 258:	00000013          	addi	zero,zero,0
+ 25c:	00000013          	addi	zero,zero,0
+ 260:	fdfb8e83          	lb	t4,-33(s7)
+ 264:	00000013          	addi	zero,zero,0
+ 268:	00000013          	addi	zero,zero,0
+ 26c:	01d52623          	sw	t4,12(a0)
+
+00000270 <inst_4>:
+ 270:	00000013          	addi	zero,zero,0
+ 274:	00000013          	addi	zero,zero,0
+ 278:	00000013          	addi	zero,zero,0
+ 27c:	00000013          	addi	zero,zero,0
+ 280:	00008097          	auipc	ra,0x8
+ 284:	18208093          	addi	ra,ra,386 # 8402 <rvtest_data_begin+0x402>
+ 288:	00000013          	addi	zero,zero,0
+ 28c:	00000013          	addi	zero,zero,0
+ 290:	00000013          	addi	zero,zero,0
+ 294:	00000013          	addi	zero,zero,0
+ 298:	00000013          	addi	zero,zero,0
+ 29c:	00000013          	addi	zero,zero,0
+ 2a0:	c0008783          	lb	a5,-1024(ra)
+ 2a4:	00000013          	addi	zero,zero,0
+ 2a8:	00000013          	addi	zero,zero,0
+ 2ac:	00f52823          	sw	a5,16(a0)
+
+000002b0 <inst_5>:
+ 2b0:	00000013          	addi	zero,zero,0
+ 2b4:	00000013          	addi	zero,zero,0
+ 2b8:	00000013          	addi	zero,zero,0
+ 2bc:	00000013          	addi	zero,zero,0
+ 2c0:	00008417          	auipc	s0,0x8
+ 2c4:	d4940413          	addi	s0,s0,-695 # 8009 <rvtest_data_begin+0x9>
+ 2c8:	00000013          	addi	zero,zero,0
+ 2cc:	00000013          	addi	zero,zero,0
+ 2d0:	00000013          	addi	zero,zero,0
+ 2d4:	00000013          	addi	zero,zero,0
+ 2d8:	00000013          	addi	zero,zero,0
+ 2dc:	00000013          	addi	zero,zero,0
+ 2e0:	ff940d03          	lb	s10,-7(s0)
+ 2e4:	00000013          	addi	zero,zero,0
+ 2e8:	00000013          	addi	zero,zero,0
+ 2ec:	01a52a23          	sw	s10,20(a0)
+
+000002f0 <inst_6>:
+ 2f0:	00000013          	addi	zero,zero,0
+ 2f4:	00000013          	addi	zero,zero,0
+ 2f8:	00000013          	addi	zero,zero,0
+ 2fc:	00000013          	addi	zero,zero,0
+ 300:	00008197          	auipc	gp,0x8
+ 304:	d0c18193          	addi	gp,gp,-756 # 800c <rvtest_data_begin+0xc>
+ 308:	00000013          	addi	zero,zero,0
+ 30c:	00000013          	addi	zero,zero,0
+ 310:	00000013          	addi	zero,zero,0
+ 314:	00000013          	addi	zero,zero,0
+ 318:	00000013          	addi	zero,zero,0
+ 31c:	00000013          	addi	zero,zero,0
+ 320:	ff618a83          	lb	s5,-10(gp)
+ 324:	00000013          	addi	zero,zero,0
+ 328:	00000013          	addi	zero,zero,0
+ 32c:	01552c23          	sw	s5,24(a0)
+
+00000330 <inst_7>:
+ 330:	00000013          	addi	zero,zero,0
+ 334:	00000013          	addi	zero,zero,0
+ 338:	00000013          	addi	zero,zero,0
+ 33c:	00000013          	addi	zero,zero,0
+ 340:	00008497          	auipc	s1,0x8
+ 344:	cbb48493          	addi	s1,s1,-837 # 7ffb <end_sim+0x75df>
+ 348:	00000013          	addi	zero,zero,0
+ 34c:	00000013          	addi	zero,zero,0
+ 350:	00000013          	addi	zero,zero,0
+ 354:	00000013          	addi	zero,zero,0
+ 358:	00000013          	addi	zero,zero,0
+ 35c:	00000013          	addi	zero,zero,0
+ 360:	00748883          	lb	a7,7(s1)
+ 364:	00000013          	addi	zero,zero,0
+ 368:	00000013          	addi	zero,zero,0
+ 36c:	01152e23          	sw	a7,28(a0)
+
+00000370 <inst_8>:
+ 370:	00000013          	addi	zero,zero,0
+ 374:	00000013          	addi	zero,zero,0
+ 378:	00000013          	addi	zero,zero,0
+ 37c:	00000013          	addi	zero,zero,0
+ 380:	00008e97          	auipc	t4,0x8
+ 384:	c89e8e93          	addi	t4,t4,-887 # 8009 <rvtest_data_begin+0x9>
+ 388:	00000013          	addi	zero,zero,0
+ 38c:	00000013          	addi	zero,zero,0
+ 390:	00000013          	addi	zero,zero,0
+ 394:	00000013          	addi	zero,zero,0
+ 398:	00000013          	addi	zero,zero,0
+ 39c:	00000013          	addi	zero,zero,0
+ 3a0:	ff8e8003          	lb	zero,-8(t4)
+ 3a4:	00000013          	addi	zero,zero,0
+ 3a8:	00000013          	addi	zero,zero,0
+ 3ac:	02052023          	sw	zero,32(a0)
+
+000003b0 <inst_9>:
+ 3b0:	00000013          	addi	zero,zero,0
+ 3b4:	00000013          	addi	zero,zero,0
+ 3b8:	00000013          	addi	zero,zero,0
+ 3bc:	00000013          	addi	zero,zero,0
+ 3c0:	00008c97          	auipc	s9,0x8
+ 3c4:	c3cc8c93          	addi	s9,s9,-964 # 7ffc <end_sim+0x75e0>
+ 3c8:	00000013          	addi	zero,zero,0
+ 3cc:	00000013          	addi	zero,zero,0
+ 3d0:	00000013          	addi	zero,zero,0
+ 3d4:	00000013          	addi	zero,zero,0
+ 3d8:	00000013          	addi	zero,zero,0
+ 3dc:	00000013          	addi	zero,zero,0
+ 3e0:	005c8f03          	lb	t5,5(s9)
+ 3e4:	00000013          	addi	zero,zero,0
+ 3e8:	00000013          	addi	zero,zero,0
+ 3ec:	03e52223          	sw	t5,36(a0)
+
+000003f0 <inst_10>:
+ 3f0:	00000013          	addi	zero,zero,0
+ 3f4:	00000013          	addi	zero,zero,0
+ 3f8:	00000013          	addi	zero,zero,0
+ 3fc:	00000013          	addi	zero,zero,0
+ 400:	00008a97          	auipc	s5,0x8
+ 404:	c00a8a93          	addi	s5,s5,-1024 # 8000 <rvtest_data_begin>
+ 408:	00000013          	addi	zero,zero,0
+ 40c:	00000013          	addi	zero,zero,0
+ 410:	00000013          	addi	zero,zero,0
+ 414:	00000013          	addi	zero,zero,0
+ 418:	00000013          	addi	zero,zero,0
+ 41c:	00000013          	addi	zero,zero,0
+ 420:	000a8d83          	lb	s11,0(s5)
+ 424:	00000013          	addi	zero,zero,0
+ 428:	00000013          	addi	zero,zero,0
+ 42c:	03b52423          	sw	s11,40(a0)
+
+00000430 <inst_11>:
+ 430:	00000013          	addi	zero,zero,0
+ 434:	00000013          	addi	zero,zero,0
+ 438:	00000013          	addi	zero,zero,0
+ 43c:	00000013          	addi	zero,zero,0
+ 440:	00008317          	auipc	t1,0x8
+ 444:	bc330313          	addi	t1,t1,-1085 # 8003 <rvtest_data_begin+0x3>
+ 448:	00000013          	addi	zero,zero,0
+ 44c:	00000013          	addi	zero,zero,0
+ 450:	00000013          	addi	zero,zero,0
+ 454:	00000013          	addi	zero,zero,0
+ 458:	00000013          	addi	zero,zero,0
+ 45c:	00000013          	addi	zero,zero,0
+ 460:	ffe30b83          	lb	s7,-2(t1)
+ 464:	00000013          	addi	zero,zero,0
+ 468:	00000013          	addi	zero,zero,0
+ 46c:	03752623          	sw	s7,44(a0)
+
+00000470 <inst_12>:
+ 470:	00000013          	addi	zero,zero,0
+ 474:	00000013          	addi	zero,zero,0
+ 478:	00000013          	addi	zero,zero,0
+ 47c:	00000013          	addi	zero,zero,0
+ 480:	00008217          	auipc	tp,0x8
+ 484:	ba220213          	addi	tp,tp,-1118 # 8022 <rvtest_data_begin+0x22>
+ 488:	00000013          	addi	zero,zero,0
+ 48c:	00000013          	addi	zero,zero,0
+ 490:	00000013          	addi	zero,zero,0
+ 494:	00000013          	addi	zero,zero,0
+ 498:	00000013          	addi	zero,zero,0
+ 49c:	00000013          	addi	zero,zero,0
+ 4a0:	fdf20603          	lb	a2,-33(tp) # ffffffdf <imm12+0x50f>
+ 4a4:	00000013          	addi	zero,zero,0
+ 4a8:	00000013          	addi	zero,zero,0
+ 4ac:	02c52823          	sw	a2,48(a0)
+
+000004b0 <inst_13>:
+ 4b0:	00000013          	addi	zero,zero,0
+ 4b4:	00000013          	addi	zero,zero,0
+ 4b8:	00000013          	addi	zero,zero,0
+ 4bc:	00000013          	addi	zero,zero,0
+ 4c0:	00008b17          	auipc	s6,0x8
+ 4c4:	b43b0b13          	addi	s6,s6,-1213 # 8003 <rvtest_data_begin+0x3>
+ 4c8:	00000013          	addi	zero,zero,0
+ 4cc:	00000013          	addi	zero,zero,0
+ 4d0:	00000013          	addi	zero,zero,0
+ 4d4:	00000013          	addi	zero,zero,0
+ 4d8:	00000013          	addi	zero,zero,0
+ 4dc:	00000013          	addi	zero,zero,0
+ 4e0:	000b0e03          	lb	t3,0(s6)
+ 4e4:	00000013          	addi	zero,zero,0
+ 4e8:	00000013          	addi	zero,zero,0
+ 4ec:	03c52a23          	sw	t3,52(a0)
+
+000004f0 <inst_14>:
+ 4f0:	00000013          	addi	zero,zero,0
+ 4f4:	00000013          	addi	zero,zero,0
+ 4f8:	00000013          	addi	zero,zero,0
+ 4fc:	00000013          	addi	zero,zero,0
+ 500:	00008c17          	auipc	s8,0x8
+ 504:	b02c0c13          	addi	s8,s8,-1278 # 8002 <rvtest_data_begin+0x2>
+ 508:	00000013          	addi	zero,zero,0
+ 50c:	00000013          	addi	zero,zero,0
+ 510:	00000013          	addi	zero,zero,0
+ 514:	00000013          	addi	zero,zero,0
+ 518:	00000013          	addi	zero,zero,0
+ 51c:	00000013          	addi	zero,zero,0
+ 520:	001c0f83          	lb	t6,1(s8)
+ 524:	00000013          	addi	zero,zero,0
+ 528:	00000013          	addi	zero,zero,0
+ 52c:	03f52c23          	sw	t6,56(a0)
+
+00000530 <inst_15>:
+ 530:	00000013          	addi	zero,zero,0
+ 534:	00000013          	addi	zero,zero,0
+ 538:	00000013          	addi	zero,zero,0
+ 53c:	00000013          	addi	zero,zero,0
+ 540:	00008e17          	auipc	t3,0x8
+ 544:	ac9e0e13          	addi	t3,t3,-1335 # 8009 <rvtest_data_begin+0x9>
+ 548:	00000013          	addi	zero,zero,0
+ 54c:	00000013          	addi	zero,zero,0
+ 550:	00000013          	addi	zero,zero,0
+ 554:	00000013          	addi	zero,zero,0
+ 558:	00000013          	addi	zero,zero,0
+ 55c:	00000013          	addi	zero,zero,0
+ 560:	ffae0383          	lb	t2,-6(t3)
+ 564:	00000013          	addi	zero,zero,0
+ 568:	00000013          	addi	zero,zero,0
+ 56c:	02752e23          	sw	t2,60(a0)
+
+00000570 <inst_16>:
+ 570:	00000013          	addi	zero,zero,0
+ 574:	00000013          	addi	zero,zero,0
+ 578:	00000013          	addi	zero,zero,0
+ 57c:	00000013          	addi	zero,zero,0
+ 580:	00008817          	auipc	a6,0x8
+ 584:	aa480813          	addi	a6,a6,-1372 # 8024 <rvtest_data_begin+0x24>
+ 588:	00000013          	addi	zero,zero,0
+ 58c:	00000013          	addi	zero,zero,0
+ 590:	00000013          	addi	zero,zero,0
+ 594:	00000013          	addi	zero,zero,0
+ 598:	00000013          	addi	zero,zero,0
+ 59c:	00000013          	addi	zero,zero,0
+ 5a0:	fdf80683          	lb	a3,-33(a6)
+ 5a4:	00000013          	addi	zero,zero,0
+ 5a8:	00000013          	addi	zero,zero,0
+ 5ac:	04d52023          	sw	a3,64(a0)
+
+000005b0 <inst_17>:
+ 5b0:	00000013          	addi	zero,zero,0
+ 5b4:	00000013          	addi	zero,zero,0
+ 5b8:	00000013          	addi	zero,zero,0
+ 5bc:	00000013          	addi	zero,zero,0
+ 5c0:	00008297          	auipc	t0,0x8
+ 5c4:	24028293          	addi	t0,t0,576 # 8800 <rvtest_data_begin+0x800>
+ 5c8:	00000013          	addi	zero,zero,0
+ 5cc:	00000013          	addi	zero,zero,0
+ 5d0:	00000013          	addi	zero,zero,0
+ 5d4:	00000013          	addi	zero,zero,0
+ 5d8:	00000013          	addi	zero,zero,0
+ 5dc:	00000013          	addi	zero,zero,0
+ 5e0:	80028903          	lb	s2,-2048(t0)
+ 5e4:	00000013          	addi	zero,zero,0
+ 5e8:	00000013          	addi	zero,zero,0
+ 5ec:	05252223          	sw	s2,68(a0)
+
+000005f0 <inst_18>:
+ 5f0:	00000013          	addi	zero,zero,0
+ 5f4:	00000013          	addi	zero,zero,0
+ 5f8:	00000013          	addi	zero,zero,0
+ 5fc:	00000013          	addi	zero,zero,0
+ 600:	00008d17          	auipc	s10,0x8
+ 604:	200d0d13          	addi	s10,s10,512 # 8800 <rvtest_data_begin+0x800>
+ 608:	00000013          	addi	zero,zero,0
+ 60c:	00000013          	addi	zero,zero,0
+ 610:	00000013          	addi	zero,zero,0
+ 614:	00000013          	addi	zero,zero,0
+ 618:	00000013          	addi	zero,zero,0
+ 61c:	00000013          	addi	zero,zero,0
+ 620:	800d0703          	lb	a4,-2048(s10)
+ 624:	00000013          	addi	zero,zero,0
+ 628:	00000013          	addi	zero,zero,0
+ 62c:	04e52423          	sw	a4,72(a0)
+ 630:	00000013          	addi	zero,zero,0
+ 634:	00000013          	addi	zero,zero,0
+ 638:	00000013          	addi	zero,zero,0
+ 63c:	00000013          	addi	zero,zero,0
+ 640:	00009117          	auipc	sp,0x9
+ 644:	b2010113          	addi	sp,sp,-1248 # 9160 <signature_x2_0>
+ 648:	00000013          	addi	zero,zero,0
+ 64c:	00000013          	addi	zero,zero,0
+ 650:	00000013          	addi	zero,zero,0
+ 654:	00000013          	addi	zero,zero,0
+ 658:	00000013          	addi	zero,zero,0
+ 65c:	00000013          	addi	zero,zero,0
+
+00000660 <inst_19>:
+ 660:	00008397          	auipc	t2,0x8
+ 664:	1a038393          	addi	t2,t2,416 # 8800 <rvtest_data_begin+0x800>
+ 668:	00000013          	addi	zero,zero,0
+ 66c:	00000013          	addi	zero,zero,0
+ 670:	00000013          	addi	zero,zero,0
+ 674:	00000013          	addi	zero,zero,0
+ 678:	00000013          	addi	zero,zero,0
+ 67c:	00000013          	addi	zero,zero,0
+ 680:	80038c03          	lb	s8,-2048(t2)
+ 684:	00000013          	addi	zero,zero,0
+ 688:	00000013          	addi	zero,zero,0
+ 68c:	01812023          	sw	s8,0(sp)
+
+00000690 <inst_20>:
+ 690:	00000013          	addi	zero,zero,0
+ 694:	00000013          	addi	zero,zero,0
+ 698:	00000013          	addi	zero,zero,0
+ 69c:	00000013          	addi	zero,zero,0
+ 6a0:	00008597          	auipc	a1,0x8
+ 6a4:	16058593          	addi	a1,a1,352 # 8800 <rvtest_data_begin+0x800>
+ 6a8:	00000013          	addi	zero,zero,0
+ 6ac:	00000013          	addi	zero,zero,0
+ 6b0:	00000013          	addi	zero,zero,0
+ 6b4:	00000013          	addi	zero,zero,0
+ 6b8:	00000013          	addi	zero,zero,0
+ 6bc:	00000013          	addi	zero,zero,0
+ 6c0:	80058083          	lb	ra,-2048(a1)
+ 6c4:	00000013          	addi	zero,zero,0
+ 6c8:	00000013          	addi	zero,zero,0
+ 6cc:	00112223          	sw	ra,4(sp)
+
+000006d0 <inst_21>:
+ 6d0:	00000013          	addi	zero,zero,0
+ 6d4:	00000013          	addi	zero,zero,0
+ 6d8:	00000013          	addi	zero,zero,0
+ 6dc:	00000013          	addi	zero,zero,0
+ 6e0:	00008797          	auipc	a5,0x8
+ 6e4:	12078793          	addi	a5,a5,288 # 8800 <rvtest_data_begin+0x800>
+ 6e8:	00000013          	addi	zero,zero,0
+ 6ec:	00000013          	addi	zero,zero,0
+ 6f0:	00000013          	addi	zero,zero,0
+ 6f4:	00000013          	addi	zero,zero,0
+ 6f8:	00000013          	addi	zero,zero,0
+ 6fc:	00000013          	addi	zero,zero,0
+ 700:	80078503          	lb	a0,-2048(a5)
+ 704:	00000013          	addi	zero,zero,0
+ 708:	00000013          	addi	zero,zero,0
+ 70c:	00a12423          	sw	a0,8(sp)
+
+00000710 <inst_22>:
+ 710:	00000013          	addi	zero,zero,0
+ 714:	00000013          	addi	zero,zero,0
+ 718:	00000013          	addi	zero,zero,0
+ 71c:	00000013          	addi	zero,zero,0
+ 720:	00008a17          	auipc	s4,0x8
+ 724:	0e0a0a13          	addi	s4,s4,224 # 8800 <rvtest_data_begin+0x800>
+ 728:	00000013          	addi	zero,zero,0
+ 72c:	00000013          	addi	zero,zero,0
+ 730:	00000013          	addi	zero,zero,0
+ 734:	00000013          	addi	zero,zero,0
+ 738:	00000013          	addi	zero,zero,0
+ 73c:	00000013          	addi	zero,zero,0
+ 740:	800a0b03          	lb	s6,-2048(s4)
+ 744:	00000013          	addi	zero,zero,0
+ 748:	00000013          	addi	zero,zero,0
+ 74c:	01612623          	sw	s6,12(sp)
+
+00000750 <inst_23>:
+ 750:	00000013          	addi	zero,zero,0
+ 754:	00000013          	addi	zero,zero,0
+ 758:	00000013          	addi	zero,zero,0
+ 75c:	00000013          	addi	zero,zero,0
+ 760:	00008897          	auipc	a7,0x8
+ 764:	0a088893          	addi	a7,a7,160 # 8800 <rvtest_data_begin+0x800>
+ 768:	00000013          	addi	zero,zero,0
+ 76c:	00000013          	addi	zero,zero,0
+ 770:	00000013          	addi	zero,zero,0
+ 774:	00000013          	addi	zero,zero,0
+ 778:	00000013          	addi	zero,zero,0
+ 77c:	00000013          	addi	zero,zero,0
+ 780:	80088403          	lb	s0,-2048(a7)
+ 784:	00000013          	addi	zero,zero,0
+ 788:	00000013          	addi	zero,zero,0
+ 78c:	00812823          	sw	s0,16(sp)
+
+00000790 <inst_24>:
+ 790:	00000013          	addi	zero,zero,0
+ 794:	00000013          	addi	zero,zero,0
+ 798:	00000013          	addi	zero,zero,0
+ 79c:	00000013          	addi	zero,zero,0
+ 7a0:	00008d97          	auipc	s11,0x8
+ 7a4:	060d8d93          	addi	s11,s11,96 # 8800 <rvtest_data_begin+0x800>
+ 7a8:	00000013          	addi	zero,zero,0
+ 7ac:	00000013          	addi	zero,zero,0
+ 7b0:	00000013          	addi	zero,zero,0
+ 7b4:	00000013          	addi	zero,zero,0
+ 7b8:	00000013          	addi	zero,zero,0
+ 7bc:	00000013          	addi	zero,zero,0
+ 7c0:	800d8483          	lb	s1,-2048(s11)
+ 7c4:	00000013          	addi	zero,zero,0
+ 7c8:	00000013          	addi	zero,zero,0
+ 7cc:	00912a23          	sw	s1,20(sp)
+
+000007d0 <inst_25>:
+ 7d0:	00000013          	addi	zero,zero,0
+ 7d4:	00000013          	addi	zero,zero,0
+ 7d8:	00000013          	addi	zero,zero,0
+ 7dc:	00000013          	addi	zero,zero,0
+ 7e0:	00008697          	auipc	a3,0x8
+ 7e4:	02068693          	addi	a3,a3,32 # 8800 <rvtest_data_begin+0x800>
+ 7e8:	00000013          	addi	zero,zero,0
+ 7ec:	00000013          	addi	zero,zero,0
+ 7f0:	00000013          	addi	zero,zero,0
+ 7f4:	00000013          	addi	zero,zero,0
+ 7f8:	00000013          	addi	zero,zero,0
+ 7fc:	00000013          	addi	zero,zero,0
+ 800:	80068583          	lb	a1,-2048(a3)
+ 804:	00000013          	addi	zero,zero,0
+ 808:	00000013          	addi	zero,zero,0
+ 80c:	00b12c23          	sw	a1,24(sp)
+
+00000810 <inst_26>:
+ 810:	00000013          	addi	zero,zero,0
+ 814:	00000013          	addi	zero,zero,0
+ 818:	00000013          	addi	zero,zero,0
+ 81c:	00000013          	addi	zero,zero,0
+ 820:	00008997          	auipc	s3,0x8
+ 824:	fe098993          	addi	s3,s3,-32 # 8800 <rvtest_data_begin+0x800>
+ 828:	00000013          	addi	zero,zero,0
+ 82c:	00000013          	addi	zero,zero,0
+ 830:	00000013          	addi	zero,zero,0
+ 834:	00000013          	addi	zero,zero,0
+ 838:	00000013          	addi	zero,zero,0
+ 83c:	00000013          	addi	zero,zero,0
+ 840:	80098203          	lb	tp,-2048(s3)
+ 844:	00000013          	addi	zero,zero,0
+ 848:	00000013          	addi	zero,zero,0
+ 84c:	00412e23          	sw	tp,28(sp)
+
+00000850 <inst_27>:
+ 850:	00000013          	addi	zero,zero,0
+ 854:	00000013          	addi	zero,zero,0
+ 858:	00000013          	addi	zero,zero,0
+ 85c:	00000013          	addi	zero,zero,0
+ 860:	00008f17          	auipc	t5,0x8
+ 864:	fa0f0f13          	addi	t5,t5,-96 # 8800 <rvtest_data_begin+0x800>
+ 868:	00000013          	addi	zero,zero,0
+ 86c:	00000013          	addi	zero,zero,0
+ 870:	00000013          	addi	zero,zero,0
+ 874:	00000013          	addi	zero,zero,0
+ 878:	00000013          	addi	zero,zero,0
+ 87c:	00000013          	addi	zero,zero,0
+ 880:	800f0983          	lb	s3,-2048(t5)
+ 884:	00000013          	addi	zero,zero,0
+ 888:	00000013          	addi	zero,zero,0
+ 88c:	03312023          	sw	s3,32(sp)
+
+00000890 <inst_28>:
+ 890:	00000013          	addi	zero,zero,0
+ 894:	00000013          	addi	zero,zero,0
+ 898:	00000013          	addi	zero,zero,0
+ 89c:	00000013          	addi	zero,zero,0
+ 8a0:	00008517          	auipc	a0,0x8
+ 8a4:	f6050513          	addi	a0,a0,-160 # 8800 <rvtest_data_begin+0x800>
+ 8a8:	00000013          	addi	zero,zero,0
+ 8ac:	00000013          	addi	zero,zero,0
+ 8b0:	00000013          	addi	zero,zero,0
+ 8b4:	00000013          	addi	zero,zero,0
+ 8b8:	00000013          	addi	zero,zero,0
+ 8bc:	00000013          	addi	zero,zero,0
+ 8c0:	80050283          	lb	t0,-2048(a0)
+ 8c4:	00000013          	addi	zero,zero,0
+ 8c8:	00000013          	addi	zero,zero,0
+ 8cc:	02512223          	sw	t0,36(sp)
+
+000008d0 <inst_29>:
+ 8d0:	00000013          	addi	zero,zero,0
+ 8d4:	00000013          	addi	zero,zero,0
+ 8d8:	00000013          	addi	zero,zero,0
+ 8dc:	00000013          	addi	zero,zero,0
+ 8e0:	00008717          	auipc	a4,0x8
+ 8e4:	f2070713          	addi	a4,a4,-224 # 8800 <rvtest_data_begin+0x800>
+ 8e8:	00000013          	addi	zero,zero,0
+ 8ec:	00000013          	addi	zero,zero,0
+ 8f0:	00000013          	addi	zero,zero,0
+ 8f4:	00000013          	addi	zero,zero,0
+ 8f8:	00000013          	addi	zero,zero,0
+ 8fc:	00000013          	addi	zero,zero,0
+ 900:	80070303          	lb	t1,-2048(a4)
+ 904:	00000013          	addi	zero,zero,0
+ 908:	00000013          	addi	zero,zero,0
+ 90c:	02612423          	sw	t1,40(sp)
+
+00000910 <inst_30>:
+ 910:	00000013          	addi	zero,zero,0
+ 914:	00000013          	addi	zero,zero,0
+ 918:	00000013          	addi	zero,zero,0
+ 91c:	00000013          	addi	zero,zero,0
+ 920:	00008f97          	auipc	t6,0x8
+ 924:	ee0f8f93          	addi	t6,t6,-288 # 8800 <rvtest_data_begin+0x800>
+ 928:	00000013          	addi	zero,zero,0
+ 92c:	00000013          	addi	zero,zero,0
+ 930:	00000013          	addi	zero,zero,0
+ 934:	00000013          	addi	zero,zero,0
+ 938:	00000013          	addi	zero,zero,0
+ 93c:	00000013          	addi	zero,zero,0
+ 940:	800f8c83          	lb	s9,-2048(t6)
+ 944:	00000013          	addi	zero,zero,0
+ 948:	00000013          	addi	zero,zero,0
+ 94c:	03912623          	sw	s9,44(sp)
+
+00000950 <inst_31>:
+ 950:	00000013          	addi	zero,zero,0
+ 954:	00000013          	addi	zero,zero,0
+ 958:	00000013          	addi	zero,zero,0
+ 95c:	00000013          	addi	zero,zero,0
+ 960:	00008e97          	auipc	t4,0x8
+ 964:	ea0e8e93          	addi	t4,t4,-352 # 8800 <rvtest_data_begin+0x800>
+ 968:	00000013          	addi	zero,zero,0
+ 96c:	00000013          	addi	zero,zero,0
+ 970:	00000013          	addi	zero,zero,0
+ 974:	00000013          	addi	zero,zero,0
+ 978:	00000013          	addi	zero,zero,0
+ 97c:	00000013          	addi	zero,zero,0
+ 980:	800e8183          	lb	gp,-2048(t4)
+ 984:	00000013          	addi	zero,zero,0
+ 988:	00000013          	addi	zero,zero,0
+ 98c:	02312823          	sw	gp,48(sp)
+
+00000990 <inst_32>:
+ 990:	00000013          	addi	zero,zero,0
+ 994:	00000013          	addi	zero,zero,0
+ 998:	00000013          	addi	zero,zero,0
+ 99c:	00000013          	addi	zero,zero,0
+ 9a0:	00007517          	auipc	a0,0x7
+ 9a4:	66950513          	addi	a0,a0,1641 # 8009 <rvtest_data_begin+0x9>
+ 9a8:	00000013          	addi	zero,zero,0
+ 9ac:	00000013          	addi	zero,zero,0
+ 9b0:	00000013          	addi	zero,zero,0
+ 9b4:	00000013          	addi	zero,zero,0
+ 9b8:	00000013          	addi	zero,zero,0
+ 9bc:	00000013          	addi	zero,zero,0
+ 9c0:	ff850583          	lb	a1,-8(a0)
+ 9c4:	00000013          	addi	zero,zero,0
+ 9c8:	00000013          	addi	zero,zero,0
+ 9cc:	02b12a23          	sw	a1,52(sp)
+
+000009d0 <cleanup_epilogs>:
+ 9d0:	0200006f          	jal	zero,9f0 <exit_cleanup>
+
+000009d4 <abort_tests>:
+ 9d4:	17812483          	lw	s1,376(sp)
+ 9d8:	18012303          	lw	t1,384(sp)
+ 9dc:	00930333          	add	t1,t1,s1
+ 9e0:	bad0e337          	lui	t1,0xbad0e
+ 9e4:	ad030313          	addi	t1,t1,-1328 # bad0dad0 <immx>
+ 9e8:	fe64ae23          	sw	t1,-4(s1)
+ 9ec:	0040006f          	jal	zero,9f0 <exit_cleanup>
+
+000009f0 <exit_cleanup>:
+ 9f0:	00008517          	auipc	a0,0x8
+ 9f4:	72050513          	addi	a0,a0,1824 # 9110 <begin_signature>
+ 9f8:	00008597          	auipc	a1,0x8
+ 9fc:	7a858593          	addi	a1,a1,1960 # 91a0 <end_signature>
+ a00:	00008637          	lui	a2,0x8
+ a04:	00460613          	addi	a2,a2,4 # 8004 <rvtest_data_begin+0x4>
+
+00000a08 <sig_dump_loop>:
+ a08:	00052283          	lw	t0,0(a0)
+ a0c:	00562023          	sw	t0,0(a2)
+ a10:	00450513          	addi	a0,a0,4
+ a14:	00b55463          	bge	a0,a1,a1c <end_sim>
+ a18:	ff1ff06f          	jal	zero,a08 <sig_dump_loop>
+
+00000a1c <end_sim>:
+ a1c:	00008537          	lui	a0,0x8
+ a20:	00850513          	addi	a0,a0,8 # 8008 <rvtest_data_begin+0x8>
+ a24:	cafed5b7          	lui	a1,0xcafed
+ a28:	afe58593          	addi	a1,a1,-1282 # cafecafe <immx+0x102df02e>
+ a2c:	00b52023          	sw	a1,0(a0)
+ a30:	fedff06f          	jal	zero,a1c <end_sim>
