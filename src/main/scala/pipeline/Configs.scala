@@ -1,5 +1,5 @@
 package pipeline
 
 case class Configs(
-    TRACE   : Boolean = true
+    TRACE   : Boolean = true//
 )

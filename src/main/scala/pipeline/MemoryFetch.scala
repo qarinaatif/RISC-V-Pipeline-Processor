@@ -9,7 +9,8 @@ class MemoryFetch(TRACE: Boolean) extends Module {
     val writeEnable: Bool = Input(Bool())
     val readEnable: Bool = Input(Bool())
     val readData: UInt = Output(UInt(32.W))
-    //val stall: Bool = Output(Bool())
+    val Data: UInt = Output(UInt(32.W))
+
     val f3 = Input(UInt(3.W))
     val maskout = Output(UInt(4.W))
 
@@ -114,9 +115,9 @@ class MemoryFetch(TRACE: Boolean) extends Module {
   io.dccmReq.bits.isWrite := io.writeEnable
   io.dccmReq.valid := Mux(io.writeEnable | io.readEnable, true.B, false.B)
 
-
-  rdata := Mux(true.B, io.dccmRsp.bits.dataResponse, DontCare)
-
+  rdata := Mux(io.dccmRsp.valid, io.dccmRsp.bits.dataResponse, DontCare)
+  //rdata := Mux(true.B, io.dccmRsp.bits.dataResponse, DontCare)
+  io.Data := io.dccmRsp.bits.dataResponse
 
   when(io.readEnable) {
     when(funct3 === "b010".U) {
@@ -138,7 +139,6 @@ class MemoryFetch(TRACE: Boolean) extends Module {
           // addressing memory with 3,7,11...
           io.readData := Cat(Fill(24, rdata(31)),rdata(31,24))
         } .otherwise {
-          // this condition would never occur but using to avoid Chisel generating VOID errors
           io.readData := DontCare
         }
       }
@@ -157,7 +157,6 @@ class MemoryFetch(TRACE: Boolean) extends Module {
           // addressing memory with 3,7,11...
           io.readData := Cat(Fill(24, 0.U), rdata(31, 24))
         } .otherwise {
-          // this condition would never occur but using to avoid Chisel generating VOID errors
           io.readData := DontCare
         }
       }
@@ -173,7 +172,6 @@ class MemoryFetch(TRACE: Boolean) extends Module {
           // addressing memory with 2,6,10...
           io.readData := Cat(Fill(16, 0.U),rdata(31,16))
         } .otherwise {
-          // this condition would never occur but using to avoid Chisel generating VOID errors
           io.readData := DontCare
         }
       }

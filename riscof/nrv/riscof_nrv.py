@@ -189,7 +189,7 @@ class nrv(pluginTemplate):
                 f'cd {os.path.join("out", test_name)}',
                 "(echo '/* verilator lint_off WIDTH */' && cat Top.v) > temp && mv temp Top.v",
                 'verilator --cc --exe --build --trace --no-timing ../../tb_Top.cpp Top.v',
-                f'./obj_dir/VTop &> {sig_file}'
+                f'./obj_dir/VTop > {sig_file}'
             ))
           else:
             simcmd = 'echo "NO RUN"'

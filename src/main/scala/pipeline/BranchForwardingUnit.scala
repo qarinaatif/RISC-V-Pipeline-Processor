@@ -13,8 +13,8 @@ class BranchForwardingUnit extends Module {
     val RS1 = Input(UInt(5.W))
     val RS2 = Input(UInt(5.W))
     val Branch = Input(Bool())
-    val forward_rs1 = Output(UInt(4.W))
-    val forward_rs2 = Output(UInt(4.W))
+    val forward_rs1 = Output(UInt(4.W))//
+    val forward_rs2 = Output(UInt(4.W))//
   })
   
   io.forward_rs1 := 0.U

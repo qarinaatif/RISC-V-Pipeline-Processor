@@ -136,7 +136,7 @@ class ControlDecoder extends Module {
             io.Aluop := "b110".U    // ALU does PC + imm
             io.opA := "b10".U     // opA = PC
             io.opB := 1.B         // opB = imm
-            io.nextPC := "b00".U     // next PC = PC+4 (normal)
+            io.nextPC := "b00".U     // next PC = PC+4
         }
     }
 }

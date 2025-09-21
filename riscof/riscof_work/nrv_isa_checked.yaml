@@ -4127,32 +4127,3 @@ hart0:
         address: 0x744
         priv_mode: M
         reset-val: 0
-  # misa:
-  #  reset-val: 0x40001104
-  #  rv32:
-  #    accessible: true
-  #    mxl:
-  #      implemented: true
-  #      type:
-  #          warl:
-  #             dependency_fields: []
-  #             legal:
-  #               - mxl[1:0] in [0x1]
-  #             wr_illegal:
-  #               - Unchanged
-  #    extensions:
-  #      implemented: true
-  #      type:
-  #          warl:
-  #             dependency_fields: []
-  #             legal:
-  #               - extensions[25:0] bitmask [0x0001104, 0x0000000]
-  #             wr_illegal:
-  #               - Unchanged
-
-  # PMP:
-  #   implemented: True
-  #   pmp-grain: 0
-  #   pmp-count: 16
-  #   pmp-writable: 7
-

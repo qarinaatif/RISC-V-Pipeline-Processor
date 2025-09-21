@@ -52,15 +52,19 @@ class Core(implicit val config:Configs)extends Module{
        pc_module.io.in := immgen_module.io.imm_out
     }.elsewhen((Branchcontrol_module.io.branchctrl === 1.U && ControlDecoder_module.io.Branch === 1.B) ){
         pc_module.io.in := (immgen_module.io.imm_out - 4.asSInt)
-    }.elsewhen((ifid_module.io.Instr_IFID(6,0 ) === "b1100011".U) ){
+    }.elsewhen((ifid_module.io.Instr_IFID(6,0 ) === "b1100011".U) || (ifid_module.io.Instr_IFID(6,0 ) === "b0000011".U)){
         pc_module.io.in := (pc_module.io.pc4 - 8.asSInt)
+    // }.elsewhen(ifid_module.io.Instr_IFID(6,0 ) === "b0000011".U){
+    //     pc_module.io.in := (pc_module.io.pc4- 4.asSInt)
     }.otherwise{
         pc_module.io.in := pc_module.io.pc4
     }
     when(((ifid_module.io.Instr_IFID(6,0 ) === "b1101111".U)|| (ifid_module.io.Instr_IFID(6,0 ) === "b1100111".U)|| (ifid_module.io.Instr_IFID(6,0 ) === "b1100011".U)|| (idex_module.io.Instr_IDEX(6,0 ) === "b1100011".U)) ){
        if_module.stall := 1.B
-    }.elsewhen(((ifid_module.io.Instr_IFID(6,0 ) === "b1101111".U)|| (ifid_module.io.Instr_IFID(6,0 ) === "b1100111".U)|| (ifid_module.io.Instr_IFID(6,0 ) === "b1100011".U)|| (idex_module.io.Instr_IDEX(6,0 ) === "b1100011".U)) ){
+    }.elsewhen(((ifid_module.io.Instr_IFID(6,0 ) === "b1101111".U)|| (ifid_module.io.Instr_IFID(6,0 ) === "b1100111".U)|| (ifid_module.io.Instr_IFID(6,0 ) === "b1100011".U)|| (idex_module.io.Instr_IDEX(6,0 ) === "b1100011".U)) || (ifid_module.io.Instr_IFID(6,0 ) === "b0000011".U) || (idex_module.io.Instr_IDEX(6,0 ) === "b0000011".U)){
        if_module.stall := 1.B
+    // }.elsewhen(ifid_module.io.Instr_IFID(6,0 ) === "b0000011".U){
+    //     pc_module.io.in := if_module.stall := 1.B
     }.otherwise{
         if_module.stall := 0.B
     }
@@ -74,7 +78,7 @@ class Core(implicit val config:Configs)extends Module{
     ifid_module.io.PCout := pc_module.io.pcout.asUInt   
     ifid_module.io.PC4out := pc_module.io.pc4.asUInt   
     ifid_module.io.Instr := instruction
-    when((ifid_module.io.Instr_IFID(6,0 ) === "b1101111".U)|| (ifid_module.io.Instr_IFID(6,0 ) === "b1100111".U)|| (ifid_module.io.Instr_IFID(6,0 ) === "b1100011".U)|| (idex_module.io.Instr_IDEX(6,0 ) === "b1100011".U)){
+    when((ifid_module.io.Instr_IFID(6,0 ) === "b1101111".U)|| (ifid_module.io.Instr_IFID(6,0 ) === "b1100111".U)|| (ifid_module.io.Instr_IFID(6,0 ) === "b1100011".U)|| (idex_module.io.Instr_IDEX(6,0 ) === "b1100011".U) ||(ifid_module.io.Instr_IFID(6,0 ) === "b0000011".U) || (idex_module.io.Instr_IDEX(6,0 ) === "b0000011".U)){
        ifid_module.io.flush := true.B
     }.otherwise{
       ifid_module.io.flush := false.B
@@ -390,12 +394,17 @@ when(idex_module.io.Instr_IDEX(6,0 ) === "b0010111".U){
     //DATAMEM
     io.dmemReq <> MEM.io.dccmReq
     MEM.io.dccmRsp <> io.dmemRsp
-
-    MEM.io.aluResultIn := exmem_module.io.ALUresMEM
+    when(exmem_module.io.MemReadS || exmem_module.io.MemWriteS ){
+      MEM.io.aluResultIn := exmem_module.io.ALUresMEM
+    }.otherwise{
+      MEM.io.aluResultIn := 0.U
+    } 
     MEM.io.writeData := exmem_module.io.ReadData2MEM
     MEM.io.readEnable := exmem_module.io.MemReadS
     MEM.io.writeEnable := exmem_module.io.MemWriteS
     MEM.io.f3 := exmem_module.io.func3_EXMEM
+
+
 
     //MEMWB
     memwb_module.io.RegWrite := exmem_module.io.RegWriteS
@@ -415,7 +424,7 @@ when(idex_module.io.Instr_IDEX(6,0 ) === "b0010111".U){
     memwb_module.io.memdata := MEM.io.readData
     regfile_module.io.writeData := MuxCase ( 0.U , Array (
       (memwb_module.io.MemtoReg_MEMWB === 0.B ) -> memwb_module.io.ALUres_MEMWB.asUInt ,
-      (memwb_module.io.MemtoReg_MEMWB === 1.B ) -> memwb_module.io.ReadData_MEMWB.asUInt)
+      (memwb_module.io.MemtoReg_MEMWB === 1.B ) -> MEM.io.Data.asUInt)
     )
     regfile_module.io.RegWrite := memwb_module.io.RegWrite_MEMWB
     regfile_module.io.rd := memwb_module.io.RDD_MEMWB
@@ -424,6 +433,11 @@ when(idex_module.io.Instr_IDEX(6,0 ) === "b0010111".U){
     memwb_module.io.MemWritedata := exmem_module.io.ReadData2MEM
     memwb_module.io.PC := exmem_module.io.PC_EXMEM
     
+    when((memwb_module.io.Instr_MEMWB(6,0 ) === "b0000011".U)){
+      regfile_module.io.rd := memwb_module.io.RDD_MEMWB
+      regfile_module.io.writeData := MEM.io.Data.asUInt//MEM.io.Data
+      regfile_module.io.RegWrite := 1.U 
+    }
 
   if (TRACE) {
       io.rvfi.get.bool := (memwb_module.io.Instr_MEMWB =/= 0.U) && !clock.asBool
@@ -444,7 +458,7 @@ when(idex_module.io.Instr_IDEX(6,0 ) === "b0010111".U){
         memwb_module.io.PC_MEMWB,
         0.U,
         memwb_module.io.memaddressD,
-        0.B,
+        0.U,
         memwb_module.io.MemWritedata_out,
       ).zipWithIndex.foreach(
         r => io.rvfi.get.uint32(r._2) := r._1

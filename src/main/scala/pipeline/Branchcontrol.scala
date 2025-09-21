@@ -6,8 +6,8 @@ class Branchcontrol extends Module {
   val io = IO(new Bundle {
     val RS1 = Input(SInt(32.W))
     val RS2 = Input(SInt(32.W))
-    val func3 = Input(UInt(3.W))
-    val branchctrl = Output(Bool())
+    val func3 = Input(UInt(3.W))//
+    val branchctrl = Output(Bool())//
   })
   io.branchctrl := false.B
 

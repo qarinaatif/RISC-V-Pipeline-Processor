@@ -32,10 +32,11 @@ class SRamTop(val programFile:Option[String]) extends Module {
 
     sram.io.clk := clk
     sram.io.reset := rst
-    sram.io.we := DontCare
-    sram.io.wmask := DontCare
-    sram.io.addr := DontCare
-    sram.io.data_i := DontCare
+    sram.io.we := false.B
+    sram.io.wmask := 0.U
+    sram.io.addr := 0.U
+    sram.io.data_i := 0.U
+
 
    // rdata := sram.io.data_o
 
@@ -52,9 +53,9 @@ class SRamTop(val programFile:Option[String]) extends Module {
             sram.io.wmask := io.req.bits.activeByteLane
             sram.io.addr := io.req.bits.addrRequest
             sram.io.data_i := io.req.bits.dataRequest
-            rdata := DontCare
+            rdata := 0.U
         }.otherwise {
-            rdata := DontCare
+            rdata := 0.U
         }
     io.rsp.bits.dataResponse := sram.io.data_o
 }
@@ -63,7 +64,7 @@ class SRAMIO extends Bundle {
     val clk = Input(Bool())
     val reset = Input(Bool())
     val we = Input(Bool())
-    val addr = Input(UInt(13.W))
+    val addr = Input(UInt(28.W))
     val data_i = Input(UInt(32.W))
     val wmask = Input(UInt(4.W))
     val data_o = Output(UInt(32.W))

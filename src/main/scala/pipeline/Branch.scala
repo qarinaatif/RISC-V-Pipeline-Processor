@@ -7,8 +7,8 @@ class Branch extends Module {
     val arg_x = Input(SInt(32.W))
     val arg_y = Input(SInt(32.W))
     val func3 = Input(UInt(3.W))
-    val branch = Input(Bool())
-    val br_taken= Output(Bool())
+    val branch = Input(Bool())//
+    val br_taken= Output(Bool())//
   })
 
   io.br_taken := false.B
