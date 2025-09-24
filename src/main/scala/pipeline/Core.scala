@@ -424,7 +424,7 @@ when(idex_module.io.Instr_IDEX(6,0 ) === "b0010111".U){
     memwb_module.io.memdata := MEM.io.readData
     regfile_module.io.writeData := MuxCase ( 0.U , Array (
       (memwb_module.io.MemtoReg_MEMWB === 0.B ) -> memwb_module.io.ALUres_MEMWB.asUInt ,
-      (memwb_module.io.MemtoReg_MEMWB === 1.B ) -> MEM.io.Data.asUInt)
+      (memwb_module.io.MemtoReg_MEMWB === 1.B ) -> MEM.io.readData.asUInt)
     )
     regfile_module.io.RegWrite := memwb_module.io.RegWrite_MEMWB
     regfile_module.io.rd := memwb_module.io.RDD_MEMWB
@@ -435,7 +435,7 @@ when(idex_module.io.Instr_IDEX(6,0 ) === "b0010111".U){
     
     when((memwb_module.io.Instr_MEMWB(6,0 ) === "b0000011".U)){
       regfile_module.io.rd := memwb_module.io.RDD_MEMWB
-      regfile_module.io.writeData := MEM.io.Data.asUInt//MEM.io.Data
+      regfile_module.io.writeData := MEM.io.readData.asUInt//MEM.io.Data
       regfile_module.io.RegWrite := 1.U 
     }
 
