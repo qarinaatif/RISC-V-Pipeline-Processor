@@ -1,4 +1,4 @@
-# testlist generated on 2025-09-24 05:57 GMT
+# testlist generated on 2025-09-25 06:32 GMT
 /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/add-01.S:
   commit_id: '-'
   work_dir: 
@@ -259,19 +259,6 @@
   - lw-align
   test_path: 
     /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/lw-align-01.S
-/home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/misalign1-jalr-01.S:
-  commit_id: '-'
-  work_dir: 
-    /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscof_work/rv32i_m/I/src/misalign1-jalr-01.S
-  macros:
-  - TEST_CASE_1=True
-  - XLEN=32
-  isa: RV32I
-  mac: []
-  coverage_labels:
-  - misalign1-jalr
-  test_path: 
-    /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/misalign1-jalr-01.S
 /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/or-01.S:
   commit_id: '-'
   work_dir: 
@@ -506,3 +493,42 @@
   - xori
   test_path: 
     /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/I/src/xori-01.S
+/home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/hints/src/fence-01.S:
+  commit_id: '-'
+  work_dir: 
+    /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscof_work/rv32i_m/hints/src/fence-01.S
+  macros:
+  - TEST_CASE_1=True
+  - XLEN=32
+  isa: RV32I
+  mac: []
+  coverage_labels:
+  - fence
+  test_path: 
+    /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/hints/src/fence-01.S
+/home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/hints/src/srl-01.S:
+  commit_id: '-'
+  work_dir: 
+    /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscof_work/rv32i_m/hints/src/srl-01.S
+  macros:
+  - TEST_CASE_1=True
+  - XLEN=32
+  isa: RV32I_Zicsr
+  mac: []
+  coverage_labels:
+  - srl
+  test_path: 
+    /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/hints/src/srl-01.S
+? /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/privilege/src/misalign1-jalr-01.S
+: commit_id: '-'
+  work_dir: 
+    /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscof_work/rv32i_m/privilege/src/misalign1-jalr-01.S
+  macros:
+  - TEST_CASE_1=True
+  - XLEN=32
+  isa: RV32I
+  mac: []
+  coverage_labels:
+  - misalign1-jalr
+  test_path: 
+    /home/qarinaatif/RISC-V-Pipeline-Processor/riscof/riscv-arch-test/riscv-test-suite/rv32i_m/privilege/src/misalign1-jalr-01.S

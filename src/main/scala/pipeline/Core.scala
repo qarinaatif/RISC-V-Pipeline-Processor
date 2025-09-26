@@ -292,7 +292,7 @@ class Core(implicit val config:Configs)extends Module{
     jalr_module.io.rs1 := regfile_module.io.readData1.asSInt
     jalr_module.io.imme := immgen_module.io.imm_out
     
-when(idex_module.io.Instr_IDEX(6,0 ) === "b0010111".U){
+when(idex_module.io.Instr_IDEX(6,0 ) === "b0010111".U || idex_module.io.Instr_IDEX(6,0 ) === "b0110111".U){
     alu_module.io.op1 := 0.U
 }.otherwise{
     when(idex_module.io.operandAselout === true.B ){
@@ -392,17 +392,26 @@ when(idex_module.io.Instr_IDEX(6,0 ) === "b0010111".U){
     ForwardingUnit_module.io.EXMEM_RegWrite := exmem_module.io.RegWriteS
 
     //DATAMEM
+
+    val ALUresMEM_reg = RegNext(exmem_module.io.ALUresMEM,0.U(32.W))
+    dontTouch(ALUresMEM_reg)
+    
+
+
     io.dmemReq <> MEM.io.dccmReq
     MEM.io.dccmRsp <> io.dmemRsp
     when(exmem_module.io.MemReadS || exmem_module.io.MemWriteS ){
       MEM.io.aluResultIn := exmem_module.io.ALUresMEM
+    }.elsewhen(memwb_module.io.Instr_MEMWB(6, 0) === "b0000011".U ){
+      MEM.io.aluResultIn := ALUresMEM_reg
     }.otherwise{
       MEM.io.aluResultIn := 0.U
     } 
     MEM.io.writeData := exmem_module.io.ReadData2MEM
-    MEM.io.readEnable := exmem_module.io.MemReadS
+    MEM.io.readEnable := exmem_module.io.MemReadS 
     MEM.io.writeEnable := exmem_module.io.MemWriteS
     MEM.io.f3 := exmem_module.io.func3_EXMEM
+    // MEM.io.writeData1 := writeData_reg
 
 
 

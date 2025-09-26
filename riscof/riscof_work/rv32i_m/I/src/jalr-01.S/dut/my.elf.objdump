@@ -1,0 +1,1282 @@
+
+my.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text.init:
+
+00000000 <rvtest_entry_point>:
+       0:	7d5c0837          	lui	a6,0x7d5c0
+       4:	ddb80813          	addi	a6,a6,-549 # 7d5bfddb <absimm+0x382cd8ac>
+       8:	00785893          	srli	a7,a6,0x7
+       c:	01985793          	srli	a5,a6,0x19
+      10:	00f8e8b3          	or	a7,a7,a5
+      14:	0078d913          	srli	s2,a7,0x7
+      18:	0198d793          	srli	a5,a7,0x19
+      1c:	00f96933          	or	s2,s2,a5
+      20:	00795993          	srli	s3,s2,0x7
+      24:	01995793          	srli	a5,s2,0x19
+      28:	00f9e9b3          	or	s3,s3,a5
+      2c:	0079da13          	srli	s4,s3,0x7
+      30:	0199d793          	srli	a5,s3,0x19
+      34:	00fa6a33          	or	s4,s4,a5
+      38:	007a5a93          	srli	s5,s4,0x7
+      3c:	019a5793          	srli	a5,s4,0x19
+      40:	00faeab3          	or	s5,s5,a5
+      44:	007adb13          	srli	s6,s5,0x7
+      48:	019ad793          	srli	a5,s5,0x19
+      4c:	00fb6b33          	or	s6,s6,a5
+      50:	007b5b93          	srli	s7,s6,0x7
+      54:	019b5793          	srli	a5,s6,0x19
+      58:	00fbebb3          	or	s7,s7,a5
+      5c:	007bdc13          	srli	s8,s7,0x7
+      60:	019bd793          	srli	a5,s7,0x19
+      64:	00fc6c33          	or	s8,s8,a5
+      68:	007c5c93          	srli	s9,s8,0x7
+      6c:	019c5793          	srli	a5,s8,0x19
+      70:	00fcecb3          	or	s9,s9,a5
+      74:	007cdd13          	srli	s10,s9,0x7
+      78:	019cd793          	srli	a5,s9,0x19
+      7c:	00fd6d33          	or	s10,s10,a5
+      80:	007d5d93          	srli	s11,s10,0x7
+      84:	019d5793          	srli	a5,s10,0x19
+      88:	00fdedb3          	or	s11,s11,a5
+      8c:	007dde13          	srli	t3,s11,0x7
+      90:	019dd793          	srli	a5,s11,0x19
+      94:	00fe6e33          	or	t3,t3,a5
+      98:	007e5e93          	srli	t4,t3,0x7
+      9c:	019e5793          	srli	a5,t3,0x19
+      a0:	00feeeb3          	or	t4,t4,a5
+      a4:	007edf13          	srli	t5,t4,0x7
+      a8:	019ed793          	srli	a5,t4,0x19
+      ac:	00ff6f33          	or	t5,t5,a5
+      b0:	feedc0b7          	lui	ra,0xfeedc
+      b4:	ead08093          	addi	ra,ra,-339 # feedbead <immx+0x441ce3dd>
+      b8:	0070d113          	srli	sp,ra,0x7
+      bc:	0190d793          	srli	a5,ra,0x19
+      c0:	00f16133          	or	sp,sp,a5
+      c4:	00715193          	srli	gp,sp,0x7
+      c8:	01915793          	srli	a5,sp,0x19
+      cc:	00f1e1b3          	or	gp,gp,a5
+      d0:	0071d213          	srli	tp,gp,0x7
+      d4:	0191d793          	srli	a5,gp,0x19
+      d8:	00f26233          	or	tp,tp,a5
+      dc:	00725293          	srli	t0,tp,0x7
+      e0:	01925793          	srli	a5,tp,0x19
+      e4:	00f2e2b3          	or	t0,t0,a5
+      e8:	0072d313          	srli	t1,t0,0x7
+      ec:	0192d793          	srli	a5,t0,0x19
+      f0:	00f36333          	or	t1,t1,a5
+      f4:	00735393          	srli	t2,t1,0x7
+      f8:	01935793          	srli	a5,t1,0x19
+      fc:	00f3e3b3          	or	t2,t2,a5
+     100:	0073d413          	srli	s0,t2,0x7
+     104:	0193d793          	srli	a5,t2,0x19
+     108:	00f46433          	or	s0,s0,a5
+     10c:	00745493          	srli	s1,s0,0x7
+     110:	01945793          	srli	a5,s0,0x19
+     114:	00f4e4b3          	or	s1,s1,a5
+     118:	0074d513          	srli	a0,s1,0x7
+     11c:	0194d793          	srli	a5,s1,0x19
+     120:	00f56533          	or	a0,a0,a5
+     124:	00755593          	srli	a1,a0,0x7
+     128:	01955793          	srli	a5,a0,0x19
+     12c:	00f5e5b3          	or	a1,a1,a5
+     130:	0075d613          	srli	a2,a1,0x7
+     134:	0195d793          	srli	a5,a1,0x19
+     138:	00f66633          	or	a2,a2,a5
+     13c:	00765693          	srli	a3,a2,0x7
+     140:	01965793          	srli	a5,a2,0x19
+     144:	00f6e6b3          	or	a3,a3,a5
+
+00000148 <rvtest_code_begin>:
+     148:	00000013          	addi	zero,zero,0
+     14c:	00000013          	addi	zero,zero,0
+     150:	00000013          	addi	zero,zero,0
+     154:	00000013          	addi	zero,zero,0
+     158:	00000013          	addi	zero,zero,0
+     15c:	00000013          	addi	zero,zero,0
+     160:	00009517          	auipc	a0,0x9
+     164:	fb450513          	addi	a0,a0,-76 # 9114 <signature_x10_0>
+     168:	00000013          	addi	zero,zero,0
+     16c:	00000013          	addi	zero,zero,0
+     170:	00000013          	addi	zero,zero,0
+     174:	00000013          	addi	zero,zero,0
+     178:	00000013          	addi	zero,zero,0
+     17c:	00000013          	addi	zero,zero,0
+
+00000180 <inst_0>:
+     180:	00000c97          	auipc	s9,0x0
+     184:	00000013          	addi	zero,zero,0
+     188:	00000013          	addi	zero,zero,0
+     18c:	00000013          	addi	zero,zero,0
+     190:	00000013          	addi	zero,zero,0
+     194:	00000013          	addi	zero,zero,0
+     198:	00000013          	addi	zero,zero,0
+     19c:	00000013          	addi	zero,zero,0
+     1a0:	00000217          	auipc	tp,0x0
+     1a4:	ff420213          	addi	tp,tp,-12 # 194 <inst_0+0x14>
+     1a8:	00000013          	addi	zero,zero,0
+     1ac:	00000013          	addi	zero,zero,0
+     1b0:	00000013          	addi	zero,zero,0
+     1b4:	00000013          	addi	zero,zero,0
+     1b8:	00000013          	addi	zero,zero,0
+     1bc:	00000013          	addi	zero,zero,0
+     1c0:	04020ce7          	jalr	s9,64(tp) # 40 <offset+0xc>
+     1c4:	00000013          	addi	zero,zero,0
+     1c8:	00000013          	addi	zero,zero,0
+     1cc:	002ccc93          	xori	s9,s9,2
+     1d0:	00c0006f          	jal	zero,1dc <inst_0+0x5c>
+     1d4:	003ccc93          	xori	s9,s9,3
+     1d8:	0040006f          	jal	zero,1dc <inst_0+0x5c>
+     1dc:	00000013          	addi	zero,zero,0
+     1e0:	00000797          	auipc	a5,0x0
+     1e4:	fa078793          	addi	a5,a5,-96 # 180 <inst_0>
+     1e8:	00000013          	addi	zero,zero,0
+     1ec:	00000013          	addi	zero,zero,0
+     1f0:	00000013          	addi	zero,zero,0
+     1f4:	00000013          	addi	zero,zero,0
+     1f8:	00000013          	addi	zero,zero,0
+     1fc:	00000013          	addi	zero,zero,0
+     200:	ffc7f793          	andi	a5,a5,-4
+     204:	40fc8cb3          	sub	s9,s9,a5
+     208:	01952023          	sw	s9,0(a0)
+
+0000020c <inst_1>:
+     20c:	00000897          	auipc	a7,0x0
+     210:	00000013          	addi	zero,zero,0
+     214:	00000013          	addi	zero,zero,0
+     218:	00000013          	addi	zero,zero,0
+     21c:	00000013          	addi	zero,zero,0
+     220:	00000897          	auipc	a7,0x0
+     224:	13588893          	addi	a7,a7,309 # 355 <inst_3+0x49>
+     228:	00000013          	addi	zero,zero,0
+     22c:	00000013          	addi	zero,zero,0
+     230:	00000013          	addi	zero,zero,0
+     234:	00000013          	addi	zero,zero,0
+     238:	00000013          	addi	zero,zero,0
+     23c:	00000013          	addi	zero,zero,0
+     240:	eff888e7          	jalr	a7,-257(a7)
+     244:	00000013          	addi	zero,zero,0
+     248:	00000013          	addi	zero,zero,0
+     24c:	0028c893          	xori	a7,a7,2
+     250:	00c0006f          	jal	zero,25c <inst_1+0x50>
+     254:	0038c893          	xori	a7,a7,3
+     258:	0040006f          	jal	zero,25c <inst_1+0x50>
+     25c:	00000013          	addi	zero,zero,0
+     260:	00000797          	auipc	a5,0x0
+     264:	fac78793          	addi	a5,a5,-84 # 20c <inst_1>
+     268:	00000013          	addi	zero,zero,0
+     26c:	00000013          	addi	zero,zero,0
+     270:	00000013          	addi	zero,zero,0
+     274:	00000013          	addi	zero,zero,0
+     278:	00000013          	addi	zero,zero,0
+     27c:	00000013          	addi	zero,zero,0
+     280:	ffc7f793          	andi	a5,a5,-4
+     284:	40f888b3          	sub	a7,a7,a5
+     288:	01152223          	sw	a7,4(a0)
+
+0000028c <inst_2>:
+     28c:	00000817          	auipc	a6,0x0
+     290:	00000013          	addi	zero,zero,0
+     294:	00000013          	addi	zero,zero,0
+     298:	00000013          	addi	zero,zero,0
+     29c:	00000013          	addi	zero,zero,0
+     2a0:	00000197          	auipc	gp,0x0
+     2a4:	03318193          	addi	gp,gp,51 # 2d3 <inst_2+0x47>
+     2a8:	00000013          	addi	zero,zero,0
+     2ac:	00000013          	addi	zero,zero,0
+     2b0:	00000013          	addi	zero,zero,0
+     2b4:	00000013          	addi	zero,zero,0
+     2b8:	00000013          	addi	zero,zero,0
+     2bc:	00000013          	addi	zero,zero,0
+     2c0:	00118867          	jalr	a6,1(gp)
+     2c4:	00000013          	addi	zero,zero,0
+     2c8:	00000013          	addi	zero,zero,0
+     2cc:	00284813          	xori	a6,a6,2
+     2d0:	00c0006f          	jal	zero,2dc <inst_2+0x50>
+     2d4:	00384813          	xori	a6,a6,3
+     2d8:	0040006f          	jal	zero,2dc <inst_2+0x50>
+     2dc:	00000013          	addi	zero,zero,0
+     2e0:	00000797          	auipc	a5,0x0
+     2e4:	fac78793          	addi	a5,a5,-84 # 28c <inst_2>
+     2e8:	00000013          	addi	zero,zero,0
+     2ec:	00000013          	addi	zero,zero,0
+     2f0:	00000013          	addi	zero,zero,0
+     2f4:	00000013          	addi	zero,zero,0
+     2f8:	00000013          	addi	zero,zero,0
+     2fc:	00000013          	addi	zero,zero,0
+     300:	ffc7f793          	andi	a5,a5,-4
+     304:	40f80833          	sub	a6,a6,a5
+     308:	01052423          	sw	a6,8(a0)
+
+0000030c <inst_3>:
+     30c:	00000617          	auipc	a2,0x0
+     310:	00000013          	addi	zero,zero,0
+     314:	00000013          	addi	zero,zero,0
+     318:	00000013          	addi	zero,zero,0
+     31c:	00000013          	addi	zero,zero,0
+     320:	00000b97          	auipc	s7,0x0
+     324:	032b8b93          	addi	s7,s7,50 # 352 <inst_3+0x46>
+     328:	00000013          	addi	zero,zero,0
+     32c:	00000013          	addi	zero,zero,0
+     330:	00000013          	addi	zero,zero,0
+     334:	00000013          	addi	zero,zero,0
+     338:	00000013          	addi	zero,zero,0
+     33c:	00000013          	addi	zero,zero,0
+     340:	002b8667          	jalr	a2,2(s7)
+     344:	00000013          	addi	zero,zero,0
+     348:	00000013          	addi	zero,zero,0
+     34c:	00264613          	xori	a2,a2,2
+     350:	00c0006f          	jal	zero,35c <inst_3+0x50>
+     354:	00364613          	xori	a2,a2,3
+     358:	0040006f          	jal	zero,35c <inst_3+0x50>
+     35c:	00000013          	addi	zero,zero,0
+     360:	00000797          	auipc	a5,0x0
+     364:	fac78793          	addi	a5,a5,-84 # 30c <inst_3>
+     368:	00000013          	addi	zero,zero,0
+     36c:	00000013          	addi	zero,zero,0
+     370:	00000013          	addi	zero,zero,0
+     374:	00000013          	addi	zero,zero,0
+     378:	00000013          	addi	zero,zero,0
+     37c:	00000013          	addi	zero,zero,0
+     380:	ffc7f793          	andi	a5,a5,-4
+     384:	40f60633          	sub	a2,a2,a5
+     388:	00c52623          	sw	a2,12(a0)
+
+0000038c <inst_4>:
+     38c:	00000697          	auipc	a3,0x0
+     390:	00000013          	addi	zero,zero,0
+     394:	00000013          	addi	zero,zero,0
+     398:	00000013          	addi	zero,zero,0
+     39c:	00000013          	addi	zero,zero,0
+     3a0:	00000d97          	auipc	s11,0x0
+     3a4:	030d8d93          	addi	s11,s11,48 # 3d0 <inst_4+0x44>
+     3a8:	00000013          	addi	zero,zero,0
+     3ac:	00000013          	addi	zero,zero,0
+     3b0:	00000013          	addi	zero,zero,0
+     3b4:	00000013          	addi	zero,zero,0
+     3b8:	00000013          	addi	zero,zero,0
+     3bc:	00000013          	addi	zero,zero,0
+     3c0:	004d86e7          	jalr	a3,4(s11)
+     3c4:	00000013          	addi	zero,zero,0
+     3c8:	00000013          	addi	zero,zero,0
+     3cc:	0026c693          	xori	a3,a3,2
+     3d0:	00c0006f          	jal	zero,3dc <inst_4+0x50>
+     3d4:	0036c693          	xori	a3,a3,3
+     3d8:	0040006f          	jal	zero,3dc <inst_4+0x50>
+     3dc:	00000013          	addi	zero,zero,0
+     3e0:	00000797          	auipc	a5,0x0
+     3e4:	fac78793          	addi	a5,a5,-84 # 38c <inst_4>
+     3e8:	00000013          	addi	zero,zero,0
+     3ec:	00000013          	addi	zero,zero,0
+     3f0:	00000013          	addi	zero,zero,0
+     3f4:	00000013          	addi	zero,zero,0
+     3f8:	00000013          	addi	zero,zero,0
+     3fc:	00000013          	addi	zero,zero,0
+     400:	ffc7f793          	andi	a5,a5,-4
+     404:	40f686b3          	sub	a3,a3,a5
+     408:	00d52823          	sw	a3,16(a0)
+
+0000040c <inst_5>:
+     40c:	00000417          	auipc	s0,0x0
+     410:	00000013          	addi	zero,zero,0
+     414:	00000013          	addi	zero,zero,0
+     418:	00000013          	addi	zero,zero,0
+     41c:	00000013          	addi	zero,zero,0
+     420:	00000317          	auipc	t1,0x0
+     424:	02c30313          	addi	t1,t1,44 # 44c <inst_5+0x40>
+     428:	00000013          	addi	zero,zero,0
+     42c:	00000013          	addi	zero,zero,0
+     430:	00000013          	addi	zero,zero,0
+     434:	00000013          	addi	zero,zero,0
+     438:	00000013          	addi	zero,zero,0
+     43c:	00000013          	addi	zero,zero,0
+     440:	00830467          	jalr	s0,8(t1)
+     444:	00000013          	addi	zero,zero,0
+     448:	00000013          	addi	zero,zero,0
+     44c:	00244413          	xori	s0,s0,2
+     450:	00c0006f          	jal	zero,45c <inst_5+0x50>
+     454:	00344413          	xori	s0,s0,3
+     458:	0040006f          	jal	zero,45c <inst_5+0x50>
+     45c:	00000013          	addi	zero,zero,0
+     460:	00000797          	auipc	a5,0x0
+     464:	fac78793          	addi	a5,a5,-84 # 40c <inst_5>
+     468:	00000013          	addi	zero,zero,0
+     46c:	00000013          	addi	zero,zero,0
+     470:	00000013          	addi	zero,zero,0
+     474:	00000013          	addi	zero,zero,0
+     478:	00000013          	addi	zero,zero,0
+     47c:	00000013          	addi	zero,zero,0
+     480:	ffc7f793          	andi	a5,a5,-4
+     484:	40f40433          	sub	s0,s0,a5
+     488:	00852a23          	sw	s0,20(a0)
+
+0000048c <inst_6>:
+     48c:	00000f17          	auipc	t5,0x0
+     490:	00000013          	addi	zero,zero,0
+     494:	00000013          	addi	zero,zero,0
+     498:	00000013          	addi	zero,zero,0
+     49c:	00000013          	addi	zero,zero,0
+     4a0:	00000617          	auipc	a2,0x0
+     4a4:	02460613          	addi	a2,a2,36 # 4c4 <inst_6+0x38>
+     4a8:	00000013          	addi	zero,zero,0
+     4ac:	00000013          	addi	zero,zero,0
+     4b0:	00000013          	addi	zero,zero,0
+     4b4:	00000013          	addi	zero,zero,0
+     4b8:	00000013          	addi	zero,zero,0
+     4bc:	00000013          	addi	zero,zero,0
+     4c0:	01060f67          	jalr	t5,16(a2)
+     4c4:	00000013          	addi	zero,zero,0
+     4c8:	00000013          	addi	zero,zero,0
+     4cc:	002f4f13          	xori	t5,t5,2
+     4d0:	00c0006f          	jal	zero,4dc <inst_6+0x50>
+     4d4:	003f4f13          	xori	t5,t5,3
+     4d8:	0040006f          	jal	zero,4dc <inst_6+0x50>
+     4dc:	00000013          	addi	zero,zero,0
+     4e0:	00000797          	auipc	a5,0x0
+     4e4:	fac78793          	addi	a5,a5,-84 # 48c <inst_6>
+     4e8:	00000013          	addi	zero,zero,0
+     4ec:	00000013          	addi	zero,zero,0
+     4f0:	00000013          	addi	zero,zero,0
+     4f4:	00000013          	addi	zero,zero,0
+     4f8:	00000013          	addi	zero,zero,0
+     4fc:	00000013          	addi	zero,zero,0
+     500:	ffc7f793          	andi	a5,a5,-4
+     504:	40ff0f33          	sub	t5,t5,a5
+     508:	01e52c23          	sw	t5,24(a0)
+
+0000050c <inst_7>:
+     50c:	00000017          	auipc	zero,0x0
+     510:	00000013          	addi	zero,zero,0
+     514:	00000013          	addi	zero,zero,0
+     518:	00000013          	addi	zero,zero,0
+     51c:	00000013          	addi	zero,zero,0
+     520:	00000f97          	auipc	t6,0x0
+     524:	014f8f93          	addi	t6,t6,20 # 534 <inst_7+0x28>
+     528:	00000013          	addi	zero,zero,0
+     52c:	00000013          	addi	zero,zero,0
+     530:	00000013          	addi	zero,zero,0
+     534:	00000013          	addi	zero,zero,0
+     538:	00000013          	addi	zero,zero,0
+     53c:	00000013          	addi	zero,zero,0
+     540:	020f8067          	jalr	zero,32(t6)
+     544:	00000013          	addi	zero,zero,0
+     548:	00000013          	addi	zero,zero,0
+     54c:	00204013          	xori	zero,zero,2
+     550:	00c0006f          	jal	zero,55c <inst_7+0x50>
+     554:	00304013          	xori	zero,zero,3
+     558:	0040006f          	jal	zero,55c <inst_7+0x50>
+     55c:	00000013          	addi	zero,zero,0
+     560:	00000797          	auipc	a5,0x0
+     564:	fac78793          	addi	a5,a5,-84 # 50c <inst_7>
+     568:	00000013          	addi	zero,zero,0
+     56c:	00000013          	addi	zero,zero,0
+     570:	00000013          	addi	zero,zero,0
+     574:	00000013          	addi	zero,zero,0
+     578:	00000013          	addi	zero,zero,0
+     57c:	00000013          	addi	zero,zero,0
+     580:	ffc7f793          	andi	a5,a5,-4
+     584:	40f00033          	sub	zero,zero,a5
+     588:	00052e23          	sw	zero,28(a0)
+
+0000058c <inst_8>:
+     58c:	00000197          	auipc	gp,0x0
+     590:	00000013          	addi	zero,zero,0
+     594:	00000013          	addi	zero,zero,0
+     598:	00000013          	addi	zero,zero,0
+     59c:	00000013          	addi	zero,zero,0
+     5a0:	00000a17          	auipc	s4,0x0
+     5a4:	fb4a0a13          	addi	s4,s4,-76 # 554 <inst_7+0x48>
+     5a8:	00000013          	addi	zero,zero,0
+     5ac:	00000013          	addi	zero,zero,0
+     5b0:	00000013          	addi	zero,zero,0
+     5b4:	00000013          	addi	zero,zero,0
+     5b8:	00000013          	addi	zero,zero,0
+     5bc:	00000013          	addi	zero,zero,0
+     5c0:	080a01e7          	jalr	gp,128(s4)
+     5c4:	00000013          	addi	zero,zero,0
+     5c8:	00000013          	addi	zero,zero,0
+     5cc:	0021c193          	xori	gp,gp,2
+     5d0:	00c0006f          	jal	zero,5dc <inst_8+0x50>
+     5d4:	0031c193          	xori	gp,gp,3
+     5d8:	0040006f          	jal	zero,5dc <inst_8+0x50>
+     5dc:	00000013          	addi	zero,zero,0
+     5e0:	00000797          	auipc	a5,0x0
+     5e4:	fac78793          	addi	a5,a5,-84 # 58c <inst_8>
+     5e8:	00000013          	addi	zero,zero,0
+     5ec:	00000013          	addi	zero,zero,0
+     5f0:	00000013          	addi	zero,zero,0
+     5f4:	00000013          	addi	zero,zero,0
+     5f8:	00000013          	addi	zero,zero,0
+     5fc:	00000013          	addi	zero,zero,0
+     600:	ffc7f793          	andi	a5,a5,-4
+     604:	40f181b3          	sub	gp,gp,a5
+     608:	02352023          	sw	gp,32(a0)
+
+0000060c <inst_9>:
+     60c:	00000997          	auipc	s3,0x0
+     610:	00000013          	addi	zero,zero,0
+     614:	00000013          	addi	zero,zero,0
+     618:	00000013          	addi	zero,zero,0
+     61c:	00000013          	addi	zero,zero,0
+     620:	00000697          	auipc	a3,0x0
+     624:	f3468693          	addi	a3,a3,-204 # 554 <inst_7+0x48>
+     628:	00000013          	addi	zero,zero,0
+     62c:	00000013          	addi	zero,zero,0
+     630:	00000013          	addi	zero,zero,0
+     634:	00000013          	addi	zero,zero,0
+     638:	00000013          	addi	zero,zero,0
+     63c:	00000013          	addi	zero,zero,0
+     640:	100689e7          	jalr	s3,256(a3)
+     644:	00000013          	addi	zero,zero,0
+     648:	00000013          	addi	zero,zero,0
+     64c:	0029c993          	xori	s3,s3,2
+     650:	00c0006f          	jal	zero,65c <inst_9+0x50>
+     654:	0039c993          	xori	s3,s3,3
+     658:	0040006f          	jal	zero,65c <inst_9+0x50>
+     65c:	00000013          	addi	zero,zero,0
+     660:	00000797          	auipc	a5,0x0
+     664:	fac78793          	addi	a5,a5,-84 # 60c <inst_9>
+     668:	00000013          	addi	zero,zero,0
+     66c:	00000013          	addi	zero,zero,0
+     670:	00000013          	addi	zero,zero,0
+     674:	00000013          	addi	zero,zero,0
+     678:	00000013          	addi	zero,zero,0
+     67c:	00000013          	addi	zero,zero,0
+     680:	ffc7f793          	andi	a5,a5,-4
+     684:	40f989b3          	sub	s3,s3,a5
+     688:	03352223          	sw	s3,36(a0)
+
+0000068c <inst_10>:
+     68c:	00000e97          	auipc	t4,0x0
+     690:	00000013          	addi	zero,zero,0
+     694:	00000013          	addi	zero,zero,0
+     698:	00000013          	addi	zero,zero,0
+     69c:	00000013          	addi	zero,zero,0
+     6a0:	00000417          	auipc	s0,0x0
+     6a4:	e3440413          	addi	s0,s0,-460 # 4d4 <inst_6+0x48>
+     6a8:	00000013          	addi	zero,zero,0
+     6ac:	00000013          	addi	zero,zero,0
+     6b0:	00000013          	addi	zero,zero,0
+     6b4:	00000013          	addi	zero,zero,0
+     6b8:	00000013          	addi	zero,zero,0
+     6bc:	00000013          	addi	zero,zero,0
+     6c0:	20040ee7          	jalr	t4,512(s0)
+     6c4:	00000013          	addi	zero,zero,0
+     6c8:	00000013          	addi	zero,zero,0
+     6cc:	002ece93          	xori	t4,t4,2
+     6d0:	00c0006f          	jal	zero,6dc <inst_10+0x50>
+     6d4:	003ece93          	xori	t4,t4,3
+     6d8:	0040006f          	jal	zero,6dc <inst_10+0x50>
+     6dc:	00000013          	addi	zero,zero,0
+     6e0:	00000797          	auipc	a5,0x0
+     6e4:	fac78793          	addi	a5,a5,-84 # 68c <inst_10>
+     6e8:	00000013          	addi	zero,zero,0
+     6ec:	00000013          	addi	zero,zero,0
+     6f0:	00000013          	addi	zero,zero,0
+     6f4:	00000013          	addi	zero,zero,0
+     6f8:	00000013          	addi	zero,zero,0
+     6fc:	00000013          	addi	zero,zero,0
+     700:	ffc7f793          	andi	a5,a5,-4
+     704:	40fe8eb3          	sub	t4,t4,a5
+     708:	03d52423          	sw	t4,40(a0)
+
+0000070c <inst_11>:
+     70c:	00000b17          	auipc	s6,0x0
+     710:	00000013          	addi	zero,zero,0
+     714:	00000013          	addi	zero,zero,0
+     718:	00000013          	addi	zero,zero,0
+     71c:	00000013          	addi	zero,zero,0
+     720:	00000f17          	auipc	t5,0x0
+     724:	c34f0f13          	addi	t5,t5,-972 # 354 <inst_3+0x48>
+     728:	00000013          	addi	zero,zero,0
+     72c:	00000013          	addi	zero,zero,0
+     730:	00000013          	addi	zero,zero,0
+     734:	00000013          	addi	zero,zero,0
+     738:	00000013          	addi	zero,zero,0
+     73c:	00000013          	addi	zero,zero,0
+     740:	400f0b67          	jalr	s6,1024(t5)
+     744:	00000013          	addi	zero,zero,0
+     748:	00000013          	addi	zero,zero,0
+     74c:	002b4b13          	xori	s6,s6,2
+     750:	00c0006f          	jal	zero,75c <inst_11+0x50>
+     754:	003b4b13          	xori	s6,s6,3
+     758:	0040006f          	jal	zero,75c <inst_11+0x50>
+     75c:	00000013          	addi	zero,zero,0
+     760:	00000797          	auipc	a5,0x0
+     764:	fac78793          	addi	a5,a5,-84 # 70c <inst_11>
+     768:	00000013          	addi	zero,zero,0
+     76c:	00000013          	addi	zero,zero,0
+     770:	00000013          	addi	zero,zero,0
+     774:	00000013          	addi	zero,zero,0
+     778:	00000013          	addi	zero,zero,0
+     77c:	00000013          	addi	zero,zero,0
+     780:	ffc7f793          	andi	a5,a5,-4
+     784:	40fb0b33          	sub	s6,s6,a5
+     788:	03652623          	sw	s6,44(a0)
+
+0000078c <inst_12>:
+     78c:	00000a97          	auipc	s5,0x0
+     790:	00000013          	addi	zero,zero,0
+     794:	00000013          	addi	zero,zero,0
+     798:	00000013          	addi	zero,zero,0
+     79c:	00000013          	addi	zero,zero,0
+     7a0:	00001e97          	auipc	t4,0x1
+     7a4:	834e8e93          	addi	t4,t4,-1996 # fd4 <inst_28+0x8>
+     7a8:	00000013          	addi	zero,zero,0
+     7ac:	00000013          	addi	zero,zero,0
+     7b0:	00000013          	addi	zero,zero,0
+     7b4:	00000013          	addi	zero,zero,0
+     7b8:	00000013          	addi	zero,zero,0
+     7bc:	00000013          	addi	zero,zero,0
+     7c0:	800e8ae7          	jalr	s5,-2048(t4)
+     7c4:	00000013          	addi	zero,zero,0
+     7c8:	00000013          	addi	zero,zero,0
+     7cc:	002aca93          	xori	s5,s5,2
+     7d0:	00c0006f          	jal	zero,7dc <inst_12+0x50>
+     7d4:	003aca93          	xori	s5,s5,3
+     7d8:	0040006f          	jal	zero,7dc <inst_12+0x50>
+     7dc:	00000013          	addi	zero,zero,0
+     7e0:	00000797          	auipc	a5,0x0
+     7e4:	fac78793          	addi	a5,a5,-84 # 78c <inst_12>
+     7e8:	00000013          	addi	zero,zero,0
+     7ec:	00000013          	addi	zero,zero,0
+     7f0:	00000013          	addi	zero,zero,0
+     7f4:	00000013          	addi	zero,zero,0
+     7f8:	00000013          	addi	zero,zero,0
+     7fc:	00000013          	addi	zero,zero,0
+     800:	ffc7f793          	andi	a5,a5,-4
+     804:	40fa8ab3          	sub	s5,s5,a5
+     808:	03552823          	sw	s5,48(a0)
+
+0000080c <inst_13>:
+     80c:	00000597          	auipc	a1,0x0
+     810:	00000013          	addi	zero,zero,0
+     814:	00000013          	addi	zero,zero,0
+     818:	00000013          	addi	zero,zero,0
+     81c:	00000013          	addi	zero,zero,0
+     820:	00000917          	auipc	s2,0x0
+     824:	03690913          	addi	s2,s2,54 # 856 <inst_13+0x4a>
+     828:	00000013          	addi	zero,zero,0
+     82c:	00000013          	addi	zero,zero,0
+     830:	00000013          	addi	zero,zero,0
+     834:	00000013          	addi	zero,zero,0
+     838:	00000013          	addi	zero,zero,0
+     83c:	00000013          	addi	zero,zero,0
+     840:	ffe905e7          	jalr	a1,-2(s2)
+     844:	00000013          	addi	zero,zero,0
+     848:	00000013          	addi	zero,zero,0
+     84c:	0025c593          	xori	a1,a1,2
+     850:	00c0006f          	jal	zero,85c <inst_13+0x50>
+     854:	0035c593          	xori	a1,a1,3
+     858:	0040006f          	jal	zero,85c <inst_13+0x50>
+     85c:	00000013          	addi	zero,zero,0
+     860:	00000797          	auipc	a5,0x0
+     864:	fac78793          	addi	a5,a5,-84 # 80c <inst_13>
+     868:	00000013          	addi	zero,zero,0
+     86c:	00000013          	addi	zero,zero,0
+     870:	00000013          	addi	zero,zero,0
+     874:	00000013          	addi	zero,zero,0
+     878:	00000013          	addi	zero,zero,0
+     87c:	00000013          	addi	zero,zero,0
+     880:	ffc7f793          	andi	a5,a5,-4
+     884:	40f585b3          	sub	a1,a1,a5
+     888:	02b52a23          	sw	a1,52(a0)
+
+0000088c <inst_14>:
+     88c:	00000e17          	auipc	t3,0x0
+     890:	00000013          	addi	zero,zero,0
+     894:	00000013          	addi	zero,zero,0
+     898:	00000013          	addi	zero,zero,0
+     89c:	00000013          	addi	zero,zero,0
+     8a0:	00000a97          	auipc	s5,0x0
+     8a4:	037a8a93          	addi	s5,s5,55 # 8d7 <inst_14+0x4b>
+     8a8:	00000013          	addi	zero,zero,0
+     8ac:	00000013          	addi	zero,zero,0
+     8b0:	00000013          	addi	zero,zero,0
+     8b4:	00000013          	addi	zero,zero,0
+     8b8:	00000013          	addi	zero,zero,0
+     8bc:	00000013          	addi	zero,zero,0
+     8c0:	ffda8e67          	jalr	t3,-3(s5)
+     8c4:	00000013          	addi	zero,zero,0
+     8c8:	00000013          	addi	zero,zero,0
+     8cc:	002e4e13          	xori	t3,t3,2
+     8d0:	00c0006f          	jal	zero,8dc <inst_14+0x50>
+     8d4:	003e4e13          	xori	t3,t3,3
+     8d8:	0040006f          	jal	zero,8dc <inst_14+0x50>
+     8dc:	00000013          	addi	zero,zero,0
+     8e0:	00000797          	auipc	a5,0x0
+     8e4:	fac78793          	addi	a5,a5,-84 # 88c <inst_14>
+     8e8:	00000013          	addi	zero,zero,0
+     8ec:	00000013          	addi	zero,zero,0
+     8f0:	00000013          	addi	zero,zero,0
+     8f4:	00000013          	addi	zero,zero,0
+     8f8:	00000013          	addi	zero,zero,0
+     8fc:	00000013          	addi	zero,zero,0
+     900:	ffc7f793          	andi	a5,a5,-4
+     904:	40fe0e33          	sub	t3,t3,a5
+     908:	03c52c23          	sw	t3,56(a0)
+
+0000090c <inst_15>:
+     90c:	00000717          	auipc	a4,0x0
+     910:	00000013          	addi	zero,zero,0
+     914:	00000013          	addi	zero,zero,0
+     918:	00000013          	addi	zero,zero,0
+     91c:	00000013          	addi	zero,zero,0
+     920:	00000c17          	auipc	s8,0x0
+     924:	039c0c13          	addi	s8,s8,57 # 959 <inst_15+0x4d>
+     928:	00000013          	addi	zero,zero,0
+     92c:	00000013          	addi	zero,zero,0
+     930:	00000013          	addi	zero,zero,0
+     934:	00000013          	addi	zero,zero,0
+     938:	00000013          	addi	zero,zero,0
+     93c:	00000013          	addi	zero,zero,0
+     940:	ffbc0767          	jalr	a4,-5(s8)
+     944:	00000013          	addi	zero,zero,0
+     948:	00000013          	addi	zero,zero,0
+     94c:	00274713          	xori	a4,a4,2
+     950:	00c0006f          	jal	zero,95c <inst_15+0x50>
+     954:	00374713          	xori	a4,a4,3
+     958:	0040006f          	jal	zero,95c <inst_15+0x50>
+     95c:	00000013          	addi	zero,zero,0
+     960:	00000797          	auipc	a5,0x0
+     964:	fac78793          	addi	a5,a5,-84 # 90c <inst_15>
+     968:	00000013          	addi	zero,zero,0
+     96c:	00000013          	addi	zero,zero,0
+     970:	00000013          	addi	zero,zero,0
+     974:	00000013          	addi	zero,zero,0
+     978:	00000013          	addi	zero,zero,0
+     97c:	00000013          	addi	zero,zero,0
+     980:	ffc7f793          	andi	a5,a5,-4
+     984:	40f70733          	sub	a4,a4,a5
+     988:	02e52e23          	sw	a4,60(a0)
+
+0000098c <inst_16>:
+     98c:	00000317          	auipc	t1,0x0
+     990:	00000013          	addi	zero,zero,0
+     994:	00000013          	addi	zero,zero,0
+     998:	00000013          	addi	zero,zero,0
+     99c:	00000013          	addi	zero,zero,0
+     9a0:	00000117          	auipc	sp,0x0
+     9a4:	03d10113          	addi	sp,sp,61 # 9dd <inst_16+0x51>
+     9a8:	00000013          	addi	zero,zero,0
+     9ac:	00000013          	addi	zero,zero,0
+     9b0:	00000013          	addi	zero,zero,0
+     9b4:	00000013          	addi	zero,zero,0
+     9b8:	00000013          	addi	zero,zero,0
+     9bc:	00000013          	addi	zero,zero,0
+     9c0:	ff710367          	jalr	t1,-9(sp)
+     9c4:	00000013          	addi	zero,zero,0
+     9c8:	00000013          	addi	zero,zero,0
+     9cc:	00234313          	xori	t1,t1,2
+     9d0:	00c0006f          	jal	zero,9dc <inst_16+0x50>
+     9d4:	00334313          	xori	t1,t1,3
+     9d8:	0040006f          	jal	zero,9dc <inst_16+0x50>
+     9dc:	00000013          	addi	zero,zero,0
+     9e0:	00000797          	auipc	a5,0x0
+     9e4:	fac78793          	addi	a5,a5,-84 # 98c <inst_16>
+     9e8:	00000013          	addi	zero,zero,0
+     9ec:	00000013          	addi	zero,zero,0
+     9f0:	00000013          	addi	zero,zero,0
+     9f4:	00000013          	addi	zero,zero,0
+     9f8:	00000013          	addi	zero,zero,0
+     9fc:	00000013          	addi	zero,zero,0
+     a00:	ffc7f793          	andi	a5,a5,-4
+     a04:	40f30333          	sub	t1,t1,a5
+     a08:	04652023          	sw	t1,64(a0)
+
+00000a0c <inst_17>:
+     a0c:	00000297          	auipc	t0,0x0
+     a10:	00000013          	addi	zero,zero,0
+     a14:	00000013          	addi	zero,zero,0
+     a18:	00000013          	addi	zero,zero,0
+     a1c:	00000013          	addi	zero,zero,0
+     a20:	00000097          	auipc	ra,0x0
+     a24:	04508093          	addi	ra,ra,69 # a65 <inst_17+0x59>
+     a28:	00000013          	addi	zero,zero,0
+     a2c:	00000013          	addi	zero,zero,0
+     a30:	00000013          	addi	zero,zero,0
+     a34:	00000013          	addi	zero,zero,0
+     a38:	00000013          	addi	zero,zero,0
+     a3c:	00000013          	addi	zero,zero,0
+     a40:	fef082e7          	jalr	t0,-17(ra)
+     a44:	00000013          	addi	zero,zero,0
+     a48:	00000013          	addi	zero,zero,0
+     a4c:	0022c293          	xori	t0,t0,2
+     a50:	00c0006f          	jal	zero,a5c <inst_17+0x50>
+     a54:	0032c293          	xori	t0,t0,3
+     a58:	0040006f          	jal	zero,a5c <inst_17+0x50>
+     a5c:	00000013          	addi	zero,zero,0
+     a60:	00000797          	auipc	a5,0x0
+     a64:	fac78793          	addi	a5,a5,-84 # a0c <inst_17>
+     a68:	00000013          	addi	zero,zero,0
+     a6c:	00000013          	addi	zero,zero,0
+     a70:	00000013          	addi	zero,zero,0
+     a74:	00000013          	addi	zero,zero,0
+     a78:	00000013          	addi	zero,zero,0
+     a7c:	00000013          	addi	zero,zero,0
+     a80:	ffc7f793          	andi	a5,a5,-4
+     a84:	40f282b3          	sub	t0,t0,a5
+     a88:	04552223          	sw	t0,68(a0)
+
+00000a8c <inst_18>:
+     a8c:	00000917          	auipc	s2,0x0
+     a90:	00000013          	addi	zero,zero,0
+     a94:	00000013          	addi	zero,zero,0
+     a98:	00000013          	addi	zero,zero,0
+     a9c:	00000013          	addi	zero,zero,0
+     aa0:	00000297          	auipc	t0,0x0
+     aa4:	05528293          	addi	t0,t0,85 # af5 <inst_18+0x69>
+     aa8:	00000013          	addi	zero,zero,0
+     aac:	00000013          	addi	zero,zero,0
+     ab0:	00000013          	addi	zero,zero,0
+     ab4:	00000013          	addi	zero,zero,0
+     ab8:	00000013          	addi	zero,zero,0
+     abc:	00000013          	addi	zero,zero,0
+     ac0:	fdf28967          	jalr	s2,-33(t0)
+     ac4:	00000013          	addi	zero,zero,0
+     ac8:	00000013          	addi	zero,zero,0
+     acc:	00294913          	xori	s2,s2,2
+     ad0:	00c0006f          	jal	zero,adc <inst_18+0x50>
+     ad4:	00394913          	xori	s2,s2,3
+     ad8:	0040006f          	jal	zero,adc <inst_18+0x50>
+     adc:	00000013          	addi	zero,zero,0
+     ae0:	00000797          	auipc	a5,0x0
+     ae4:	fac78793          	addi	a5,a5,-84 # a8c <inst_18>
+     ae8:	00000013          	addi	zero,zero,0
+     aec:	00000013          	addi	zero,zero,0
+     af0:	00000013          	addi	zero,zero,0
+     af4:	00000013          	addi	zero,zero,0
+     af8:	00000013          	addi	zero,zero,0
+     afc:	00000013          	addi	zero,zero,0
+     b00:	ffc7f793          	andi	a5,a5,-4
+     b04:	40f90933          	sub	s2,s2,a5
+     b08:	05252423          	sw	s2,72(a0)
+
+00000b0c <inst_19>:
+     b0c:	00000397          	auipc	t2,0x0
+     b10:	00000013          	addi	zero,zero,0
+     b14:	00000013          	addi	zero,zero,0
+     b18:	00000013          	addi	zero,zero,0
+     b1c:	00000013          	addi	zero,zero,0
+     b20:	00000497          	auipc	s1,0x0
+     b24:	07548493          	addi	s1,s1,117 # b95 <inst_19+0x89>
+     b28:	00000013          	addi	zero,zero,0
+     b2c:	00000013          	addi	zero,zero,0
+     b30:	00000013          	addi	zero,zero,0
+     b34:	00000013          	addi	zero,zero,0
+     b38:	00000013          	addi	zero,zero,0
+     b3c:	00000013          	addi	zero,zero,0
+     b40:	fbf483e7          	jalr	t2,-65(s1)
+     b44:	00000013          	addi	zero,zero,0
+     b48:	00000013          	addi	zero,zero,0
+     b4c:	0023c393          	xori	t2,t2,2
+     b50:	00c0006f          	jal	zero,b5c <inst_19+0x50>
+     b54:	0033c393          	xori	t2,t2,3
+     b58:	0040006f          	jal	zero,b5c <inst_19+0x50>
+     b5c:	00000013          	addi	zero,zero,0
+     b60:	00000797          	auipc	a5,0x0
+     b64:	fac78793          	addi	a5,a5,-84 # b0c <inst_19>
+     b68:	00000013          	addi	zero,zero,0
+     b6c:	00000013          	addi	zero,zero,0
+     b70:	00000013          	addi	zero,zero,0
+     b74:	00000013          	addi	zero,zero,0
+     b78:	00000013          	addi	zero,zero,0
+     b7c:	00000013          	addi	zero,zero,0
+     b80:	ffc7f793          	andi	a5,a5,-4
+     b84:	40f383b3          	sub	t2,t2,a5
+     b88:	04752623          	sw	t2,76(a0)
+     b8c:	00000013          	addi	zero,zero,0
+     b90:	00000013          	addi	zero,zero,0
+     b94:	00000013          	addi	zero,zero,0
+     b98:	00000013          	addi	zero,zero,0
+     b9c:	00000013          	addi	zero,zero,0
+     ba0:	00008197          	auipc	gp,0x8
+     ba4:	5c418193          	addi	gp,gp,1476 # 9164 <signature_x3_0>
+     ba8:	00000013          	addi	zero,zero,0
+     bac:	00000013          	addi	zero,zero,0
+     bb0:	00000013          	addi	zero,zero,0
+     bb4:	00000013          	addi	zero,zero,0
+     bb8:	00000013          	addi	zero,zero,0
+     bbc:	00000013          	addi	zero,zero,0
+
+00000bc0 <inst_20>:
+     bc0:	00000517          	auipc	a0,0x0
+     bc4:	00000013          	addi	zero,zero,0
+     bc8:	00000013          	addi	zero,zero,0
+     bcc:	00000013          	addi	zero,zero,0
+     bd0:	00000013          	addi	zero,zero,0
+     bd4:	00000013          	addi	zero,zero,0
+     bd8:	00000013          	addi	zero,zero,0
+     bdc:	00000013          	addi	zero,zero,0
+     be0:	00000c97          	auipc	s9,0x0
+     be4:	0b5c8c93          	addi	s9,s9,181 # c95 <inst_21+0x49>
+     be8:	00000013          	addi	zero,zero,0
+     bec:	00000013          	addi	zero,zero,0
+     bf0:	00000013          	addi	zero,zero,0
+     bf4:	00000013          	addi	zero,zero,0
+     bf8:	00000013          	addi	zero,zero,0
+     bfc:	00000013          	addi	zero,zero,0
+     c00:	f7fc8567          	jalr	a0,-129(s9)
+     c04:	00000013          	addi	zero,zero,0
+     c08:	00000013          	addi	zero,zero,0
+     c0c:	00254513          	xori	a0,a0,2
+     c10:	00c0006f          	jal	zero,c1c <inst_20+0x5c>
+     c14:	00354513          	xori	a0,a0,3
+     c18:	0040006f          	jal	zero,c1c <inst_20+0x5c>
+     c1c:	00000013          	addi	zero,zero,0
+     c20:	00000297          	auipc	t0,0x0
+     c24:	fa028293          	addi	t0,t0,-96 # bc0 <inst_20>
+     c28:	00000013          	addi	zero,zero,0
+     c2c:	00000013          	addi	zero,zero,0
+     c30:	00000013          	addi	zero,zero,0
+     c34:	00000013          	addi	zero,zero,0
+     c38:	00000013          	addi	zero,zero,0
+     c3c:	00000013          	addi	zero,zero,0
+     c40:	ffc2f293          	andi	t0,t0,-4
+     c44:	40550533          	sub	a0,a0,t0
+     c48:	00a1a023          	sw	a0,0(gp)
+
+00000c4c <inst_21>:
+     c4c:	00000797          	auipc	a5,0x0
+     c50:	00000013          	addi	zero,zero,0
+     c54:	00000013          	addi	zero,zero,0
+     c58:	00000013          	addi	zero,zero,0
+     c5c:	00000013          	addi	zero,zero,0
+     c60:	00000597          	auipc	a1,0x0
+     c64:	23558593          	addi	a1,a1,565 # e95 <inst_25+0x49>
+     c68:	00000013          	addi	zero,zero,0
+     c6c:	00000013          	addi	zero,zero,0
+     c70:	00000013          	addi	zero,zero,0
+     c74:	00000013          	addi	zero,zero,0
+     c78:	00000013          	addi	zero,zero,0
+     c7c:	00000013          	addi	zero,zero,0
+     c80:	dff587e7          	jalr	a5,-513(a1)
+     c84:	00000013          	addi	zero,zero,0
+     c88:	00000013          	addi	zero,zero,0
+     c8c:	0027c793          	xori	a5,a5,2
+     c90:	00c0006f          	jal	zero,c9c <inst_21+0x50>
+     c94:	0037c793          	xori	a5,a5,3
+     c98:	0040006f          	jal	zero,c9c <inst_21+0x50>
+     c9c:	00000013          	addi	zero,zero,0
+     ca0:	00000297          	auipc	t0,0x0
+     ca4:	fac28293          	addi	t0,t0,-84 # c4c <inst_21>
+     ca8:	00000013          	addi	zero,zero,0
+     cac:	00000013          	addi	zero,zero,0
+     cb0:	00000013          	addi	zero,zero,0
+     cb4:	00000013          	addi	zero,zero,0
+     cb8:	00000013          	addi	zero,zero,0
+     cbc:	00000013          	addi	zero,zero,0
+     cc0:	ffc2f293          	andi	t0,t0,-4
+     cc4:	405787b3          	sub	a5,a5,t0
+     cc8:	00f1a223          	sw	a5,4(gp)
+
+00000ccc <inst_22>:
+     ccc:	00000497          	auipc	s1,0x0
+     cd0:	00000013          	addi	zero,zero,0
+     cd4:	00000013          	addi	zero,zero,0
+     cd8:	00000013          	addi	zero,zero,0
+     cdc:	00000013          	addi	zero,zero,0
+     ce0:	00000997          	auipc	s3,0x0
+     ce4:	43598993          	addi	s3,s3,1077 # 1115 <inst_30+0x49>
+     ce8:	00000013          	addi	zero,zero,0
+     cec:	00000013          	addi	zero,zero,0
+     cf0:	00000013          	addi	zero,zero,0
+     cf4:	00000013          	addi	zero,zero,0
+     cf8:	00000013          	addi	zero,zero,0
+     cfc:	00000013          	addi	zero,zero,0
+     d00:	bff984e7          	jalr	s1,-1025(s3)
+     d04:	00000013          	addi	zero,zero,0
+     d08:	00000013          	addi	zero,zero,0
+     d0c:	0024c493          	xori	s1,s1,2
+     d10:	00c0006f          	jal	zero,d1c <inst_22+0x50>
+     d14:	0034c493          	xori	s1,s1,3
+     d18:	0040006f          	jal	zero,d1c <inst_22+0x50>
+     d1c:	00000013          	addi	zero,zero,0
+     d20:	00000297          	auipc	t0,0x0
+     d24:	fac28293          	addi	t0,t0,-84 # ccc <inst_22>
+     d28:	00000013          	addi	zero,zero,0
+     d2c:	00000013          	addi	zero,zero,0
+     d30:	00000013          	addi	zero,zero,0
+     d34:	00000013          	addi	zero,zero,0
+     d38:	00000013          	addi	zero,zero,0
+     d3c:	00000013          	addi	zero,zero,0
+     d40:	ffc2f293          	andi	t0,t0,-4
+     d44:	405484b3          	sub	s1,s1,t0
+     d48:	0091a423          	sw	s1,8(gp)
+
+00000d4c <inst_23>:
+     d4c:	00000a17          	auipc	s4,0x0
+     d50:	00000013          	addi	zero,zero,0
+     d54:	00000013          	addi	zero,zero,0
+     d58:	00000013          	addi	zero,zero,0
+     d5c:	00000013          	addi	zero,zero,0
+     d60:	00000397          	auipc	t2,0x0
+     d64:	83538393          	addi	t2,t2,-1995 # 595 <inst_8+0x9>
+     d68:	00000013          	addi	zero,zero,0
+     d6c:	00000013          	addi	zero,zero,0
+     d70:	00000013          	addi	zero,zero,0
+     d74:	00000013          	addi	zero,zero,0
+     d78:	00000013          	addi	zero,zero,0
+     d7c:	00000013          	addi	zero,zero,0
+     d80:	7ff38a67          	jalr	s4,2047(t2)
+     d84:	00000013          	addi	zero,zero,0
+     d88:	00000013          	addi	zero,zero,0
+     d8c:	002a4a13          	xori	s4,s4,2
+     d90:	00c0006f          	jal	zero,d9c <inst_23+0x50>
+     d94:	003a4a13          	xori	s4,s4,3
+     d98:	0040006f          	jal	zero,d9c <inst_23+0x50>
+     d9c:	00000013          	addi	zero,zero,0
+     da0:	00000297          	auipc	t0,0x0
+     da4:	fac28293          	addi	t0,t0,-84 # d4c <inst_23>
+     da8:	00000013          	addi	zero,zero,0
+     dac:	00000013          	addi	zero,zero,0
+     db0:	00000013          	addi	zero,zero,0
+     db4:	00000013          	addi	zero,zero,0
+     db8:	00000013          	addi	zero,zero,0
+     dbc:	00000013          	addi	zero,zero,0
+     dc0:	ffc2f293          	andi	t0,t0,-4
+     dc4:	405a0a33          	sub	s4,s4,t0
+     dc8:	0141a623          	sw	s4,12(gp)
+
+00000dcc <inst_24>:
+     dcc:	00000d17          	auipc	s10,0x0
+     dd0:	00000013          	addi	zero,zero,0
+     dd4:	00000013          	addi	zero,zero,0
+     dd8:	00000013          	addi	zero,zero,0
+     ddc:	00000013          	addi	zero,zero,0
+     de0:	00000717          	auipc	a4,0x0
+     de4:	adf70713          	addi	a4,a4,-1313 # 8bf <inst_14+0x33>
+     de8:	00000013          	addi	zero,zero,0
+     dec:	00000013          	addi	zero,zero,0
+     df0:	00000013          	addi	zero,zero,0
+     df4:	00000013          	addi	zero,zero,0
+     df8:	00000013          	addi	zero,zero,0
+     dfc:	00000013          	addi	zero,zero,0
+     e00:	55570d67          	jalr	s10,1365(a4)
+     e04:	00000013          	addi	zero,zero,0
+     e08:	00000013          	addi	zero,zero,0
+     e0c:	002d4d13          	xori	s10,s10,2
+     e10:	00c0006f          	jal	zero,e1c <inst_24+0x50>
+     e14:	003d4d13          	xori	s10,s10,3
+     e18:	0040006f          	jal	zero,e1c <inst_24+0x50>
+     e1c:	00000013          	addi	zero,zero,0
+     e20:	00000297          	auipc	t0,0x0
+     e24:	fac28293          	addi	t0,t0,-84 # dcc <inst_24>
+     e28:	00000013          	addi	zero,zero,0
+     e2c:	00000013          	addi	zero,zero,0
+     e30:	00000013          	addi	zero,zero,0
+     e34:	00000013          	addi	zero,zero,0
+     e38:	00000013          	addi	zero,zero,0
+     e3c:	00000013          	addi	zero,zero,0
+     e40:	ffc2f293          	andi	t0,t0,-4
+     e44:	405d0d33          	sub	s10,s10,t0
+     e48:	01a1a823          	sw	s10,16(gp)
+
+00000e4c <inst_25>:
+     e4c:	00000217          	auipc	tp,0x0
+     e50:	00000013          	addi	zero,zero,0
+     e54:	00000013          	addi	zero,zero,0
+     e58:	00000013          	addi	zero,zero,0
+     e5c:	00000013          	addi	zero,zero,0
+     e60:	00000797          	auipc	a5,0x0
+     e64:	58a78793          	addi	a5,a5,1418 # 13ea <end_sim+0x152>
+     e68:	00000013          	addi	zero,zero,0
+     e6c:	00000013          	addi	zero,zero,0
+     e70:	00000013          	addi	zero,zero,0
+     e74:	00000013          	addi	zero,zero,0
+     e78:	00000013          	addi	zero,zero,0
+     e7c:	00000013          	addi	zero,zero,0
+     e80:	aaa78267          	jalr	tp,-1366(a5)
+     e84:	00000013          	addi	zero,zero,0
+     e88:	00000013          	addi	zero,zero,0
+     e8c:	00224213          	xori	tp,tp,2
+     e90:	00c0006f          	jal	zero,e9c <inst_25+0x50>
+     e94:	00324213          	xori	tp,tp,3
+     e98:	0040006f          	jal	zero,e9c <inst_25+0x50>
+     e9c:	00000013          	addi	zero,zero,0
+     ea0:	00000297          	auipc	t0,0x0
+     ea4:	fac28293          	addi	t0,t0,-84 # e4c <inst_25>
+     ea8:	00000013          	addi	zero,zero,0
+     eac:	00000013          	addi	zero,zero,0
+     eb0:	00000013          	addi	zero,zero,0
+     eb4:	00000013          	addi	zero,zero,0
+     eb8:	00000013          	addi	zero,zero,0
+     ebc:	00000013          	addi	zero,zero,0
+     ec0:	ffc2f293          	andi	t0,t0,-4
+     ec4:	40520233          	sub	tp,tp,t0
+     ec8:	0041aa23          	sw	tp,20(gp)
+
+00000ecc <inst_26>:
+     ecc:	00000c17          	auipc	s8,0x0
+     ed0:	00000013          	addi	zero,zero,0
+     ed4:	00000013          	addi	zero,zero,0
+     ed8:	00000013          	addi	zero,zero,0
+     edc:	00000013          	addi	zero,zero,0
+     ee0:	00001b17          	auipc	s6,0x1
+     ee4:	834b0b13          	addi	s6,s6,-1996 # 1714 <end_sim+0x47c>
+     ee8:	00000013          	addi	zero,zero,0
+     eec:	00000013          	addi	zero,zero,0
+     ef0:	00000013          	addi	zero,zero,0
+     ef4:	00000013          	addi	zero,zero,0
+     ef8:	00000013          	addi	zero,zero,0
+     efc:	00000013          	addi	zero,zero,0
+     f00:	800b0c67          	jalr	s8,-2048(s6)
+     f04:	00000013          	addi	zero,zero,0
+     f08:	00000013          	addi	zero,zero,0
+     f0c:	002c4c13          	xori	s8,s8,2
+     f10:	00c0006f          	jal	zero,f1c <inst_26+0x50>
+     f14:	003c4c13          	xori	s8,s8,3
+     f18:	0040006f          	jal	zero,f1c <inst_26+0x50>
+     f1c:	00000013          	addi	zero,zero,0
+     f20:	00000297          	auipc	t0,0x0
+     f24:	fac28293          	addi	t0,t0,-84 # ecc <inst_26>
+     f28:	00000013          	addi	zero,zero,0
+     f2c:	00000013          	addi	zero,zero,0
+     f30:	00000013          	addi	zero,zero,0
+     f34:	00000013          	addi	zero,zero,0
+     f38:	00000013          	addi	zero,zero,0
+     f3c:	00000013          	addi	zero,zero,0
+     f40:	ffc2f293          	andi	t0,t0,-4
+     f44:	405c0c33          	sub	s8,s8,t0
+     f48:	0181ac23          	sw	s8,24(gp)
+
+00000f4c <inst_27>:
+     f4c:	00000b97          	auipc	s7,0x0
+     f50:	00000013          	addi	zero,zero,0
+     f54:	00000013          	addi	zero,zero,0
+     f58:	00000013          	addi	zero,zero,0
+     f5c:	00000013          	addi	zero,zero,0
+     f60:	00001d17          	auipc	s10,0x1
+     f64:	834d0d13          	addi	s10,s10,-1996 # 1794 <end_sim+0x4fc>
+     f68:	00000013          	addi	zero,zero,0
+     f6c:	00000013          	addi	zero,zero,0
+     f70:	00000013          	addi	zero,zero,0
+     f74:	00000013          	addi	zero,zero,0
+     f78:	00000013          	addi	zero,zero,0
+     f7c:	00000013          	addi	zero,zero,0
+     f80:	800d0be7          	jalr	s7,-2048(s10)
+     f84:	00000013          	addi	zero,zero,0
+     f88:	00000013          	addi	zero,zero,0
+     f8c:	002bcb93          	xori	s7,s7,2
+     f90:	00c0006f          	jal	zero,f9c <inst_27+0x50>
+     f94:	003bcb93          	xori	s7,s7,3
+     f98:	0040006f          	jal	zero,f9c <inst_27+0x50>
+     f9c:	00000013          	addi	zero,zero,0
+     fa0:	00000297          	auipc	t0,0x0
+     fa4:	fac28293          	addi	t0,t0,-84 # f4c <inst_27>
+     fa8:	00000013          	addi	zero,zero,0
+     fac:	00000013          	addi	zero,zero,0
+     fb0:	00000013          	addi	zero,zero,0
+     fb4:	00000013          	addi	zero,zero,0
+     fb8:	00000013          	addi	zero,zero,0
+     fbc:	00000013          	addi	zero,zero,0
+     fc0:	ffc2f293          	andi	t0,t0,-4
+     fc4:	405b8bb3          	sub	s7,s7,t0
+     fc8:	0171ae23          	sw	s7,28(gp)
+
+00000fcc <inst_28>:
+     fcc:	00000117          	auipc	sp,0x0
+     fd0:	00000013          	addi	zero,zero,0
+     fd4:	00000013          	addi	zero,zero,0
+     fd8:	00000013          	addi	zero,zero,0
+     fdc:	00000013          	addi	zero,zero,0
+     fe0:	00001e17          	auipc	t3,0x1
+     fe4:	834e0e13          	addi	t3,t3,-1996 # 1814 <end_sim+0x57c>
+     fe8:	00000013          	addi	zero,zero,0
+     fec:	00000013          	addi	zero,zero,0
+     ff0:	00000013          	addi	zero,zero,0
+     ff4:	00000013          	addi	zero,zero,0
+     ff8:	00000013          	addi	zero,zero,0
+     ffc:	00000013          	addi	zero,zero,0
+    1000:	800e0167          	jalr	sp,-2048(t3)
+    1004:	00000013          	addi	zero,zero,0
+    1008:	00000013          	addi	zero,zero,0
+    100c:	00214113          	xori	sp,sp,2
+    1010:	00c0006f          	jal	zero,101c <inst_28+0x50>
+    1014:	00314113          	xori	sp,sp,3
+    1018:	0040006f          	jal	zero,101c <inst_28+0x50>
+    101c:	00000013          	addi	zero,zero,0
+    1020:	00000297          	auipc	t0,0x0
+    1024:	fac28293          	addi	t0,t0,-84 # fcc <inst_28>
+    1028:	00000013          	addi	zero,zero,0
+    102c:	00000013          	addi	zero,zero,0
+    1030:	00000013          	addi	zero,zero,0
+    1034:	00000013          	addi	zero,zero,0
+    1038:	00000013          	addi	zero,zero,0
+    103c:	00000013          	addi	zero,zero,0
+    1040:	ffc2f293          	andi	t0,t0,-4
+    1044:	40510133          	sub	sp,sp,t0
+    1048:	0221a023          	sw	sp,32(gp)
+
+0000104c <inst_29>:
+    104c:	00000097          	auipc	ra,0x0
+    1050:	00000013          	addi	zero,zero,0
+    1054:	00000013          	addi	zero,zero,0
+    1058:	00000013          	addi	zero,zero,0
+    105c:	00000013          	addi	zero,zero,0
+    1060:	00001517          	auipc	a0,0x1
+    1064:	83450513          	addi	a0,a0,-1996 # 1894 <end_sim+0x5fc>
+    1068:	00000013          	addi	zero,zero,0
+    106c:	00000013          	addi	zero,zero,0
+    1070:	00000013          	addi	zero,zero,0
+    1074:	00000013          	addi	zero,zero,0
+    1078:	00000013          	addi	zero,zero,0
+    107c:	00000013          	addi	zero,zero,0
+    1080:	800500e7          	jalr	ra,-2048(a0)
+    1084:	00000013          	addi	zero,zero,0
+    1088:	00000013          	addi	zero,zero,0
+    108c:	0020c093          	xori	ra,ra,2
+    1090:	00c0006f          	jal	zero,109c <inst_29+0x50>
+    1094:	0030c093          	xori	ra,ra,3
+    1098:	0040006f          	jal	zero,109c <inst_29+0x50>
+    109c:	00000013          	addi	zero,zero,0
+    10a0:	00000297          	auipc	t0,0x0
+    10a4:	fac28293          	addi	t0,t0,-84 # 104c <inst_29>
+    10a8:	00000013          	addi	zero,zero,0
+    10ac:	00000013          	addi	zero,zero,0
+    10b0:	00000013          	addi	zero,zero,0
+    10b4:	00000013          	addi	zero,zero,0
+    10b8:	00000013          	addi	zero,zero,0
+    10bc:	00000013          	addi	zero,zero,0
+    10c0:	ffc2f293          	andi	t0,t0,-4
+    10c4:	405080b3          	sub	ra,ra,t0
+    10c8:	0211a223          	sw	ra,36(gp)
+
+000010cc <inst_30>:
+    10cc:	00000f97          	auipc	t6,0x0
+    10d0:	00000013          	addi	zero,zero,0
+    10d4:	00000013          	addi	zero,zero,0
+    10d8:	00000013          	addi	zero,zero,0
+    10dc:	00000013          	addi	zero,zero,0
+    10e0:	00001817          	auipc	a6,0x1
+    10e4:	83480813          	addi	a6,a6,-1996 # 1914 <end_sim+0x67c>
+    10e8:	00000013          	addi	zero,zero,0
+    10ec:	00000013          	addi	zero,zero,0
+    10f0:	00000013          	addi	zero,zero,0
+    10f4:	00000013          	addi	zero,zero,0
+    10f8:	00000013          	addi	zero,zero,0
+    10fc:	00000013          	addi	zero,zero,0
+    1100:	80080fe7          	jalr	t6,-2048(a6)
+    1104:	00000013          	addi	zero,zero,0
+    1108:	00000013          	addi	zero,zero,0
+    110c:	002fcf93          	xori	t6,t6,2
+    1110:	00c0006f          	jal	zero,111c <inst_30+0x50>
+    1114:	003fcf93          	xori	t6,t6,3
+    1118:	0040006f          	jal	zero,111c <inst_30+0x50>
+    111c:	00000013          	addi	zero,zero,0
+    1120:	00000297          	auipc	t0,0x0
+    1124:	fac28293          	addi	t0,t0,-84 # 10cc <inst_30>
+    1128:	00000013          	addi	zero,zero,0
+    112c:	00000013          	addi	zero,zero,0
+    1130:	00000013          	addi	zero,zero,0
+    1134:	00000013          	addi	zero,zero,0
+    1138:	00000013          	addi	zero,zero,0
+    113c:	00000013          	addi	zero,zero,0
+    1140:	ffc2f293          	andi	t0,t0,-4
+    1144:	405f8fb3          	sub	t6,t6,t0
+    1148:	03f1a423          	sw	t6,40(gp)
+
+0000114c <inst_31>:
+    114c:	00000d97          	auipc	s11,0x0
+    1150:	00000013          	addi	zero,zero,0
+    1154:	00000013          	addi	zero,zero,0
+    1158:	00000013          	addi	zero,zero,0
+    115c:	00000013          	addi	zero,zero,0
+    1160:	00001817          	auipc	a6,0x1
+    1164:	83480813          	addi	a6,a6,-1996 # 1994 <end_sim+0x6fc>
+    1168:	00000013          	addi	zero,zero,0
+    116c:	00000013          	addi	zero,zero,0
+    1170:	00000013          	addi	zero,zero,0
+    1174:	00000013          	addi	zero,zero,0
+    1178:	00000013          	addi	zero,zero,0
+    117c:	00000013          	addi	zero,zero,0
+    1180:	80080de7          	jalr	s11,-2048(a6)
+    1184:	00000013          	addi	zero,zero,0
+    1188:	00000013          	addi	zero,zero,0
+    118c:	002dcd93          	xori	s11,s11,2
+    1190:	00c0006f          	jal	zero,119c <inst_31+0x50>
+    1194:	003dcd93          	xori	s11,s11,3
+    1198:	0040006f          	jal	zero,119c <inst_31+0x50>
+    119c:	00000013          	addi	zero,zero,0
+    11a0:	00000297          	auipc	t0,0x0
+    11a4:	fac28293          	addi	t0,t0,-84 # 114c <inst_31>
+    11a8:	00000013          	addi	zero,zero,0
+    11ac:	00000013          	addi	zero,zero,0
+    11b0:	00000013          	addi	zero,zero,0
+    11b4:	00000013          	addi	zero,zero,0
+    11b8:	00000013          	addi	zero,zero,0
+    11bc:	00000013          	addi	zero,zero,0
+    11c0:	ffc2f293          	andi	t0,t0,-4
+    11c4:	405d8db3          	sub	s11,s11,t0
+    11c8:	03b1a623          	sw	s11,44(gp)
+
+000011cc <inst_32>:
+    11cc:	00000597          	auipc	a1,0x0
+    11d0:	00000013          	addi	zero,zero,0
+    11d4:	00000013          	addi	zero,zero,0
+    11d8:	00000013          	addi	zero,zero,0
+    11dc:	00000013          	addi	zero,zero,0
+    11e0:	00000517          	auipc	a0,0x0
+    11e4:	01450513          	addi	a0,a0,20 # 11f4 <inst_32+0x28>
+    11e8:	00000013          	addi	zero,zero,0
+    11ec:	00000013          	addi	zero,zero,0
+    11f0:	00000013          	addi	zero,zero,0
+    11f4:	00000013          	addi	zero,zero,0
+    11f8:	00000013          	addi	zero,zero,0
+    11fc:	00000013          	addi	zero,zero,0
+    1200:	020505e7          	jalr	a1,32(a0)
+    1204:	00000013          	addi	zero,zero,0
+    1208:	00000013          	addi	zero,zero,0
+    120c:	0025c593          	xori	a1,a1,2
+    1210:	00c0006f          	jal	zero,121c <inst_32+0x50>
+    1214:	0035c593          	xori	a1,a1,3
+    1218:	0040006f          	jal	zero,121c <inst_32+0x50>
+    121c:	00000013          	addi	zero,zero,0
+    1220:	00000297          	auipc	t0,0x0
+    1224:	fac28293          	addi	t0,t0,-84 # 11cc <inst_32>
+    1228:	00000013          	addi	zero,zero,0
+    122c:	00000013          	addi	zero,zero,0
+    1230:	00000013          	addi	zero,zero,0
+    1234:	00000013          	addi	zero,zero,0
+    1238:	00000013          	addi	zero,zero,0
+    123c:	00000013          	addi	zero,zero,0
+    1240:	ffc2f293          	andi	t0,t0,-4
+    1244:	405585b3          	sub	a1,a1,t0
+    1248:	02b1a823          	sw	a1,48(gp)
+
+0000124c <cleanup_epilogs>:
+    124c:	0200006f          	jal	zero,126c <exit_cleanup>
+
+00001250 <abort_tests>:
+    1250:	17812483          	lw	s1,376(sp) # 1144 <inst_30+0x78>
+    1254:	18012303          	lw	t1,384(sp)
+    1258:	00930333          	add	t1,t1,s1
+    125c:	bad0e337          	lui	t1,0xbad0e
+    1260:	ad030313          	addi	t1,t1,-1328 # bad0dad0 <immx>
+    1264:	fe64ae23          	sw	t1,-4(s1) # cc8 <inst_21+0x7c>
+    1268:	0040006f          	jal	zero,126c <exit_cleanup>
+
+0000126c <exit_cleanup>:
+    126c:	00008517          	auipc	a0,0x8
+    1270:	ea450513          	addi	a0,a0,-348 # 9110 <begin_signature>
+    1274:	00008597          	auipc	a1,0x8
+    1278:	f2c58593          	addi	a1,a1,-212 # 91a0 <end_signature>
+    127c:	00008637          	lui	a2,0x8
+    1280:	00460613          	addi	a2,a2,4 # 8004 <rvtest_data_begin+0x4>
+
+00001284 <sig_dump_loop>:
+    1284:	00052283          	lw	t0,0(a0)
+    1288:	00562023          	sw	t0,0(a2)
+    128c:	00450513          	addi	a0,a0,4
+    1290:	00b55463          	bge	a0,a1,1298 <end_sim>
+    1294:	ff1ff06f          	jal	zero,1284 <sig_dump_loop>
+
+00001298 <end_sim>:
+    1298:	00008537          	lui	a0,0x8
+    129c:	00850513          	addi	a0,a0,8 # 8008 <rvtest_data_begin+0x8>
+    12a0:	cafed5b7          	lui	a1,0xcafed
+    12a4:	afe58593          	addi	a1,a1,-1282 # cafecafe <immx+0x102df02e>
+    12a8:	00b52023          	sw	a1,0(a0)
+    12ac:	fedff06f          	jal	zero,1298 <end_sim>
+	...

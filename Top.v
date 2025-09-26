@@ -8,14 +8,14 @@ module Programcounter(
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
 `endif // RANDOMIZE_REG_INIT
-  reg [31:0] reg_; // @[Programcounter.scala 12:22]
-  assign io_pcout = reg_; // @[Programcounter.scala 14:14]
-  assign io_pc4 = $signed(reg_) + 32'sh4; // @[Programcounter.scala 15:19]
+  reg [31:0] reg_; // @[Programcounter.scala 11:22]
+  assign io_pcout = reg_; // @[Programcounter.scala 13:14]
+  assign io_pc4 = $signed(reg_) + 32'sh4; // @[Programcounter.scala 14:19]
   always @(posedge clock) begin
-    if (reset) begin // @[Programcounter.scala 12:22]
-      reg_ <= -32'sh4; // @[Programcounter.scala 12:22]
+    if (reset) begin // @[Programcounter.scala 11:22]
+      reg_ <= -32'sh4; // @[Programcounter.scala 11:22]
     end else begin
-      reg_ <= io_in; // @[Programcounter.scala 13:9]
+      reg_ <= io_in; // @[Programcounter.scala 12:9]
     end
   end
 // Register and memory initialization
@@ -1460,7 +1460,6 @@ module MemoryFetch(
   input         io_writeEnable,
   input         io_readEnable,
   output [31:0] io_readData,
-  output [31:0] io_Data,
   input  [2:0]  io_f3,
   output [3:0]  io_maskout,
   output        io_dccmReq_valid,
@@ -1474,106 +1473,112 @@ module MemoryFetch(
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
   reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
 `endif // RANDOMIZE_REG_INIT
-  reg [1:0] offset; // @[MemoryFetch.scala 27:23]
-  reg [2:0] funct3; // @[MemoryFetch.scala 28:23]
-  wire [1:0] offsetSW = io_aluResultIn[1:0]; // @[MemoryFetch.scala 29:32]
-  wire  _T_3 = offsetSW == 2'h0; // @[MemoryFetch.scala 48:19]
-  wire  _T_4 = offsetSW == 2'h1; // @[MemoryFetch.scala 52:25]
-  wire [7:0] _GEN_2 = offsetSW == 2'h2 ? io_writeData[15:8] : io_writeData[15:8]; // @[MemoryFetch.scala 60:33 61:16 69:16]
-  wire [7:0] _GEN_3 = offsetSW == 2'h2 ? io_writeData[23:16] : io_writeData[23:16]; // @[MemoryFetch.scala 60:33 62:16 70:16]
-  wire [7:0] _GEN_4 = offsetSW == 2'h2 ? io_writeData[7:0] : io_writeData[31:24]; // @[MemoryFetch.scala 60:33 63:16 71:16]
-  wire [7:0] _GEN_5 = offsetSW == 2'h2 ? io_writeData[31:24] : io_writeData[7:0]; // @[MemoryFetch.scala 60:33 64:16 72:16]
-  wire [3:0] _GEN_6 = offsetSW == 2'h2 ? 4'h4 : 4'h8; // @[MemoryFetch.scala 60:33 65:38 73:38]
-  wire [7:0] _GEN_7 = offsetSW == 2'h1 ? io_writeData[15:8] : _GEN_2; // @[MemoryFetch.scala 52:33 53:16]
-  wire [7:0] _GEN_8 = offsetSW == 2'h1 ? io_writeData[7:0] : _GEN_3; // @[MemoryFetch.scala 52:33 54:16]
-  wire [7:0] _GEN_9 = offsetSW == 2'h1 ? io_writeData[23:16] : _GEN_4; // @[MemoryFetch.scala 52:33 55:16]
-  wire [7:0] _GEN_10 = offsetSW == 2'h1 ? io_writeData[31:24] : _GEN_5; // @[MemoryFetch.scala 52:33 56:16]
-  wire [3:0] _GEN_11 = offsetSW == 2'h1 ? 4'h2 : _GEN_6; // @[MemoryFetch.scala 52:33 57:38]
-  wire [3:0] _GEN_12 = offsetSW == 2'h0 ? 4'h1 : _GEN_11; // @[MemoryFetch.scala 48:27 49:38]
-  wire [7:0] _GEN_13 = offsetSW == 2'h0 ? io_writeData[7:0] : _GEN_7; // @[MemoryFetch.scala 41:12 48:27]
-  wire [7:0] _GEN_14 = offsetSW == 2'h0 ? io_writeData[15:8] : _GEN_8; // @[MemoryFetch.scala 42:12 48:27]
-  wire [7:0] _GEN_15 = offsetSW == 2'h0 ? io_writeData[23:16] : _GEN_9; // @[MemoryFetch.scala 43:12 48:27]
-  wire [7:0] _GEN_16 = offsetSW == 2'h0 ? io_writeData[31:24] : _GEN_10; // @[MemoryFetch.scala 44:12 48:27]
-  wire [3:0] _GEN_17 = _T_4 ? 4'h6 : 4'hc; // @[MemoryFetch.scala 86:33 88:38 97:38]
-  wire [7:0] _GEN_18 = _T_4 ? io_writeData[23:16] : io_writeData[23:16]; // @[MemoryFetch.scala 102:16 86:33 91:16]
-  wire [7:0] _GEN_19 = _T_4 ? io_writeData[7:0] : io_writeData[31:24]; // @[MemoryFetch.scala 103:16 86:33 92:16]
-  wire [7:0] _GEN_20 = _T_4 ? io_writeData[15:8] : io_writeData[7:0]; // @[MemoryFetch.scala 100:16 86:33 93:16]
-  wire [7:0] _GEN_21 = _T_4 ? io_writeData[31:24] : io_writeData[15:8]; // @[MemoryFetch.scala 101:16 86:33 94:16]
-  wire [3:0] _GEN_22 = _T_3 ? 4'h3 : _GEN_17; // @[MemoryFetch.scala 81:27 83:38]
-  wire [7:0] _GEN_23 = _T_3 ? io_writeData[7:0] : _GEN_18; // @[MemoryFetch.scala 41:12 81:27]
-  wire [7:0] _GEN_24 = _T_3 ? io_writeData[15:8] : _GEN_19; // @[MemoryFetch.scala 42:12 81:27]
-  wire [7:0] _GEN_25 = _T_3 ? io_writeData[23:16] : _GEN_20; // @[MemoryFetch.scala 43:12 81:27]
-  wire [7:0] _GEN_26 = _T_3 ? io_writeData[31:24] : _GEN_21; // @[MemoryFetch.scala 44:12 81:27]
-  wire [3:0] _io_maskout_T = io_writeEnable ? 4'hf : 4'h0; // @[MemoryFetch.scala 110:22]
-  wire [3:0] _GEN_27 = io_writeEnable & io_f3 == 3'h1 ? _GEN_22 : 4'hf; // @[MemoryFetch.scala 108:36 79:52]
-  wire [3:0] _GEN_29 = io_writeEnable & io_f3 == 3'h1 ? _GEN_22 : _io_maskout_T; // @[MemoryFetch.scala 110:16 79:52]
-  wire [7:0] _GEN_30 = io_writeEnable & io_f3 == 3'h1 ? _GEN_23 : io_writeData[7:0]; // @[MemoryFetch.scala 41:12 79:52]
-  wire [7:0] _GEN_31 = io_writeEnable & io_f3 == 3'h1 ? _GEN_24 : io_writeData[15:8]; // @[MemoryFetch.scala 42:12 79:52]
-  wire [7:0] _GEN_32 = io_writeEnable & io_f3 == 3'h1 ? _GEN_25 : io_writeData[23:16]; // @[MemoryFetch.scala 43:12 79:52]
-  wire [7:0] _GEN_33 = io_writeEnable & io_f3 == 3'h1 ? _GEN_26 : io_writeData[31:24]; // @[MemoryFetch.scala 44:12 79:52]
-  wire [7:0] wdata_0 = io_writeEnable & io_f3 == 3'h0 ? _GEN_13 : _GEN_30; // @[MemoryFetch.scala 47:45]
-  wire [7:0] wdata_1 = io_writeEnable & io_f3 == 3'h0 ? _GEN_14 : _GEN_31; // @[MemoryFetch.scala 47:45]
-  wire [7:0] wdata_2 = io_writeEnable & io_f3 == 3'h0 ? _GEN_15 : _GEN_32; // @[MemoryFetch.scala 47:45]
-  wire [7:0] wdata_3 = io_writeEnable & io_f3 == 3'h0 ? _GEN_16 : _GEN_33; // @[MemoryFetch.scala 47:45]
-  wire [15:0] io_dccmReq_bits_dataRequest_lo = {wdata_1,wdata_0}; // @[MemoryFetch.scala 113:40]
-  wire [15:0] io_dccmReq_bits_dataRequest_hi = {wdata_3,wdata_2}; // @[MemoryFetch.scala 113:40]
-  wire [31:0] rdata = io_dccmRsp_valid ? io_dccmRsp_bits_dataResponse : 32'h0; // @[MemoryFetch.scala 118:15]
-  wire  _T_12 = offset == 2'h0; // @[MemoryFetch.scala 129:21]
+  reg [1:0] offset; // @[MemoryFetch.scala 28:23]
+  reg [2:0] funct3; // @[MemoryFetch.scala 29:23]
+  wire [1:0] offsetSW = io_aluResultIn[1:0]; // @[MemoryFetch.scala 30:32]
+  wire  _T_3 = offsetSW == 2'h0; // @[MemoryFetch.scala 49:19]
+  wire  _T_4 = offsetSW == 2'h1; // @[MemoryFetch.scala 53:25]
+  wire [7:0] _GEN_2 = offsetSW == 2'h2 ? io_writeData[15:8] : io_writeData[15:8]; // @[MemoryFetch.scala 61:33 62:16 70:16]
+  wire [7:0] _GEN_3 = offsetSW == 2'h2 ? io_writeData[23:16] : io_writeData[23:16]; // @[MemoryFetch.scala 61:33 63:16 71:16]
+  wire [7:0] _GEN_4 = offsetSW == 2'h2 ? io_writeData[7:0] : io_writeData[31:24]; // @[MemoryFetch.scala 61:33 64:16 72:16]
+  wire [7:0] _GEN_5 = offsetSW == 2'h2 ? io_writeData[31:24] : io_writeData[7:0]; // @[MemoryFetch.scala 61:33 65:16 73:16]
+  wire [3:0] _GEN_6 = offsetSW == 2'h2 ? 4'h4 : 4'h8; // @[MemoryFetch.scala 61:33 66:38 74:38]
+  wire [7:0] _GEN_7 = offsetSW == 2'h1 ? io_writeData[15:8] : _GEN_2; // @[MemoryFetch.scala 53:33 54:16]
+  wire [7:0] _GEN_8 = offsetSW == 2'h1 ? io_writeData[7:0] : _GEN_3; // @[MemoryFetch.scala 53:33 55:16]
+  wire [7:0] _GEN_9 = offsetSW == 2'h1 ? io_writeData[23:16] : _GEN_4; // @[MemoryFetch.scala 53:33 56:16]
+  wire [7:0] _GEN_10 = offsetSW == 2'h1 ? io_writeData[31:24] : _GEN_5; // @[MemoryFetch.scala 53:33 57:16]
+  wire [3:0] _GEN_11 = offsetSW == 2'h1 ? 4'h2 : _GEN_6; // @[MemoryFetch.scala 53:33 58:38]
+  wire [3:0] _GEN_12 = offsetSW == 2'h0 ? 4'h1 : _GEN_11; // @[MemoryFetch.scala 49:27 50:38]
+  wire [7:0] _GEN_13 = offsetSW == 2'h0 ? io_writeData[7:0] : _GEN_7; // @[MemoryFetch.scala 42:12 49:27]
+  wire [7:0] _GEN_14 = offsetSW == 2'h0 ? io_writeData[15:8] : _GEN_8; // @[MemoryFetch.scala 43:12 49:27]
+  wire [7:0] _GEN_15 = offsetSW == 2'h0 ? io_writeData[23:16] : _GEN_9; // @[MemoryFetch.scala 44:12 49:27]
+  wire [7:0] _GEN_16 = offsetSW == 2'h0 ? io_writeData[31:24] : _GEN_10; // @[MemoryFetch.scala 45:12 49:27]
+  wire [3:0] _GEN_17 = _T_4 ? 4'h6 : 4'hc; // @[MemoryFetch.scala 87:33 89:38 98:38]
+  wire [7:0] _GEN_18 = _T_4 ? io_writeData[23:16] : io_writeData[23:16]; // @[MemoryFetch.scala 103:16 87:33 92:16]
+  wire [7:0] _GEN_19 = _T_4 ? io_writeData[7:0] : io_writeData[31:24]; // @[MemoryFetch.scala 104:16 87:33 93:16]
+  wire [7:0] _GEN_20 = _T_4 ? io_writeData[15:8] : io_writeData[7:0]; // @[MemoryFetch.scala 101:16 87:33 94:16]
+  wire [7:0] _GEN_21 = _T_4 ? io_writeData[31:24] : io_writeData[15:8]; // @[MemoryFetch.scala 102:16 87:33 95:16]
+  wire [3:0] _GEN_22 = _T_3 ? 4'h3 : _GEN_17; // @[MemoryFetch.scala 82:27 84:38]
+  wire [7:0] _GEN_23 = _T_3 ? io_writeData[7:0] : _GEN_18; // @[MemoryFetch.scala 42:12 82:27]
+  wire [7:0] _GEN_24 = _T_3 ? io_writeData[15:8] : _GEN_19; // @[MemoryFetch.scala 43:12 82:27]
+  wire [7:0] _GEN_25 = _T_3 ? io_writeData[23:16] : _GEN_20; // @[MemoryFetch.scala 44:12 82:27]
+  wire [7:0] _GEN_26 = _T_3 ? io_writeData[31:24] : _GEN_21; // @[MemoryFetch.scala 45:12 82:27]
+  wire [3:0] _io_maskout_T = io_writeEnable ? 4'hf : 4'h0; // @[MemoryFetch.scala 111:22]
+  wire [3:0] _GEN_27 = io_writeEnable & io_f3 == 3'h1 ? _GEN_22 : 4'hf; // @[MemoryFetch.scala 109:36 80:52]
+  wire [3:0] _GEN_29 = io_writeEnable & io_f3 == 3'h1 ? _GEN_22 : _io_maskout_T; // @[MemoryFetch.scala 111:16 80:52]
+  wire [7:0] _GEN_30 = io_writeEnable & io_f3 == 3'h1 ? _GEN_23 : io_writeData[7:0]; // @[MemoryFetch.scala 42:12 80:52]
+  wire [7:0] _GEN_31 = io_writeEnable & io_f3 == 3'h1 ? _GEN_24 : io_writeData[15:8]; // @[MemoryFetch.scala 43:12 80:52]
+  wire [7:0] _GEN_32 = io_writeEnable & io_f3 == 3'h1 ? _GEN_25 : io_writeData[23:16]; // @[MemoryFetch.scala 44:12 80:52]
+  wire [7:0] _GEN_33 = io_writeEnable & io_f3 == 3'h1 ? _GEN_26 : io_writeData[31:24]; // @[MemoryFetch.scala 45:12 80:52]
+  wire [7:0] wdata_0 = io_writeEnable & io_f3 == 3'h0 ? _GEN_13 : _GEN_30; // @[MemoryFetch.scala 48:45]
+  wire [7:0] wdata_1 = io_writeEnable & io_f3 == 3'h0 ? _GEN_14 : _GEN_31; // @[MemoryFetch.scala 48:45]
+  wire [7:0] wdata_2 = io_writeEnable & io_f3 == 3'h0 ? _GEN_15 : _GEN_32; // @[MemoryFetch.scala 48:45]
+  wire [7:0] wdata_3 = io_writeEnable & io_f3 == 3'h0 ? _GEN_16 : _GEN_33; // @[MemoryFetch.scala 48:45]
+  reg  readEnable_reg; // @[MemoryFetch.scala 113:31]
+  wire [15:0] io_dccmReq_bits_dataRequest_lo = {wdata_1,wdata_0}; // @[MemoryFetch.scala 116:40]
+  wire [15:0] io_dccmReq_bits_dataRequest_hi = {wdata_3,wdata_2}; // @[MemoryFetch.scala 116:40]
+  wire [31:0] rdata = io_dccmReq_valid ? io_dccmRsp_bits_dataResponse : 32'h0; // @[MemoryFetch.scala 121:15]
+  wire  _T_13 = offset == 2'h0; // @[MemoryFetch.scala 134:21]
   wire [23:0] _io_readData_T_2 = rdata[7] ? 24'hffffff : 24'h0; // @[Bitwise.scala 77:12]
   wire [31:0] _io_readData_T_4 = {_io_readData_T_2,rdata[7:0]}; // @[Cat.scala 33:92]
-  wire  _T_13 = offset == 2'h1; // @[MemoryFetch.scala 132:28]
+  wire  _T_14 = offset == 2'h1; // @[MemoryFetch.scala 137:28]
   wire [23:0] _io_readData_T_7 = rdata[15] ? 24'hffffff : 24'h0; // @[Bitwise.scala 77:12]
   wire [31:0] _io_readData_T_9 = {_io_readData_T_7,rdata[15:8]}; // @[Cat.scala 33:92]
-  wire  _T_14 = offset == 2'h2; // @[MemoryFetch.scala 135:28]
+  wire  _T_15 = offset == 2'h2; // @[MemoryFetch.scala 140:28]
   wire [23:0] _io_readData_T_12 = rdata[23] ? 24'hffffff : 24'h0; // @[Bitwise.scala 77:12]
   wire [31:0] _io_readData_T_14 = {_io_readData_T_12,rdata[23:16]}; // @[Cat.scala 33:92]
   wire [23:0] _io_readData_T_17 = rdata[31] ? 24'hffffff : 24'h0; // @[Bitwise.scala 77:12]
   wire [31:0] _io_readData_T_19 = {_io_readData_T_17,rdata[31:24]}; // @[Cat.scala 33:92]
-  wire [31:0] _GEN_42 = offset == 2'h2 ? _io_readData_T_14 : _io_readData_T_19; // @[MemoryFetch.scala 135:41 137:23]
-  wire [31:0] _GEN_43 = offset == 2'h1 ? _io_readData_T_9 : _GEN_42; // @[MemoryFetch.scala 132:41 134:23]
-  wire [31:0] _GEN_44 = offset == 2'h0 ? _io_readData_T_4 : _GEN_43; // @[MemoryFetch.scala 129:34 131:23]
+  wire [31:0] _GEN_42 = offset == 2'h2 ? _io_readData_T_14 : _io_readData_T_19; // @[MemoryFetch.scala 140:41 142:23]
+  wire [31:0] _GEN_43 = offset == 2'h1 ? _io_readData_T_9 : _GEN_42; // @[MemoryFetch.scala 137:41 139:23]
+  wire [31:0] _GEN_44 = offset == 2'h0 ? _io_readData_T_4 : _GEN_43; // @[MemoryFetch.scala 134:34 136:23]
   wire [31:0] _io_readData_T_22 = {24'h0,rdata[7:0]}; // @[Cat.scala 33:92]
   wire [31:0] _io_readData_T_25 = {24'h0,rdata[15:8]}; // @[Cat.scala 33:92]
   wire [31:0] _io_readData_T_28 = {24'h0,rdata[23:16]}; // @[Cat.scala 33:92]
   wire [31:0] _io_readData_T_31 = {24'h0,rdata[31:24]}; // @[Cat.scala 33:92]
-  wire [31:0] _GEN_46 = _T_14 ? _io_readData_T_28 : _io_readData_T_31; // @[MemoryFetch.scala 154:40 156:23]
-  wire [31:0] _GEN_47 = _T_13 ? _io_readData_T_25 : _GEN_46; // @[MemoryFetch.scala 151:40 153:23]
-  wire [31:0] _GEN_48 = _T_12 ? _io_readData_T_22 : _GEN_47; // @[MemoryFetch.scala 148:34 150:23]
+  wire [31:0] _GEN_46 = _T_15 ? _io_readData_T_28 : _io_readData_T_31; // @[MemoryFetch.scala 158:40 160:23]
+  wire [31:0] _GEN_47 = _T_14 ? _io_readData_T_25 : _GEN_46; // @[MemoryFetch.scala 155:40 157:23]
+  wire [31:0] _GEN_48 = _T_13 ? _io_readData_T_22 : _GEN_47; // @[MemoryFetch.scala 152:34 154:23]
   wire [31:0] _io_readData_T_34 = {16'h0,rdata[15:0]}; // @[Cat.scala 33:92]
   wire [31:0] _io_readData_T_37 = {16'h0,rdata[23:8]}; // @[Cat.scala 33:92]
   wire [31:0] _io_readData_T_40 = {16'h0,rdata[31:16]}; // @[Cat.scala 33:92]
-  wire [31:0] _GEN_50 = _T_13 ? _io_readData_T_37 : _io_readData_T_40; // @[MemoryFetch.scala 170:41 172:23]
-  wire [31:0] _GEN_51 = _T_12 ? _io_readData_T_34 : _GEN_50; // @[MemoryFetch.scala 167:34 169:23]
+  wire [31:0] _GEN_50 = _T_14 ? _io_readData_T_37 : _io_readData_T_40; // @[MemoryFetch.scala 173:41 175:23]
+  wire [31:0] _GEN_51 = _T_13 ? _io_readData_T_34 : _GEN_50; // @[MemoryFetch.scala 170:34 172:23]
   wire [15:0] _io_readData_T_43 = rdata[15] ? 16'hffff : 16'h0; // @[Bitwise.scala 77:12]
   wire [31:0] _io_readData_T_45 = {_io_readData_T_43,rdata[15:0]}; // @[Cat.scala 33:92]
   wire [15:0] _io_readData_T_48 = rdata[23] ? 16'hffff : 16'h0; // @[Bitwise.scala 77:12]
   wire [31:0] _io_readData_T_50 = {_io_readData_T_48,rdata[23:8]}; // @[Cat.scala 33:92]
   wire [15:0] _io_readData_T_53 = rdata[31] ? 16'hffff : 16'h0; // @[Bitwise.scala 77:12]
   wire [31:0] _io_readData_T_55 = {_io_readData_T_53,rdata[31:16]}; // @[Cat.scala 33:92]
-  wire [31:0] _GEN_53 = _T_13 ? _io_readData_T_50 : _io_readData_T_55; // @[MemoryFetch.scala 186:41 188:23]
-  wire [31:0] _GEN_54 = _T_12 ? _io_readData_T_45 : _GEN_53; // @[MemoryFetch.scala 183:34 185:23]
-  wire [31:0] _GEN_56 = funct3 == 3'h5 ? _GEN_51 : _GEN_54; // @[MemoryFetch.scala 165:38]
-  wire [31:0] _GEN_57 = funct3 == 3'h4 ? _GEN_48 : _GEN_56; // @[MemoryFetch.scala 146:38]
-  wire [31:0] _GEN_58 = funct3 == 3'h0 ? _GEN_44 : _GEN_57; // @[MemoryFetch.scala 127:38]
-  assign io_readData = funct3 == 3'h2 ? rdata : _GEN_58; // @[MemoryFetch.scala 123:31 125:19]
-  assign io_Data = io_dccmRsp_bits_dataResponse; // @[MemoryFetch.scala 120:11]
-  assign io_maskout = io_writeEnable & io_f3 == 3'h0 ? _GEN_12 : _GEN_29; // @[MemoryFetch.scala 47:45]
-  assign io_dccmReq_valid = io_writeEnable | io_readEnable; // @[MemoryFetch.scala 116:42]
-  assign io_dccmReq_bits_addrRequest = io_aluResultIn; // @[MemoryFetch.scala 114:31]
-  assign io_dccmReq_bits_dataRequest = {io_dccmReq_bits_dataRequest_hi,io_dccmReq_bits_dataRequest_lo}; // @[MemoryFetch.scala 113:40]
-  assign io_dccmReq_bits_activeByteLane = io_writeEnable & io_f3 == 3'h0 ? _GEN_12 : _GEN_27; // @[MemoryFetch.scala 47:45]
-  assign io_dccmReq_bits_isWrite = io_writeEnable; // @[MemoryFetch.scala 115:27]
+  wire [31:0] _GEN_53 = _T_14 ? _io_readData_T_50 : _io_readData_T_55; // @[MemoryFetch.scala 188:41 190:23]
+  wire [31:0] _GEN_54 = _T_13 ? _io_readData_T_45 : _GEN_53; // @[MemoryFetch.scala 185:34 187:23]
+  wire [31:0] _GEN_56 = funct3 == 3'h5 ? _GEN_51 : _GEN_54; // @[MemoryFetch.scala 168:38]
+  wire [31:0] _GEN_57 = funct3 == 3'h4 ? _GEN_48 : _GEN_56; // @[MemoryFetch.scala 150:38]
+  wire [31:0] _GEN_58 = funct3 == 3'h0 ? _GEN_44 : _GEN_57; // @[MemoryFetch.scala 132:38]
+  assign io_readData = funct3 == 3'h2 ? rdata : _GEN_58; // @[MemoryFetch.scala 128:31 130:19]
+  assign io_maskout = io_writeEnable & io_f3 == 3'h0 ? _GEN_12 : _GEN_29; // @[MemoryFetch.scala 48:45]
+  assign io_dccmReq_valid = io_writeEnable | io_readEnable | readEnable_reg; // @[MemoryFetch.scala 119:58]
+  assign io_dccmReq_bits_addrRequest = io_aluResultIn; // @[MemoryFetch.scala 117:31]
+  assign io_dccmReq_bits_dataRequest = {io_dccmReq_bits_dataRequest_hi,io_dccmReq_bits_dataRequest_lo}; // @[MemoryFetch.scala 116:40]
+  assign io_dccmReq_bits_activeByteLane = io_writeEnable & io_f3 == 3'h0 ? _GEN_12 : _GEN_27; // @[MemoryFetch.scala 48:45]
+  assign io_dccmReq_bits_isWrite = io_writeEnable; // @[MemoryFetch.scala 118:27]
   always @(posedge clock) begin
-    if (reset) begin // @[MemoryFetch.scala 27:23]
-      offset <= 2'h0; // @[MemoryFetch.scala 27:23]
-    end else if (~io_dccmRsp_valid) begin // @[MemoryFetch.scala 33:26]
-      offset <= offsetSW; // @[MemoryFetch.scala 35:12]
-    end
     if (reset) begin // @[MemoryFetch.scala 28:23]
-      funct3 <= 3'h0; // @[MemoryFetch.scala 28:23]
-    end else if (~io_dccmRsp_valid) begin // @[MemoryFetch.scala 33:26]
-      funct3 <= io_f3; // @[MemoryFetch.scala 34:12]
+      offset <= 2'h0; // @[MemoryFetch.scala 28:23]
+    end else if (~io_dccmRsp_valid) begin // @[MemoryFetch.scala 34:26]
+      offset <= offsetSW; // @[MemoryFetch.scala 36:12]
+    end
+    if (reset) begin // @[MemoryFetch.scala 29:23]
+      funct3 <= 3'h0; // @[MemoryFetch.scala 29:23]
+    end else if (~io_dccmRsp_valid) begin // @[MemoryFetch.scala 34:26]
+      funct3 <= io_f3; // @[MemoryFetch.scala 35:12]
+    end
+    if (reset) begin // @[MemoryFetch.scala 113:31]
+      readEnable_reg <= 1'h0; // @[MemoryFetch.scala 113:31]
+    end else begin
+      readEnable_reg <= io_readEnable; // @[MemoryFetch.scala 113:31]
     end
   end
 // Register and memory initialization
@@ -1616,6 +1621,8 @@ initial begin
   offset = _RAND_0[1:0];
   _RAND_1 = {1{`RANDOM}};
   funct3 = _RAND_1[2:0];
+  _RAND_2 = {1{`RANDOM}};
+  readEnable_reg = _RAND_2[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -1647,6 +1654,9 @@ module Core(
   output [31:0] io_rvfi_uint32_6,
   output [31:0] io_rvfi_uint32_8
 );
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+`endif // RANDOMIZE_REG_INIT
   wire  pc_module_clock; // @[Core.scala 27:27]
   wire  pc_module_reset; // @[Core.scala 27:27]
   wire [31:0] pc_module_io_in; // @[Core.scala 27:27]
@@ -1806,7 +1816,6 @@ module Core(
   wire  MEM_io_writeEnable; // @[Core.scala 44:21]
   wire  MEM_io_readEnable; // @[Core.scala 44:21]
   wire [31:0] MEM_io_readData; // @[Core.scala 44:21]
-  wire [31:0] MEM_io_Data; // @[Core.scala 44:21]
   wire [2:0] MEM_io_f3; // @[Core.scala 44:21]
   wire [3:0] MEM_io_maskout; // @[Core.scala 44:21]
   wire  MEM_io_dccmReq_valid; // @[Core.scala 44:21]
@@ -1853,28 +1862,32 @@ module Core(
   wire [31:0] _GEN_34 = BranchForward_module_io_RS2 == 5'h3 ? $signed(regfile_module_io_writeData) : $signed(_GEN_33); // @[Core.scala 175:58 176:38]
   wire [31:0] _GEN_35 = BranchForward_module_io_RS2 == 5'h2 ? $signed(exmem_module_io_ALUresMEM) : $signed(_GEN_34); // @[Core.scala 173:58 174:38]
   wire [31:0] _GEN_36 = BranchForward_module_io_RS2 == 5'h1 ? $signed(alu_module_io_aluout) : $signed(_GEN_35); // @[Core.scala 171:58 172:38]
+  wire  _T_94 = idex_module_io_Instr_IDEX[6:0] == 7'h37; // @[Core.scala 295:90]
   wire [31:0] _GEN_49 = ForwardingUnit_module_io_ForwardA == 2'h2 ? regfile_module_io_writeData :
     idex_module_io_Read1_IDEX; // @[Core.scala 314:71 315:33 317:33]
   wire [31:0] _GEN_50 = ForwardingUnit_module_io_ForwardA == 2'h1 ? exmem_module_io_ALUresMEM : _GEN_49; // @[Core.scala 312:71 313:34]
   wire [31:0] _GEN_51 = ForwardingUnit_module_io_ForwardA == 2'h0 ? idex_module_io_Read1_IDEX : _GEN_50; // @[Core.scala 310:65 311:34]
   wire [31:0] _GEN_52 = idex_module_io_OpA_s_IDEX == 2'h2 ? idex_module_io_PC_IDEX : _GEN_51; // @[Core.scala 307:56 308:33]
-  wire [31:0] _GEN_53 = idex_module_io_Instr_IDEX[6:0] == 7'h37 ? 32'h0 : _GEN_52; // @[Core.scala 304:63 305:29]
+  wire [31:0] _GEN_53 = _T_94 ? 32'h0 : _GEN_52; // @[Core.scala 304:63 305:29]
   wire [31:0] _GEN_54 = idex_module_io_Instr_IDEX[19:15] == 5'h0 ? 32'h0 : _GEN_53; // @[Core.scala 301:57 302:27]
   wire [31:0] _GEN_55 = idex_module_io_operandAselout ? idex_module_io_operandAout : _GEN_54; // @[Core.scala 298:52 299:26]
   wire [31:0] _GEN_57 = ControlDecoder_module_io_Ex_sel == 2'h2 ? immgen_module_io_imm_out : 32'h0; // @[Core.scala 332:60 333:29 335:27]
   wire [31:0] _GEN_58 = ControlDecoder_module_io_Ex_sel == 2'h1 ? immgen_module_io_imm_out : _GEN_57; // @[Core.scala 330:60 331:29]
-  wire  _T_106 = ForwardingUnit_module_io_ForwardB == 2'h0; // @[Core.scala 342:47]
-  wire  _T_107 = ForwardingUnit_module_io_ForwardB == 2'h1; // @[Core.scala 344:54]
+  wire  _T_109 = ForwardingUnit_module_io_ForwardB == 2'h0; // @[Core.scala 342:47]
+  wire  _T_110 = ForwardingUnit_module_io_ForwardB == 2'h1; // @[Core.scala 344:54]
   wire [31:0] _GEN_60 = ForwardingUnit_module_io_ForwardB == 2'h2 ? regfile_module_io_writeData :
     idex_module_io_Read2_IDEX; // @[Core.scala 348:65 349:35 351:35]
-  wire [31:0] _GEN_61 = _T_107 ? exmem_module_io_ALUresMEM : _GEN_60; // @[Core.scala 346:67 347:35]
+  wire [31:0] _GEN_61 = _T_110 ? exmem_module_io_ALUresMEM : _GEN_60; // @[Core.scala 346:67 347:35]
   wire [31:0] _GEN_62 = ForwardingUnit_module_io_ForwardB == 2'h1 & exmem_module_io_MemtoRegS ? MEM_io_readData :
     _GEN_61; // @[Core.scala 344:96 345:35]
   wire [31:0] _GEN_63 = ForwardingUnit_module_io_ForwardB == 2'h0 ? idex_module_io_Read2_IDEX : _GEN_62; // @[Core.scala 342:59 343:35]
-  wire [31:0] _GEN_66 = _T_106 ? idex_module_io_Read2_IDEX : _GEN_61; // @[Core.scala 354:59 355:27]
-  wire  _regfile_module_io_writeData_T = ~memwb_module_io_MemtoReg_MEMWB; // @[Core.scala 426:39]
-  wire  _regfile_module_io_writeData_T_1 = memwb_module_io_MemtoReg_MEMWB; // @[Core.scala 427:39]
-  wire [31:0] _regfile_module_io_writeData_T_2 = _regfile_module_io_writeData_T_1 ? MEM_io_Data : 32'h0; // @[Mux.scala 101:16]
+  wire [31:0] _GEN_66 = _T_109 ? idex_module_io_Read2_IDEX : _GEN_61; // @[Core.scala 354:59 355:27]
+  reg [31:0] ALUresMEM_reg; // @[Core.scala 396:32]
+  wire  _T_119 = memwb_module_io_Instr_MEMWB[6:0] == 7'h3; // @[Core.scala 405:50]
+  wire [31:0] _GEN_69 = memwb_module_io_Instr_MEMWB[6:0] == 7'h3 ? ALUresMEM_reg : 32'h0; // @[Core.scala 405:68 406:26 408:26]
+  wire  _regfile_module_io_writeData_T = ~memwb_module_io_MemtoReg_MEMWB; // @[Core.scala 435:39]
+  wire  _regfile_module_io_writeData_T_1 = memwb_module_io_MemtoReg_MEMWB; // @[Core.scala 436:39]
+  wire [31:0] _regfile_module_io_writeData_T_2 = _regfile_module_io_writeData_T_1 ? MEM_io_readData : 32'h0; // @[Mux.scala 101:16]
   wire [31:0] _regfile_module_io_writeData_T_3 = _regfile_module_io_writeData_T ? memwb_module_io_ALUres_MEMWB :
     _regfile_module_io_writeData_T_2; // @[Mux.scala 101:16]
   Programcounter pc_module ( // @[Core.scala 27:27]
@@ -2067,7 +2080,6 @@ module Core(
     .io_writeEnable(MEM_io_writeEnable),
     .io_readEnable(MEM_io_readEnable),
     .io_readData(MEM_io_readData),
-    .io_Data(MEM_io_Data),
     .io_f3(MEM_io_f3),
     .io_maskout(MEM_io_maskout),
     .io_dccmReq_valid(MEM_io_dccmReq_valid),
@@ -2078,22 +2090,22 @@ module Core(
     .io_dccmRsp_valid(MEM_io_dccmRsp_valid),
     .io_dccmRsp_bits_dataResponse(MEM_io_dccmRsp_bits_dataResponse)
   );
-  assign io_dmemReq_valid = MEM_io_dccmReq_valid; // @[Core.scala 395:16]
-  assign io_dmemReq_bits_addrRequest = MEM_io_dccmReq_bits_addrRequest; // @[Core.scala 395:16]
-  assign io_dmemReq_bits_dataRequest = MEM_io_dccmReq_bits_dataRequest; // @[Core.scala 395:16]
-  assign io_dmemReq_bits_activeByteLane = MEM_io_dccmReq_bits_activeByteLane; // @[Core.scala 395:16]
-  assign io_dmemReq_bits_isWrite = MEM_io_dccmReq_bits_isWrite; // @[Core.scala 395:16]
+  assign io_dmemReq_valid = MEM_io_dccmReq_valid; // @[Core.scala 401:16]
+  assign io_dmemReq_bits_addrRequest = MEM_io_dccmReq_bits_addrRequest; // @[Core.scala 401:16]
+  assign io_dmemReq_bits_dataRequest = MEM_io_dccmReq_bits_dataRequest; // @[Core.scala 401:16]
+  assign io_dmemReq_bits_activeByteLane = MEM_io_dccmReq_bits_activeByteLane; // @[Core.scala 401:16]
+  assign io_dmemReq_bits_isWrite = MEM_io_dccmReq_bits_isWrite; // @[Core.scala 401:16]
   assign io_imemReq_valid = InstructionFetch_io_coreInstrReq_valid; // @[Core.scala 47:16]
   assign io_imemReq_bits_addrRequest = InstructionFetch_io_coreInstrReq_bits_addrRequest; // @[Core.scala 47:16]
   assign io_imemReq_bits_activeByteLane = InstructionFetch_io_coreInstrReq_bits_activeByteLane; // @[Core.scala 47:16]
   assign io_imemReq_bits_isWrite = InstructionFetch_io_coreInstrReq_bits_isWrite; // @[Core.scala 47:16]
   assign io_imemRsp_ready = InstructionFetch_io_coreInstrResp_ready; // @[Core.scala 48:29]
-  assign io_rvfi_bool = memwb_module_io_Instr_MEMWB != 32'h0 & ~clock; // @[Core.scala 443:65]
-  assign io_rvfi_uint4 = memwb_module_io_mask_out; // @[Core.scala 445:25]
-  assign io_rvfi_uint32_0 = memwb_module_io_Instr_MEMWB; // @[Core.scala 464:39]
-  assign io_rvfi_uint32_4 = memwb_module_io_PC_MEMWB; // @[Core.scala 464:39]
-  assign io_rvfi_uint32_6 = memwb_module_io_memaddressD; // @[Core.scala 464:39]
-  assign io_rvfi_uint32_8 = memwb_module_io_MemWritedata_out; // @[Core.scala 464:39]
+  assign io_rvfi_bool = memwb_module_io_Instr_MEMWB != 32'h0 & ~clock; // @[Core.scala 452:65]
+  assign io_rvfi_uint4 = memwb_module_io_mask_out; // @[Core.scala 454:25]
+  assign io_rvfi_uint32_0 = memwb_module_io_Instr_MEMWB; // @[Core.scala 473:39]
+  assign io_rvfi_uint32_4 = memwb_module_io_PC_MEMWB; // @[Core.scala 473:39]
+  assign io_rvfi_uint32_6 = memwb_module_io_memaddressD; // @[Core.scala 473:39]
+  assign io_rvfi_uint32_8 = memwb_module_io_MemWritedata_out; // @[Core.scala 473:39]
   assign pc_module_clock = clock;
   assign pc_module_reset = reset;
   assign pc_module_io_in = ifid_module_io_Instr_IFID[6:0] == 7'h6f | ifid_module_io_Instr_IFID[6:0] == 7'h67 ? $signed(
@@ -2101,7 +2113,8 @@ module Core(
   assign InstructionFetch_io_address = {{8'd0}, pc_module_io_pcout[25:2]}; // @[Core.scala 73:23]
   assign InstructionFetch_io_stall = _T_4 | _T_9 | idex_module_io_Instr_IDEX[6:0] == 7'h63 | _T_40; // @[Core.scala 62:223 63:24]
   assign InstructionFetch_io_coreInstrResp_bits_dataResponse = io_imemRsp_bits_dataResponse; // @[Core.scala 48:29]
-  assign alu_module_io_op1 = idex_module_io_Instr_IDEX[6:0] == 7'h17 ? 32'h0 : _GEN_55; // @[Core.scala 295:55 296:23]
+  assign alu_module_io_op1 = idex_module_io_Instr_IDEX[6:0] == 7'h17 | idex_module_io_Instr_IDEX[6:0] == 7'h37 ? 32'h0
+     : _GEN_55; // @[Core.scala 295:107 296:23]
   assign alu_module_io_op2 = idex_module_io_OpB_s_IDEX ? idex_module_io_Immd_IDEX : _GEN_66; // @[Core.scala 340:44 341:27]
   assign alu_module_io_aluctrl = alucontrol_module_io_aluctrl; // @[Core.scala 368:27]
   assign alucontrol_module_io_Aluop = idex_module_io_ALUOp_IDEX; // @[Core.scala 270:32]
@@ -2167,31 +2180,83 @@ module Core(
   assign immgen_module_io_pc = ifid_module_io_PCout_IFID; // @[Core.scala 90:25]
   assign memwb_module_clock = clock;
   assign memwb_module_reset = reset;
-  assign memwb_module_io_ALUres = exmem_module_io_ALUresMEM; // @[Core.scala 420:28]
-  assign memwb_module_io_RD = exmem_module_io_RDD; // @[Core.scala 421:24]
-  assign memwb_module_io_MemtoReg = exmem_module_io_MemtoRegS; // @[Core.scala 411:30]
-  assign memwb_module_io_RegWrite = exmem_module_io_RegWriteS; // @[Core.scala 410:30]
-  assign memwb_module_io_Instr = exmem_module_io_Instr_EXMEM; // @[Core.scala 422:27]
-  assign memwb_module_io_memaddress = exmem_module_io_ALUresMEM; // @[Core.scala 423:32]
-  assign memwb_module_io_mask = MEM_io_maskout; // @[Core.scala 431:26]
-  assign memwb_module_io_MemWritedata = exmem_module_io_ReadData2MEM; // @[Core.scala 433:34]
-  assign memwb_module_io_PC = exmem_module_io_PC_EXMEM; // @[Core.scala 434:24]
+  assign memwb_module_io_ALUres = exmem_module_io_ALUresMEM; // @[Core.scala 429:28]
+  assign memwb_module_io_RD = exmem_module_io_RDD; // @[Core.scala 430:24]
+  assign memwb_module_io_MemtoReg = exmem_module_io_MemtoRegS; // @[Core.scala 420:30]
+  assign memwb_module_io_RegWrite = exmem_module_io_RegWriteS; // @[Core.scala 419:30]
+  assign memwb_module_io_Instr = exmem_module_io_Instr_EXMEM; // @[Core.scala 431:27]
+  assign memwb_module_io_memaddress = exmem_module_io_ALUresMEM; // @[Core.scala 432:32]
+  assign memwb_module_io_mask = MEM_io_maskout; // @[Core.scala 440:26]
+  assign memwb_module_io_MemWritedata = exmem_module_io_ReadData2MEM; // @[Core.scala 442:34]
+  assign memwb_module_io_PC = exmem_module_io_PC_EXMEM; // @[Core.scala 443:24]
   assign regfile_module_clock = clock;
   assign regfile_module_reset = reset;
-  assign regfile_module_io_RegWrite = memwb_module_io_Instr_MEMWB[6:0] == 7'h3 | memwb_module_io_RegWrite_MEMWB; // @[Core.scala 429:32 436:63 439:34]
-  assign regfile_module_io_rd = memwb_module_io_RDD_MEMWB; // @[Core.scala 430:26 436:63 437:28]
+  assign regfile_module_io_RegWrite = _T_119 | memwb_module_io_RegWrite_MEMWB; // @[Core.scala 438:32 445:63 448:34]
+  assign regfile_module_io_rd = memwb_module_io_RDD_MEMWB; // @[Core.scala 439:26 445:63 446:28]
   assign regfile_module_io_instruction = ifid_module_io_Instr_IFID; // @[Core.scala 96:35]
-  assign regfile_module_io_writeData = memwb_module_io_Instr_MEMWB[6:0] == 7'h3 ? MEM_io_Data :
-    _regfile_module_io_writeData_T_3; // @[Core.scala 425:33 436:63 438:35]
+  assign regfile_module_io_writeData = _T_119 ? MEM_io_readData : _regfile_module_io_writeData_T_3; // @[Core.scala 434:33 445:63 447:35]
   assign MEM_clock = clock;
   assign MEM_reset = reset;
-  assign MEM_io_aluResultIn = exmem_module_io_MemReadS | exmem_module_io_MemWriteS ? exmem_module_io_ALUresMEM : 32'h0; // @[Core.scala 397:65 398:26 400:26]
-  assign MEM_io_writeData = exmem_module_io_ReadData2MEM; // @[Core.scala 402:22]
-  assign MEM_io_writeEnable = exmem_module_io_MemWriteS; // @[Core.scala 404:24]
-  assign MEM_io_readEnable = exmem_module_io_MemReadS; // @[Core.scala 403:23]
-  assign MEM_io_f3 = exmem_module_io_func3_EXMEM; // @[Core.scala 405:15]
-  assign MEM_io_dccmRsp_valid = io_dmemRsp_valid; // @[Core.scala 396:20]
-  assign MEM_io_dccmRsp_bits_dataResponse = io_dmemRsp_bits_dataResponse; // @[Core.scala 396:20]
+  assign MEM_io_aluResultIn = exmem_module_io_MemReadS | exmem_module_io_MemWriteS ? exmem_module_io_ALUresMEM : _GEN_69
+    ; // @[Core.scala 403:65 404:26]
+  assign MEM_io_writeData = exmem_module_io_ReadData2MEM; // @[Core.scala 410:22]
+  assign MEM_io_writeEnable = exmem_module_io_MemWriteS; // @[Core.scala 412:24]
+  assign MEM_io_readEnable = exmem_module_io_MemReadS; // @[Core.scala 411:23]
+  assign MEM_io_f3 = exmem_module_io_func3_EXMEM; // @[Core.scala 413:15]
+  assign MEM_io_dccmRsp_valid = io_dmemRsp_valid; // @[Core.scala 402:20]
+  assign MEM_io_dccmRsp_bits_dataResponse = io_dmemRsp_bits_dataResponse; // @[Core.scala 402:20]
+  always @(posedge clock) begin
+    if (reset) begin // @[Core.scala 396:32]
+      ALUresMEM_reg <= 32'h0; // @[Core.scala 396:32]
+    end else begin
+      ALUresMEM_reg <= exmem_module_io_ALUresMEM; // @[Core.scala 396:32]
+    end
+  end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  ALUresMEM_reg = _RAND_0[31:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
 endmodule
 module SRamTop(
   input         clock,

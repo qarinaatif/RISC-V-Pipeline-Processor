@@ -6,6 +6,7 @@ class MemoryFetch(TRACE: Boolean) extends Module {
   val io = IO(new Bundle {
     val aluResultIn: UInt = Input(UInt(32.W))
     val writeData: UInt = Input(UInt(32.W))
+    //val writeData1: UInt = Input(UInt(32.W))
     val writeEnable: Bool = Input(Bool())
     val readEnable: Bool = Input(Bool())
     val readData: UInt = Output(UInt(32.W))
@@ -109,17 +110,21 @@ class MemoryFetch(TRACE: Boolean) extends Module {
     io.wmask.get := Mux(io.writeEnable, "b1111".U, 0.U)
     io.maskout := Mux(io.writeEnable, "b1111".U, 0.U)
   }
+  val readEnable_reg = RegNext(io.readEnable, false.B)
+  dontTouch(readEnable_reg)
 
   io.dccmReq.bits.dataRequest := wdata.asUInt
   io.dccmReq.bits.addrRequest := io.aluResultIn 
   io.dccmReq.bits.isWrite := io.writeEnable
-  io.dccmReq.valid := Mux(io.writeEnable | io.readEnable, true.B, false.B)
+  io.dccmReq.valid := Mux(io.writeEnable | io.readEnable | readEnable_reg, true.B, false.B)
 
-  rdata := Mux(io.dccmRsp.valid, io.dccmRsp.bits.dataResponse, DontCare)
+  rdata := Mux(io.dccmReq.valid , io.dccmRsp.bits.dataResponse, DontCare)
   //rdata := Mux(true.B, io.dccmRsp.bits.dataResponse, DontCare)
   io.Data := io.dccmRsp.bits.dataResponse
 
-  when(io.readEnable) {
+
+
+  when(io.readEnable||readEnable_reg) {
     when(funct3 === "b010".U) {
       // load word
       io.readData := rdata

@@ -41,6 +41,14 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Core>ALUresMEM_reg"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|MemoryFetch>readEnable_reg"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|InstructionFetch>io_coreInstrReq_bits_isWrite"
   },
   {

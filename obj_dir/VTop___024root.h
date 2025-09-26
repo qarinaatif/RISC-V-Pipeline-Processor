@@ -32,6 +32,7 @@ class alignas(VL_CACHE_LINE_BYTES) VTop___024root final : public VerilatedModule
         CData/*1:0*/ Top__DOT__Core__DOT__ForwardingUnit_module_io_ForwardB;
         CData/*0:0*/ Top__DOT__Core__DOT__ifid_module_io_flush;
         CData/*0:0*/ Top__DOT__Core__DOT__regfile_module_io_RegWrite;
+        CData/*0:0*/ Top__DOT__Core__DOT__MEM_io_readEnable;
         CData/*0:0*/ Top__DOT__Core__DOT__MEM_io_dccmReq_valid;
         CData/*0:0*/ Top__DOT__Core__DOT___T_4;
         CData/*0:0*/ Top__DOT__Core__DOT___T_70;
@@ -62,6 +63,7 @@ class alignas(VL_CACHE_LINE_BYTES) VTop___024root final : public VerilatedModule
         CData/*2:0*/ Top__DOT__Core__DOT__MEM__DOT__funct3;
         CData/*3:0*/ Top__DOT__Core__DOT__MEM__DOT___GEN_12;
         CData/*3:0*/ Top__DOT__Core__DOT__MEM__DOT___GEN_22;
+        CData/*0:0*/ Top__DOT__Core__DOT__MEM__DOT__readEnable_reg;
         CData/*0:0*/ Top__DOT__Core__DOT__MEM__DOT____VdfgRegularize_h24b9a9d6_0_3;
         CData/*0:0*/ Top__DOT__Core__DOT__MEM__DOT____VdfgRegularize_h24b9a9d6_0_4;
         CData/*0:0*/ Top__DOT__dmem__DOT__sram_we;
@@ -78,10 +80,10 @@ class alignas(VL_CACHE_LINE_BYTES) VTop___024root final : public VerilatedModule
         CData/*0:0*/ __VactContinue;
         SData/*10:0*/ Top__DOT__Core__DOT__alucontrol_module__DOT___GEN_5;
         VL_OUT(io_rvfi_insn_0,31,0);
-        VL_OUT(io_rvfi_rs1_rdata_0,31,0);
-        VL_OUT(io_rvfi_rs2_rdata_0,31,0);
     };
     struct {
+        VL_OUT(io_rvfi_rs1_rdata_0,31,0);
+        VL_OUT(io_rvfi_rs2_rdata_0,31,0);
         VL_OUT(io_rvfi_rd_wdata_0,31,0);
         VL_OUT(io_rvfi_pc_rdata_0,31,0);
         VL_OUT(io_rvfi_pc_wdata_0,31,0);
@@ -92,10 +94,11 @@ class alignas(VL_CACHE_LINE_BYTES) VTop___024root final : public VerilatedModule
         IData/*31:0*/ Top__DOT__Core__DOT__alu_module_io_op2;
         IData/*31:0*/ Top__DOT__Core__DOT__Branchcontrol_module_io_RS1;
         IData/*31:0*/ Top__DOT__Core__DOT__Branchcontrol_module_io_RS2;
-        IData/*31:0*/ Top__DOT__Core__DOT__memwb_module_io_ReadData;
         IData/*31:0*/ Top__DOT__Core__DOT__regfile_module_io_writeData;
         IData/*31:0*/ Top__DOT__Core__DOT__regfile_module_io_readData1;
         IData/*31:0*/ Top__DOT__Core__DOT__regfile_module_io_readData2;
+        IData/*31:0*/ Top__DOT__Core__DOT__MEM_io_aluResultIn;
+        IData/*31:0*/ Top__DOT__Core__DOT__MEM_io_readData;
         IData/*31:0*/ Top__DOT__Core__DOT___GEN_0;
         IData/*31:0*/ Top__DOT__Core__DOT___GEN_61;
         IData/*31:0*/ Top__DOT__Core__DOT___GEN_66;
@@ -115,7 +118,6 @@ class alignas(VL_CACHE_LINE_BYTES) VTop___024root final : public VerilatedModule
         IData/*31:0*/ Top__DOT__Core__DOT__ifid_module__DOT__PCout_reg;
         IData/*31:0*/ Top__DOT__Core__DOT__immgen_module__DOT__sb_imm;
         IData/*31:0*/ Top__DOT__Core__DOT__immgen_module__DOT__auipc_imm;
-        IData/*31:0*/ Top__DOT__Core__DOT__memwb_module__DOT__ReadData_reg;
         IData/*31:0*/ Top__DOT__Core__DOT__memwb_module__DOT__ALUres_reg;
         IData/*31:0*/ Top__DOT__Core__DOT__memwb_module__DOT__Instr_reg;
         IData/*31:0*/ Top__DOT__Core__DOT__memwb_module__DOT__MemWritedata_reg;
@@ -144,10 +146,10 @@ class alignas(VL_CACHE_LINE_BYTES) VTop___024root final : public VerilatedModule
         IData/*31:0*/ Top__DOT__Core__DOT__regfile_module__DOT__reg_21;
         IData/*31:0*/ Top__DOT__Core__DOT__regfile_module__DOT__reg_22;
         IData/*31:0*/ Top__DOT__Core__DOT__regfile_module__DOT__reg_23;
-        IData/*31:0*/ Top__DOT__Core__DOT__regfile_module__DOT__reg_24;
-        IData/*31:0*/ Top__DOT__Core__DOT__regfile_module__DOT__reg_25;
     };
     struct {
+        IData/*31:0*/ Top__DOT__Core__DOT__regfile_module__DOT__reg_24;
+        IData/*31:0*/ Top__DOT__Core__DOT__regfile_module__DOT__reg_25;
         IData/*31:0*/ Top__DOT__Core__DOT__regfile_module__DOT__reg_26;
         IData/*31:0*/ Top__DOT__Core__DOT__regfile_module__DOT__reg_27;
         IData/*31:0*/ Top__DOT__Core__DOT__regfile_module__DOT__reg_28;
